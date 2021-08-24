@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
 
     restaurants = db.relationship("Restaurant", back_populates="owner")
 
+
     @property
     def password(self):
         return self.hashed_password
