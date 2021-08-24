@@ -10,6 +10,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    icon = db.Column(db.String, nullable=True)
+
+    restaurants = db.relationship("Restaurant", back_populates="owner")
 
     @property
     def password(self):
@@ -23,8 +26,15 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        icon_url = self.icon
+
+        if icon_url is None:
+            icon_url = None
+        else:
+            icon_url = self.icon
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'icon': icon_url,
         }
