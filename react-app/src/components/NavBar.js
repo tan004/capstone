@@ -2,10 +2,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import LoginFormModal from './auth/LoginFormModal';
 import ProfileDropDown from './ProfileDropdown';
 
 const NavBar = () => {
-  const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
   let sessionLinks;
@@ -15,7 +15,7 @@ const NavBar = () => {
           )
       } else {
           sessionLinks = (<>
-          <NavLink className='login' to="/login">Log In</NavLink>
+          <LoginFormModal />
           <NavLink className='signup' to="/signup">Sign Up</NavLink>
       </>)
   }

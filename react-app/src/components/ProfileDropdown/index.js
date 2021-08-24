@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 
 
@@ -31,16 +32,19 @@ const ProfileDropDown = ({ user }) => {
 
     return (
         <>
-            <button className='profile-button' onClick={toggleMenu}>
-                <i className="far fa-address-card"></i>
-            </button>
+        <div className='profile-button'>
+            <i onClick={toggleMenu} className="fas fa-user-circle "></i>
+            </div>
             {showMenu && (
                 <div className="profile-dropdown">
                     <div className='triangle'>
                         <i className="fas fa-caret-up"></i>
                     </div>
-                    <div className="dropdown-list">{user.username}</div>
-                    <div className="dropdown-list">{user.email}</div>
+
+                    <div className="dropdown-list">
+                        <NavLink to={`/users/${user.id}`}>Profile</NavLink>
+                    </div>
+
                     <div>
                       <LogoutButton />
                     </div>
