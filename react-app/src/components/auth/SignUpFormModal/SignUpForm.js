@@ -10,7 +10,6 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [icon, setIcon] = useState('')
-  const [showIcon, setShowIcon] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -59,7 +58,7 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-          <img width='60px' src={icon ? icon : null }/>
+          <img width='60px' src={icon ? icon : null } alt='showIcon'/>
       </div>
       <div className="input__container">
         <input

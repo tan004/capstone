@@ -1,0 +1,13 @@
+.restaurant-form__container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.rest-right__container{
+   max-width: 50%;
+}
+.rest-left__container{
+    max-width: 50%;
+
+}
