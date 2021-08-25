@@ -40,8 +40,6 @@ const LoginForm = () => {
 
 }
 
-
-
   if (user) {
     return <Redirect to='/' />;
   }

@@ -9,13 +9,15 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [icon, setIcon] = useState('')
+  const [showIcon, setShowIcon] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, icon));
       if (data) {
         setErrors(data)
       }
@@ -37,6 +39,11 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+  const updateIcon = (e) => {
+    setIcon(e.target.value);
+  };
+
+
 
   if (user) {
     return <Redirect to='/' />;
@@ -50,6 +57,9 @@ const SignUpForm = () => {
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
+      </div>
+      <div>
+          <img width='60px' src={icon ? icon : null }/>
       </div>
       <div className="input__container">
         <input
@@ -93,6 +103,17 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
+      <div className="input__container">
+        <input
+          type='text'
+          name='icon'
+          className="input"
+          placeholder="Optional: Image Url for Icon"
+          onChange={updateIcon}
+          value={icon}
+        ></input>
+      </div>
+
       <button className="log-in-button" type='submit'>Sign Up</button>
     </form>
     <div className="sign-up__container">

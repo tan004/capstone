@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
+import RestaurantForm from './components/RestaurantForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +36,9 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/new' exact={true}>
+          <RestaurantForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>

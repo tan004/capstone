@@ -27,15 +27,10 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        icon_url = self.icon
 
-        if icon_url is None:
-            icon_url = None
-        else:
-            icon_url = self.icon
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'icon': icon_url,
+            'icon': self.icon,
         }
