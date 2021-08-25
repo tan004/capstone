@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .bookmarks import bookmarks
 
 
 class User(db.Model, UserMixin):
@@ -14,6 +15,8 @@ class User(db.Model, UserMixin):
 
     restaurants = db.relationship("Restaurant", back_populates="owner")
     bookings = db.relationship('Booking', back_populates="user")
+
+    bookmarked = db.relationship('Restaurant', secondary=bookmarks, back_populates='bookmark_users')
 
     @property
     def password(self):

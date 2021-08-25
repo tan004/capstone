@@ -8,3 +8,10 @@ class Cuisine(db.Model):
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
 
     restaurant = db.relationship('Restaurant', back_populates='cuisine_type')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'type': self.type,
+            'restaurant_id': self.restaurant_id
+        }

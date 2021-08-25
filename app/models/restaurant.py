@@ -1,6 +1,6 @@
 from .db import db
 from .user import User
-
+from .bookmarks import bookmarks
 
 class Restaurant(db.Model):
     __tablename__ = 'restaurants'
@@ -21,6 +21,10 @@ class Restaurant(db.Model):
 
     bookings = db.relationship('Booking', back_populates='restaurant')
     cuisine_type = db.relationship('Cuisine', back_populates='restaurant')
+
+    bookmark_users = db.relationship('User', secondary=bookmarks, back_populates="bookmarked")
+
+
 
     def to_dict(self):
         user = User.query.filter(User.id == self.owner_id).first()
