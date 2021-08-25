@@ -1,3 +1,4 @@
+from app.models.cuisine import Cuisine
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from ..forms.restaurant_form import RestaurantForm

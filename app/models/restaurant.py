@@ -2,6 +2,7 @@ from .db import db
 from .user import User
 from .bookmarks import bookmarks
 
+
 class Restaurant(db.Model):
     __tablename__ = 'restaurants'
 
@@ -22,9 +23,8 @@ class Restaurant(db.Model):
     bookings = db.relationship('Booking', back_populates='restaurant')
     cuisine_type = db.relationship('Cuisine', back_populates='restaurant')
 
-    bookmark_users = db.relationship('User', secondary=bookmarks, back_populates="bookmarked")
-
-
+    bookmark_users = db.relationship(
+        'User', secondary=bookmarks, back_populates="bookmarked")
 
     def to_dict(self):
         user = User.query.filter(User.id == self.owner_id).first()
@@ -37,5 +37,7 @@ class Restaurant(db.Model):
             "owner": user.to_dict(),
             "lat": self.lat,
             "lng": self.lng,
-            "location": f"{self.address} {self.city}, {self.state} {self.zip_code}"
+            "location": f"{self.address} {self.city}, {self.state} {self.zip_code}",
+            "bookmark_users": len(self.bookmark_users),
+            "cuisine_type": self.cuisine_type,
         }

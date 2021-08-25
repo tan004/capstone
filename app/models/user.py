@@ -16,7 +16,8 @@ class User(db.Model, UserMixin):
     restaurants = db.relationship("Restaurant", back_populates="owner")
     bookings = db.relationship('Booking', back_populates="user")
 
-    bookmarked = db.relationship('Restaurant', secondary=bookmarks, back_populates='bookmark_users')
+    bookmarked = db.relationship(
+        'Restaurant', secondary=bookmarks, back_populates='bookmark_users')
 
     @property
     def password(self):
@@ -36,4 +37,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'icon': self.icon,
+            "bookmarked": [r.id for r in self.bookmarked],
+            "bookings": self.bookings
         }
