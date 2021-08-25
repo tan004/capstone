@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     icon = db.Column(db.String, nullable=True)
 
     restaurants = db.relationship("Restaurant", back_populates="owner")
-
+    bookings = db.relationship('Booking', back_populates="user")
 
     @property
     def password(self):

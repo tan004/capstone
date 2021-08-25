@@ -1,7 +1,18 @@
-
 import './landingpage.css'
+import { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { getAll } from '../../store/restaurant'
 
 const LandingPage = () => {
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
+    const restaurants = useSelector(state => Object.values(state.restaurants))
+    console.log(restaurants)
+
+    useEffect(() => {
+        dispatch(getAll())
+    },[])
+
     return (
         <div>
             <div className='header-image__container'>

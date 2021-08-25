@@ -19,6 +19,9 @@ class Restaurant(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     owner = db.relationship("User", back_populates="restaurants")
 
+    bookings = db.relationship('Booking', back_populates='restaurant')
+    cuisine_type = db.relationship('Cuisine', back_populates='restaurant')
+
     def to_dict(self):
         user = User.query.filter(User.id == self.owner_id).first()
 

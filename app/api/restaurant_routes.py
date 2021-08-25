@@ -18,6 +18,12 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
+@restaurant_routes.route('/all')
+def get_all_restaurants():
+    restaurants = Restaurant.query.all()
+    return {r.id: r.to_dict() for r in restaurants}
+
+
 @restaurant_routes.route('/new', methods=['POST'])
 @login_required
 def create_restaurant():
