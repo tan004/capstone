@@ -13,7 +13,6 @@ export const newRestaurant = (form) => async(dispatch) =>  {
 
     const { title,phone,description,address,city,state,zip_code,lat,lng} = form
 
-
     const response = await fetch('/api/restaurants/new', {
         method: 'POST',
         headers: {
@@ -27,11 +26,9 @@ export const newRestaurant = (form) => async(dispatch) =>  {
             city, state, zip_code, lat, lng}),
     })
 
-    console.log(response)
 
     if(response.ok){
         const data = await response.json()
-        console.log(data)
         dispatch(add(data))
 
     }else if (response.status < 500) {
@@ -51,7 +48,7 @@ export default function restaurant(state=initialState, action) {
     switch(action.type){
         case CREATE:
             console.log(action.form)
-            return {...state, ...action.form}
+            return {...state, [action.form.id]:action.form}
 
         default:
             return state

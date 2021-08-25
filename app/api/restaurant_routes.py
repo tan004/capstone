@@ -22,14 +22,10 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def create_restaurant():
     user = current_user
-    print('USER????', user)
     form = RestaurantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("Form???", form.data)
 
     if form.validate_on_submit():
-        print('here is the form: ', form)
-
         data = Restaurant(
             owner_id=user.id,
             title=form.data['title'],
