@@ -1,0 +1,13 @@
+.signup-form__container {
+    margin: 100px auto 0px auto;
+    padding: 10px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 400px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+}

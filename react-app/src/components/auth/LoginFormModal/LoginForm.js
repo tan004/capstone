@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
+import { Redirect,NavLink } from 'react-router-dom';
+import { login } from '../../../store/session';
+import './login-signup.css'
+
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -26,20 +28,39 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoUser = async () => {
+
+
+    let user = await dispatch(login('demo@aa.io', 'password'));
+        if (user === undefined) {
+            throw Error('please login first')
+        }else{
+          return <Redirect to='/' />
+        }
+
+}
+
   if (user) {
     return <Redirect to='/' />;
   }
 
+
+
+
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <div className='login-form__container'>
+
+    <h1 className='form-title'>Log in here</h1>
+    <form className='login-form' onSubmit={onLogin}>
+      <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div className='input__container'>
+
         <input
+          className='input'
           name='email'
           type='text'
           placeholder='Email'
@@ -47,18 +68,33 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+      <div className='input__container'>
+
         <input
+          className='input'
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+        <div>
+        <button className="log-in-button" type='submit'>Login</button>
+          </div>
     </form>
+
+    <button onClick={demoUser} className='demo-button'>Demo User</button>
+
+    <div className="sign-up__container">
+        <p className="sign-up-text">
+          Don't have an account?{" "}
+          <NavLink className="sign-up-link" to="/signup">
+            Sign up
+          </NavLink>
+        </p>
+      </div>
+    </div>
   );
 };
 
