@@ -2,8 +2,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LoginFormModal from './auth/LoginFormModal';
 import ProfileDropDown from './ProfileDropdown';
+import './navbar.css'
+
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -15,15 +16,14 @@ const NavBar = () => {
           )
       } else {
           sessionLinks = (<>
-          <LoginFormModal />
           <NavLink className='signup' to="/signup">Sign Up</NavLink>
+          <NavLink className='login' to="/login">Log In</NavLink>
       </>)
   }
 
 
   return (
-    <nav>
-      <div>
+      <div className='navbar__container'>
         <div>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
@@ -33,8 +33,8 @@ const NavBar = () => {
         <div>
           {sessionLinks}
         </div>
+
       </div>
-    </nav>
   );
 }
 

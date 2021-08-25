@@ -33,19 +33,21 @@ const ProfileDropDown = ({ user }) => {
     return (
         <>
         <div className='profile-button'>
-            <i onClick={toggleMenu} className="fas fa-user-circle "></i>
+            <i onClick={toggleMenu} className="far fa-user-circle"></i>
+            {/* <i onClick={toggleMenu} className="fas fa-user-circle "></i> */}
             </div>
             {showMenu && (
                 <div className="profile-dropdown">
+
                     <div className='triangle'>
                         <i className="fas fa-caret-up"></i>
                     </div>
 
                     <div className="dropdown-list">
-                        <NavLink to={`/users/${user.id}`}>Profile</NavLink>
+                        <NavLink className='profile-link' to={`/users/${user.id}`}>My Profile</NavLink>
                     </div>
 
-                    <div>
+                    <div className="dropdown-list">
                       <LogoutButton />
                     </div>
                 </div>
