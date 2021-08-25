@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropdown';
 import './navbar.css'

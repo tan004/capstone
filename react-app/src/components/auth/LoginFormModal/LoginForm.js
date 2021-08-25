@@ -28,9 +28,26 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoUser = async () => {
+
+
+    let user = await dispatch(login('demo@aa.io', 'password'));
+        if (user === undefined) {
+            throw Error('please login first')
+        }else{
+          return <Redirect to='/' />
+        }
+
+}
+
+
+
   if (user) {
     return <Redirect to='/' />;
   }
+
+
+
 
   return (
     <div className='login-form__container'>
@@ -68,6 +85,9 @@ const LoginForm = () => {
         <button className="log-in-button" type='submit'>Login</button>
           </div>
     </form>
+
+    <button onClick={demoUser} className='demo-button'>Demo User</button>
+
     <div className="sign-up__container">
         <p className="sign-up-text">
           Don't have an account?{" "}

@@ -19,6 +19,11 @@
     margin-left: 7px;
     color: #777B83;
 }
+.login:hover{
+    background-color: #247F9E;
+    color:white;
+    border: 1px solid #247F9E;
+}
 
 .signup{
     box-sizing: border-box;
@@ -32,7 +37,7 @@
 .fa-user-circle{
     font-size: 30px;
     /* color: #646464; */
-    margin-right: 20px;
+    margin-right: 33px;
 }
 .profile-button:hover{
     cursor: pointer;
@@ -43,8 +48,8 @@
     flex-direction: column;
     position: absolute;
     right: 40px;
-    top: 60px;
-    background-color:lightblue;
+    top: 52px;
+    background-color:white;
     padding: 15px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -68,8 +73,9 @@
 .fa-caret-up{
     position: absolute;
     top: -25px;
-    right: 3px;
-    color: #cbcbcc;
+    right: 5px;
+    color: #f3f3f3;
+
 }
 
 .logout-button{

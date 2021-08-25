@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 
 
 const ProfileDropDown = ({ user }) => {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
 
