@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom"
+import './landingpage.css'
 
 const LandingPage = () => {
     return (
         <div>
-            <h1>This is the Landing Page</h1>
+            <div className='header-image__container'>
+               <div className='homeImage'></div>
+            </div>
         </div>
     )
 }
