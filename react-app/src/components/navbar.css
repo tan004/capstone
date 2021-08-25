@@ -3,11 +3,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid grey;
     padding: 0px 10px;
     box-sizing: border-box;
     height: 50px;
     background-color: #FFFFFF;
+    top: 0px;
+    position: relative;
 }
 
 .login{

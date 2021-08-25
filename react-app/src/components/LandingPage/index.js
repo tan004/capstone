@@ -5,8 +5,12 @@ const LandingPage = () => {
     return (
         <div>
             <div className='header-image__container'>
-               <div className='homeImage'></div>
+               <div className='homeImage'>
+                    <div>You don't need a reason, you need a booking</div>
+                    <div></div>
+               </div>
             </div>
+            <div>list</div>
         </div>
     )
 }
