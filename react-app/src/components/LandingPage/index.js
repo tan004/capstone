@@ -14,6 +14,7 @@ const LandingPage = () => {
     },[dispatch])
 
 
+
     return (
         <div>
             <div className='header-image__container'>
@@ -41,9 +42,12 @@ const LandingPage = () => {
                     <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business'>
                         <img className='card-img' src={restaurant?.profile_pic}/>
 
-                        <div>{restaurant?.title}</div>
-                        <div>bookmarked by:{restaurant?.bookmark_users}</div>
-                        <div>{restaurant?.city}</div>
+                        <div className='simple-info card-title'>{restaurant?.title}</div>
+
+                        <div className='simple-info'>{user.bookmarked?.includes(restaurant.id) ?
+                            <i className="fas red-mark fa-bookmark"></i> : <i className="far fa-bookmark"></i> } {restaurant?.bookmark_users} bookmarked
+                        </div>
+                        <div className='simple-info card-address'><i className="fas fa-map-marker-alt"></i> {restaurant?.city}, {restaurant.state}</div>
 
                     </NavLink>
                 )}

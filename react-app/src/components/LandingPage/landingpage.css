@@ -91,3 +91,37 @@
 .card-img:hover{
     opacity: 0.8;
 }
+
+
+.simple-info{
+    box-sizing: border-box;
+    padding: 6px 5px 0px;
+    color: black;
+}
+
+.card-title{
+    color: #2d333f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* margin: 0 0 4px; */
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: capitalize;
+}
+.card-address{
+    text-transform: capitalize;
+}
+
+.fa-map-marker-alt{
+    color:rgb(75, 121, 206);
+}
+
+.red-mark{
+    color:red;
+}
+
+.fa-bookmark{
+    color: red;
+}
