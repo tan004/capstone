@@ -7,8 +7,7 @@ import { NavLink } from 'react-router-dom';
 const LandingPage = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const restaurants = useSelector(state => Object.values(state.restaurants))
-    console.log(restaurants)
+    const restaurants = useSelector(state => Object.values(state.restaurants).reverse())
 
     useEffect(() => {
         dispatch(getAll())
@@ -35,6 +34,8 @@ const LandingPage = () => {
                     </div>
             </div>
 
+
+            <h2 className='sorting-title'>newest</h2>
             <div className='all-business'>
                 {restaurants.map(restaurant =>
                     <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business'>
