@@ -42,5 +42,5 @@ class Restaurant(db.Model):
             "city": self.city,
             "location": f"{self.address} {self.city}, {self.state} {self.zip_code}",
             "bookmark_users": len(self.bookmark_users),
-            "cuisine_type": self.cuisine_type,
+            "cuisine_type": [cuisine.type for cuisine in self.cuisine_type]
         }

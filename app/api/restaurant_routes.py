@@ -25,6 +25,12 @@ def get_all_restaurants():
     return {r.id: r.to_dict() for r in restaurants}
 
 
+@restaurant_routes.route('/<int:id>')
+def get_one_restaurant(id):
+    restaurant = Restaurant.query.get(id)
+    return restaurant.to_dict()
+
+
 @restaurant_routes.route('/new', methods=['POST'])
 @login_required
 def create_restaurant():
