@@ -41,3 +41,40 @@
     border-radius: 5px;
     margin: 10px;
 }
+
+
+.all-business{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.single-business{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 5px;
+    height: 250px;
+    width: 200px;
+    box-sizing: border-box;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.single-business:hover{
+    position: relative;
+    bottom: 10px
+}
+
+.card-img{
+    width: 100%;
+    height: 60%;
+}
+
+.card-img:hover{
+    opacity: 0.8;
+}

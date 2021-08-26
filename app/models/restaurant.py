@@ -14,6 +14,7 @@ class Restaurant(db.Model):
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     zip_code = db.Column(db.String(20), nullable=False)
+    profile_pic = db.Column(db.String, nullable=False)
     lat = db.Column(db.String, nullable=True)
     lng = db.Column(db.String, nullable=True)
 
@@ -35,8 +36,10 @@ class Restaurant(db.Model):
             "phone": self.phone,
             "description": self.description,
             "owner": user.to_dict(),
+            "profile_pic": self.profile_pic,
             "lat": self.lat,
             "lng": self.lng,
+            "city": self.city,
             "location": f"{self.address} {self.city}, {self.state} {self.zip_code}",
             "bookmark_users": len(self.bookmark_users),
             "cuisine_type": self.cuisine_type,

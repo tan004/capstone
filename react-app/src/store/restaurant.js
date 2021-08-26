@@ -22,7 +22,7 @@ export const getAll = () => async(dispatch)=>{
 
 export const newRestaurant = (form) => async(dispatch) =>  {
 
-    const { title,phone,description,address,city,state,zip_code,lat,lng} = form
+    const { title,phone,description,address,city,state,zip_code,lat,lng, profile_pic} = form
 
     const response = await fetch('/api/restaurants/new', {
         method: 'POST',
@@ -34,7 +34,7 @@ export const newRestaurant = (form) => async(dispatch) =>  {
             phone,
             description,
             address,
-            city, state, zip_code, lat, lng}),
+            city, state, zip_code, lat, lng, profile_pic}),
     })
 
 

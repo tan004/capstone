@@ -33,6 +33,7 @@ def create_restaurant():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        print(form.data)
         data = Restaurant(
             owner_id=user.id,
             title=form.data['title'],
@@ -42,6 +43,7 @@ def create_restaurant():
             city=form.data['city'],
             state=form.data['state'],
             zip_code=form.data['zip_code'],
+            profile_pic=form.data['profile_pic'],
             lat=form.data['lat'],
             lng=form.data['lng'],
         )
@@ -54,5 +56,6 @@ def create_restaurant():
 
         db.session.add(data)
         db.session.commit()
+        print(data)
         return data.to_dict()
     return jsonify(form.errors)
