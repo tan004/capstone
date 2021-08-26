@@ -22,7 +22,7 @@ class Restaurant(db.Model):
     owner = db.relationship("User", back_populates="restaurants")
 
     bookings = db.relationship('Booking', back_populates='restaurant')
-    cuisine_type = db.relationship('Cuisine', back_populates='restaurant')
+    cuisine_type = db.relationship('Cuisine', cascade="all,delete", back_populates='restaurant')
 
     bookmark_users = db.relationship(
         'User', secondary=bookmarks, back_populates="bookmarked")
@@ -42,5 +42,5 @@ class Restaurant(db.Model):
             "city": self.city,
             "location": f"{self.address} {self.city}, {self.state} {self.zip_code}",
             "bookmark_users": len(self.bookmark_users),
-            "cuisine_type": self.cuisine_type,
+            "cuisine_type": [cuisine.type for cuisine in self.cuisine_type]
         }

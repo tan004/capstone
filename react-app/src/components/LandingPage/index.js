@@ -12,7 +12,8 @@ const LandingPage = () => {
 
     useEffect(() => {
         dispatch(getAll())
-    },[])
+    },[dispatch])
+
 
     return (
         <div>
@@ -36,12 +37,12 @@ const LandingPage = () => {
 
             <div className='all-business'>
                 {restaurants.map(restaurant =>
-                    <NavLink to={`/restaurants/${restaurant.id}`} className='single-business'>
-                        <img className='card-img' src={restaurant.profile_pic}/>
+                    <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business'>
+                        <img className='card-img' src={restaurant?.profile_pic}/>
 
-                        <div>{restaurant.title}</div>
-                        <div>bookmarked by:{restaurant.bookmark_users}</div>
-                        <div>{restaurant.city}</div>
+                        <div>{restaurant?.title}</div>
+                        <div>bookmarked by:{restaurant?.bookmark_users}</div>
+                        <div>{restaurant?.city}</div>
 
                     </NavLink>
                 )}
