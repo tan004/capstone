@@ -30,8 +30,8 @@ const NavBar = () => {
           </NavLink>
         </div>
 
-        <div>
-          <NavLink to='/restaurants/new'>Post</NavLink>
+        <div className='post-icon__container'>
+          <NavLink className='post-button' to='/restaurants/new'>Post</NavLink>
           {sessionLinks}
         </div>
 

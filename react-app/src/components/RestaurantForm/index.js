@@ -15,6 +15,8 @@ const RestaurantForm = () => {
     const [zip_code, setZip_code] = useState('')
     const [lat, setLat] = useState('')
     const [lng, setLng] = useState('')
+    const [profile_pic, setProfile_pic] = useState('')
+
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch()
@@ -35,7 +37,8 @@ const RestaurantForm = () => {
             state,
             zip_code,
             lat,
-            lng
+            lng,
+            profile_pic
         }
         dispatch(newRestaurant(form))
         history.push('/')
@@ -75,6 +78,16 @@ const RestaurantForm = () => {
                         placeholder='Restaurant phone number*'
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <input
+                        type='text'
+                        name='profile_pic'
+                        required
+                        placeholder='Restaurant dashboard picture*'
+                        value={profile_pic}
+                        onChange={(e) => setProfile_pic(e.target.value)}
                     />
                 </div>
                 <div>

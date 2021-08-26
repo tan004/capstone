@@ -1,17 +1,28 @@
 const CREATE = 'restaurants/CREATE'
+const GET_ALL = 'restaurants/GET_ALL'
 
+const all = (forms) => ({
+    type:GET_ALL,
+    forms
+})
 
 const add = (form) => ({
     type: CREATE,
     form
 })
 
-
+export const getAll = () => async(dispatch)=>{
+    const response = await fetch('/api/restaurants/all')
+    if(response.ok){
+        const data = await response.json();
+        dispatch(all(data))
+    }
+}
 
 
 export const newRestaurant = (form) => async(dispatch) =>  {
 
-    const { title,phone,description,address,city,state,zip_code,lat,lng} = form
+    const { title,phone,description,address,city,state,zip_code,lat,lng, profile_pic} = form
 
     const response = await fetch('/api/restaurants/new', {
         method: 'POST',
@@ -23,7 +34,7 @@ export const newRestaurant = (form) => async(dispatch) =>  {
             phone,
             description,
             address,
-            city, state, zip_code, lat, lng}),
+            city, state, zip_code, lat, lng, profile_pic}),
     })
 
 
@@ -44,10 +55,11 @@ export const newRestaurant = (form) => async(dispatch) =>  {
 const initialState = {}
 
 
-export default function restaurant(state=initialState, action) {
+export default function restaurants(state=initialState, action) {
     switch(action.type){
+        case GET_ALL:
+            return {...state, ...action.forms}
         case CREATE:
-            console.log(action.form)
             return {...state, [action.form.id]:action.form}
 
         default:
