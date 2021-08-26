@@ -28,26 +28,32 @@ h1,h2,p,h3{
     top: 360px;
     background-color: white;
     left: 10%;
-    right: 60%;
-    min-width: 500px;
+    /* right: 60%; */
+    /* min-width: 500px; */
     box-sizing: border-box;
     padding: 10px;
+    width: 45%;
 }
 
 .booking__container{
     display: flex;
-    min-width:300px;
+    min-width: 250px;
     flex-direction: column;
     background-color: white;
     position:absolute;
     top: 0px;
     /* right: 10%; */
-
-    left: 580px;
+    left: 105%;
     box-sizing: border-box;
     padding: 10px 10px 2px;
     border-bottom: 1px solid grey;
 
+}
+
+@media screen and (max-width: 850px){
+    .booking__container{
+        position: unset;
+    }
 }
 
 .detail-nav{

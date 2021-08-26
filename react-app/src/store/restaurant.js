@@ -134,7 +134,9 @@ export default function restaurants(state = initialState, action) {
         case EDIT:
             return { ...state, [action.form.id]: action.form }
         case GET_ONE:
-            return { [action.form.id]: action.form }
+            return {
+                [action.form.id]: action.form
+            }
         case REMOVE:
             const newState = { ...state }
             delete newState[action.id]

@@ -44,6 +44,12 @@ const RestaurantPage = () => {
                             <button onClick={onDelete}>Delete</button>
                         </div>
                     </div>
+
+                    <div className='booking__container'>
+                        <h2>Make a reservation</h2>
+                        <div>party size</div>
+                    </div>
+
                     <div>{restaurant?.description}</div>
                     <div>
                     <h3>Cuisine</h3>
@@ -66,11 +72,6 @@ const RestaurantPage = () => {
                     </div>
                     <div>
                         <h2> Reviews</h2>
-                    </div>
-
-                    <div className='booking__container'>
-                        <h2>Make a reservation</h2>
-                        <div>party size</div>
                     </div>
 
 
