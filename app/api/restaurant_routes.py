@@ -65,3 +65,48 @@ def create_restaurant():
         print(data)
         return data.to_dict()
     return jsonify(form.errors)
+
+
+@restaurant_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_restaurant(id):
+    user = current_user
+    restaurant = Restaurant.query.get(id)
+
+    form = RestaurantForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if user.id != restaurant.owner_id:
+        return {'errors': ['Unauthorized']}, 401
+
+    if form.validate_on_submit():
+        data = form.data
+        restaurant.title = data['title']
+        restaurant.phone = data['phone']
+        restaurant.description = data['description']
+        restaurant.address = data['address']
+        restaurant.city = data['city']
+        restaurant.state = data['state']
+        restaurant.zip_code = data['zip_code']
+        restaurant.profile_pic = data['profile_pic']
+        restaurant.lat = data['lat']
+        restaurant.lng = data['lng']
+
+        db.session.commit()
+        return data.to_dict()
+    return {'errors': [error for error in form.errors]}
+
+
+@restaurant_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_restaurant(id):
+    user = current_user
+    restaurant = Restaurant.query.get(id)
+
+    # if user.id != restaurant.owner_id:
+    #     return {'errors': ['Unauthorized']}, 401
+
+    db.session.delete(restaurant)
+    db.session.commit()
+
+    return jsonify('Completed')

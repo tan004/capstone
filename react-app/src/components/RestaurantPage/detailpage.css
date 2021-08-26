@@ -54,3 +54,14 @@ h1,h2,p,h3{
     padding: 0 10px 11px;
     border-bottom: 1px solid grey;
 }
+.title-admin__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
