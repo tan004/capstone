@@ -93,7 +93,8 @@ def edit_restaurant(id):
         restaurant.lng = data['lng']
 
         db.session.commit()
-        return data.to_dict()
+        print(restaurant.to_dict())
+        return restaurant.to_dict()
     return {'errors': [error for error in form.errors]}
 
 

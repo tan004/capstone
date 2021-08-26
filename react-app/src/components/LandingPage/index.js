@@ -7,12 +7,12 @@ import { NavLink } from 'react-router-dom';
 const LandingPage = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const restaurants = useSelector(state => Object.values(state.restaurants))
-    console.log(restaurants)
+    const restaurants = useSelector(state => Object.values(state.restaurants).reverse())
 
     useEffect(() => {
         dispatch(getAll())
     },[dispatch])
+
 
 
     return (
@@ -35,14 +35,19 @@ const LandingPage = () => {
                     </div>
             </div>
 
+
+            <h2 className='sorting-title'>newest</h2>
             <div className='all-business'>
                 {restaurants.map(restaurant =>
                     <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business'>
                         <img className='card-img' src={restaurant?.profile_pic}/>
 
-                        <div>{restaurant?.title}</div>
-                        <div>bookmarked by:{restaurant?.bookmark_users}</div>
-                        <div>{restaurant?.city}</div>
+                        <div className='simple-info card-title'>{restaurant?.title}</div>
+
+                        <div className='simple-info'>{user.bookmarked?.includes(restaurant.id) ?
+                            <i className="fas red-mark fa-bookmark"></i> : <i className="far fa-bookmark"></i> } {restaurant?.bookmark_users} bookmarked
+                        </div>
+                        <div className='simple-info card-address'><i className="fas fa-map-marker-alt"></i> {restaurant?.city}, {restaurant.state}</div>
 
                     </NavLink>
                 )}

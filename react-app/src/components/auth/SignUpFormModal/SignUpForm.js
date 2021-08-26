@@ -57,9 +57,9 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-          <img width='60px' src={icon ? icon : null } alt='showIcon'/>
-      </div>
+
+      {icon ? <img width='60px' src={icon ? icon : null } alt='showIcon'/>: null}
+
       <div className="input__container">
         <input
           className="input"

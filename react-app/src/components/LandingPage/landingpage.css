@@ -42,32 +42,45 @@
     margin: 10px;
 }
 
+.sorting-title{
+    margin-left: 38px;
+    margin-right: 38px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    border-bottom: .0625rem solid #d8d9db;
+}
+
 
 .all-business{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border-bottom: 1px solid black;
     padding: 10px;
     margin: 10px;
 }
+
+
 
 .single-business{
     display: flex;
     flex-direction: column;
     border: 1px solid grey;
-    padding: 5px;
     border-radius: 5px;
     height: 250px;
     width: 200px;
     box-sizing: border-box;
     margin-left: 15px;
     margin-bottom: 15px;
+    bottom: 0px;
+    /* transition: box-shadow 0.5s; */
+    transition: all 0.3s ease-in-out;
+    /* transition-timing-function: ease-in-out; */
 }
 
 .single-business:hover{
     position: relative;
-    bottom: 10px
+    bottom: 10px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .card-img{
@@ -77,4 +90,38 @@
 
 .card-img:hover{
     opacity: 0.8;
+}
+
+
+.simple-info{
+    box-sizing: border-box;
+    padding: 6px 5px 0px;
+    color: black;
+}
+
+.card-title{
+    color: #2d333f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* margin: 0 0 4px; */
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: capitalize;
+}
+.card-address{
+    text-transform: capitalize;
+}
+
+.fa-map-marker-alt{
+    color:rgb(75, 121, 206);
+}
+
+.red-mark{
+    color:red;
+}
+
+.fa-bookmark{
+    color: red;
 }

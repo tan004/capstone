@@ -26,7 +26,7 @@ const NavBar = () => {
       <div className='navbar__container'>
         <div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            openBelly
           </NavLink>
         </div>
 
