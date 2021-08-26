@@ -46,7 +46,7 @@ const RestaurantPage = () => {
                         <h1>{restaurant?.title}</h1>
                         <div className='admin__container'>
                             <EditRestaurantModal restaurant={restaurant}/>
-                            <button onClick={onDelete}>Delete</button>
+                            <i onClick={onDelete} className="far fa-trash-alt"></i>
                         </div>
                     </div>
 
