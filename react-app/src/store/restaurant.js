@@ -18,9 +18,9 @@ const add = (form) => ({
     type: CREATE,
     form
 })
-const edit = (id) => ({
+const edit = (form) => ({
     type: EDIT,
-    id
+    form
 })
 
 const remove = (id) => ({
@@ -88,6 +88,7 @@ export const editRestaurant = (form) => async dispatch => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            id,
             title,
             phone,
             description,

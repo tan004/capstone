@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteRestaurant, getOne } from "../../store/restaurant";
+import EditRestaurantModal from "../EditRestaurantModal";
+import EditRestaurantForm from "../EditRestaurantModal/editrestaurantform";
 import './detailpage.css'
 
 
@@ -24,6 +26,9 @@ const RestaurantPage = () => {
         history.push('/')
     }
 
+
+
+
     return (
         <div className='detail-page__container'>
 
@@ -40,7 +45,7 @@ const RestaurantPage = () => {
                     <div className='title-admin__container'>
                         <h1>{restaurant?.title}</h1>
                         <div className='admin__container'>
-                            <button>Edit</button>
+                            <EditRestaurantModal restaurant={restaurant}/>
                             <button onClick={onDelete}>Delete</button>
                         </div>
                     </div>
