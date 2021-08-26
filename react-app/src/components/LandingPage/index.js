@@ -14,10 +14,6 @@ const LandingPage = () => {
         dispatch(getAll())
     },[dispatch])
 
-    useEffect(() => {
-        dispatch(getAll())
-    },[dispatch])
-
 
     return (
         <div>

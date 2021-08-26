@@ -21,9 +21,7 @@ const RestaurantPage = () => {
 
     const onDelete = async () => {
         await dispatch(deleteRestaurant(id))
-
         history.push('/')
-
     }
 
     return (

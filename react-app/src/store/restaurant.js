@@ -23,9 +23,9 @@ const edit = (id) => ({
     id
 })
 
-const remove = (form) => ({
+const remove = (id) => ({
     type: REMOVE,
-    form
+    id
 })
 
 
