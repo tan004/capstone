@@ -12,7 +12,7 @@ const EditRestaurantModal = ({restaurant}) => {
             <button onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditRestaurantForm restaurant={restaurant}/>
+                    <EditRestaurantForm onClose={() => setShowModal(false)} restaurant={restaurant}/>
                 </Modal>
             )}
 

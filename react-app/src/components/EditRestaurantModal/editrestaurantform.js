@@ -6,7 +6,7 @@ import { Redirect ,useHistory } from "react-router-dom";
 import { editRestaurant } from "../../store/restaurant";
 
 
-const EditRestaurantForm = ({ restaurant }) => {
+const EditRestaurantForm = ({ onClose, restaurant }) => {
     const user = useSelector(state => state.session.user)
     const [title, setTitle] = useState(restaurant.title)
     const [phone, setPhone] = useState(restaurant.phone)
@@ -45,7 +45,7 @@ const EditRestaurantForm = ({ restaurant }) => {
             profile_pic
         }
         await dispatch(editRestaurant(form))
-        window.location.reload()
+        onClose()
     }
 
 
