@@ -1,6 +1,6 @@
-# Flask React Project
+# OpenBelly
 
-This is the starter for the Flask React project.
+This is a flask-react project clone of OpenTable. 
 
 ## Getting started
 
