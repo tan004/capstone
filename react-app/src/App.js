@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
 import RestaurantForm from './components/RestaurantForm';
+import RestaurantPage from './components/RestaurantPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route path='/signup' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/restaurants/:id' exact={true}>
+          <RestaurantPage />
         </Route>
         <ProtectedRoute path='/restaurants/new' exact={true}>
           <RestaurantForm />
