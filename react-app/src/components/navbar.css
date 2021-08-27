@@ -114,3 +114,8 @@
     color:white;
     border: 1px solid #247F9E;
 }
+
+.applogo__container{
+    box-sizing: border-box;
+    width: 250px;
+}

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropdown';
 import './navbar.css'
+import applogo from '../images/logo2.png'
 
 
 const NavBar = () => {
@@ -24,9 +25,9 @@ const NavBar = () => {
 
   return (
       <div className='navbar__container'>
-        <div>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            openBelly
+        <div className='applogo__container'>
+          <NavLink className='applogo-link' to='/' exact={true} activeClassName='active'>
+            <img  className='applogo-img' src={applogo} alt='applogo'/ >
           </NavLink>
         </div>
 
