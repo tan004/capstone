@@ -1,4 +1,4 @@
-#modal-content{
+.edit-modal{
     overflow-y: scroll;
     height: 600px;
 }

@@ -1,5 +1,5 @@
 import './landingpage.css'
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAll } from '../../store/restaurant'
 import { NavLink } from 'react-router-dom';
@@ -40,8 +40,8 @@ const LandingPage = () => {
             <h2 className='sorting-title'>newest</h2>
             <div className='all-business'>
                 {restaurants.map(restaurant =>
-                    <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business'>
-                        <img className='card-img' src={restaurant?.profile_pic}/>
+                    <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business' key={restaurant.id}>
+                        <img className='card-img' src={restaurant?.profile_pic} alt={`card-${restaurant?.id}`}/>
 
                         <div className='simple-info card-title'>{restaurant?.title}</div>
 

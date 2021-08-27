@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './editrestaurantform.css'
 
-import { Redirect ,useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { editRestaurant } from "../../store/restaurant";
 
 
@@ -22,7 +22,7 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch()
-    const history = useHistory()
+
 
     if (!user) {
         return <Redirect to="/login" />;
@@ -44,8 +44,12 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
             lng,
             profile_pic
         }
-        await dispatch(editRestaurant(form))
-        onClose()
+        const data = await dispatch(editRestaurant(form))
+        if(data){
+            setErrors(data)
+        }else{
+            onClose()
+        }
     }
 
 
