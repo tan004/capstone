@@ -4,6 +4,8 @@ from flask_login import login_required, current_user
 from ..forms.restaurant_form import RestaurantForm
 from ..models.restaurant import Restaurant
 from ..models.db import db
+from ..models.cuisine import Cuisine
+from ..forms.cuisine_form import CuisineForm
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
@@ -39,7 +41,7 @@ def create_restaurant():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print(form.data)
+        # print(form.data)
         data = Restaurant(
             owner_id=user.id,
             title=form.data['title'],
@@ -62,7 +64,7 @@ def create_restaurant():
 
         db.session.add(data)
         db.session.commit()
-        print(data)
+        # print(data)
         return data.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -93,9 +95,9 @@ def edit_restaurant(id):
         restaurant.lng = data['lng']
 
         db.session.commit()
-        print(restaurant.to_dict())
+        # print(restaurant.to_dict())
         return restaurant.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @restaurant_routes.route('/<int:id>', methods=['DELETE'])
@@ -104,10 +106,37 @@ def delete_restaurant(id):
     user = current_user
     restaurant = Restaurant.query.get(id)
 
-    # if user.id != restaurant.owner_id:
-    #     return {'errors': ['Unauthorized']}, 401
+    if user.id != restaurant.owner_id:
+        return {'errors': ['Unauthorized']}, 401
 
     db.session.delete(restaurant)
     db.session.commit()
 
     return jsonify('Completed')
+
+
+@restaurant_routes.route('/<int:id>/addcuisine', methods=['POST'])
+@login_required
+def add_cuisine(id):
+
+    form = CuisineForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+
+        new_type = Cuisine(
+            restaurant_id=id,
+            type=data['type']
+        )
+        db.session.add(new_type)
+        db.session.commit()
+        return new_type.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@restaurant_routes.route('/<int:id>/one')
+def get_cuisine_for_one(id):
+    cuisines = Cuisine.query.filter(Cuisine.restaurant_id == id).all()
+    return {cuisine.id: cuisine.to_dict() for cuisine in cuisines}

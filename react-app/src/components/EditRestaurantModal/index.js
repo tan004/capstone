@@ -9,7 +9,7 @@ const EditRestaurantModal = ({restaurant}) => {
 
     return (
         <>
-            <i onClick={() => setShowModal(true)} className="fas fa-pencil-alt"></i>
+            <i onClick={() => setShowModal(true)} className="far fa-edit"></i>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditRestaurantForm onClose={() => setShowModal(false)} restaurant={restaurant}/>
