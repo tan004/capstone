@@ -4,9 +4,9 @@ h1,h2,p,h3{
 .detail-page__container{
     display: flex;
     flex-direction: column;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: #F1F2F4;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    /* background-color: #F1F2F4; */
     height: 100%;
 }
 
