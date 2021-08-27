@@ -64,11 +64,12 @@ export const newRestaurant = (form) => async (dispatch) => {
         }),
     })
 
+    console.log(response)
 
     if (response.ok) {
         const data = await response.json()
         dispatch(add(data))
-
+        return null
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -101,6 +102,7 @@ export const editRestaurant = (form) => async dispatch => {
     if (response.ok) {
         const data = await response.json()
         dispatch(edit(data))
+        return null
 
     } else if (response.status < 500) {
         const data = await response.json();
