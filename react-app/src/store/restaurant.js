@@ -128,6 +128,8 @@ export const deleteRestaurant = (id) => async dispatch => {
 const initialState = {}
 
 
+
+
 export default function restaurants(state = initialState, action) {
     switch (action.type) {
         case GET_ALL:

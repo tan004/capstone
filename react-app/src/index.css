@@ -2,3 +2,31 @@
 a {
     text-decoration: none;
 }
+html{
+  padding: 0 10%;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-top: 1px solid #d8d9db;
+    padding: 10px;
+
+  }
+
+.fa-linkedin{
+  color: #0077B7;
+  font-size: 32px;
+  margin-left: 20px;
+}

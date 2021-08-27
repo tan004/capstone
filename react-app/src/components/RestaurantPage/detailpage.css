@@ -4,10 +4,10 @@ h1,h2,p,h3{
 .detail-page__container{
     display: flex;
     flex-direction: column;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: #F1F2F4;
-    height: 100%;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    /* background-color: #F1F2F4; */
+    /* height: 100%; */
 }
 
 .profile-pic__container{
@@ -25,16 +25,18 @@ h1,h2,p,h3{
 .information__container{
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 360px;
+    position: relative;
+    bottom: 38px;
     background-color: white;
     left: 10%;
     /* right: 60%; */
-    min-width: 300px;
+    min-width: 350px;
     box-sizing: border-box;
     padding: 10px;
     width: 45%;
+    max-width: 660px;
     box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.5);
+    /* height: 100%; */
 }
 
 .booking__container{
@@ -74,4 +76,87 @@ h1,h2,p,h3{
     display: flex;
     flex-direction: row;
     align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.507);
+    padding-bottom: 5px ;
+    padding-left: 10px;
+}
+
+
+.detail-title{
+    font-size: 48px;
+    padding: 10px 0px;
+    padding-left: 10px;
+}
+
+.detail-description{
+    box-sizing: border-box;
+    padding: 10px;
+    line-height: 24px;
+    color: #2d333f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 100px;
+    max-width: 500px;
+}
+
+.more{
+    max-height: 100%;
+    /* font-size: 12px; */
+}
+
+.showmore-span{
+    padding: 10px;
+    color: rgba(255, 0, 0, 0.664);
+}
+.showmore-span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.detail-description__container{
+    margin: 0px 0px 30px;
+}
+
+.fa-trash-alt{
+    font-size: 20px;
+    margin: 0 10px ;
+    color: red;
+}
+
+.fa-trash-alt:hover{
+    color: rgba(255, 0, 0, 0.74);
+    cursor: pointer;
+}
+
+.fa-edit{
+    font-size: 20px;
+    color: rgb(0, 140, 255)
+}
+
+.fa-edit:hover{
+    color: rgba(0, 140, 255, 0.795);
+    cursor: pointer;
+}
+
+.detail-h3{
+    padding: 10px 0px;
+    border-bottom: .0625rem solid #d8d9db;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.detail-component__container{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0px 5px;
+}
+
+.detail-location{
+    padding: 0px 10px #d8d9db;
 }

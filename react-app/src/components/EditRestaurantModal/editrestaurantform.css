@@ -1,0 +1,69 @@
+.edit-modal{
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.editform__container{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.editform-input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+    background-color: #fafafa;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    padding: 5px 10px;
+    color: #000;
+}
+
+.editform-textarea{
+    width: 350px;
+    background-color: #fafafa;
+    height: 120px;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    padding: 5px 10px;
+    color: #000;
+}
+
+
+.editform-button__container{
+    display: flex;
+    justify-content: center;
+}
+
+.editform-submit{
+    background-color: #BB232E;
+    border: 1px solid #BB232E;
+    margin-top: 5px;
+    width: 120px;
+    height: 40px;
+    border-radius: 50px;
+    color: white;
+}
+
+.editform-submit:hover{
+    background-color: #bb232dc7;
+    cursor: pointer;
+}
+
+.editform-div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.editform-header{
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
