@@ -81,6 +81,8 @@ const RestaurantPage = () => {
                         <h2>Make a reservation</h2>
                         <div>party size</div>
                     </div>
+
+
                     <div className='detail-description__container'>
                         <div id='more' className='detail-description'>
                             {restaurant?.description}

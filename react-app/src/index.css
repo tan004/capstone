@@ -30,3 +30,12 @@ html, body {
   font-size: 32px;
   margin-left: 20px;
 }
+.fa-linkedin:hover{
+  position: relative;
+  bottom: 3px;
+}
+
+.githublogo:hover{
+  position: relative;
+  bottom: 3px;
+}
