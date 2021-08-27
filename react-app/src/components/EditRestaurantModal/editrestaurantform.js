@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import './restaurantform.css'
+import './editrestaurantform.css'
 
 import { Redirect ,useHistory } from "react-router-dom";
 import { editRestaurant } from "../../store/restaurant";
@@ -50,15 +50,19 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
 
 
     return (
-        <div>
+        <div className='editform__container'>
+            <h2 className='editform-header'>Update business information</h2>
             <form onSubmit={handleSubmit}>
                 <div className='errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
-                <div>
+
+                <div className='editform-div'>
+                    <label>Name</label>
                     <input
+                    className='editform-input'
                         type='text'
                         name='title'
                         required
@@ -67,9 +71,12 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                <label>Phone number</label>
                     <input
+
                         type='text'
+                        className='editform-input'
                         name='phone'
                         required
                         placeholder='Restaurant phone number*'
@@ -77,8 +84,11 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setPhone(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                <label>Profile picture URL</label>
                     <input
+                    className='editform-input'
+
                         type='text'
                         name='profile_pic'
                         required
@@ -87,9 +97,11 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setProfile_pic(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                <label>Address</label>
                     <input
                         type='text'
+                        className='editform-input'
                         name='address'
                         required
                         placeholder='Restaurant address*'
@@ -97,9 +109,11 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                <label>City</label>
                     <input
                         type='text'
+                        className='editform-input'
                         name='city'
                         required
                         placeholder='Restaurant city*'
@@ -107,9 +121,11 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setCity(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                <label>State</label>
                     <input
                         type='text'
+                        className='editform-input'
                         name='state'
                         required
                         placeholder='Restaurant state*'
@@ -117,9 +133,11 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setState(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                <label>Postal code</label>
                     <input
                         type='text'
+                        className='editform-input'
                         name='zip_code'
                         required
                         placeholder='Restaurant Zip/Postal code*'
@@ -128,18 +146,22 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                     />
                 </div>
 
-                <div>
+                <div className='editform-div'>
+                <label>Optional: latitude</label>
                     <input
                         type='text'
+                        className='editform-input'
                         name='lat'
                         placeholder='Optional: latitude'
                         value={lat}
                         onChange={(e) => setLat(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className='editform-div'>
+                        <label>Optional: longitude</label>
                     <input
                         type='text'
+                        className='editform-input'
                         name='lng'
                         placeholder='Optional: longitude'
                         value={lng}
@@ -147,9 +169,11 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                     />
                 </div>
 
-                <div>
+                <div className='editform-div'>
+                    <label>Description</label>
                     <textarea
                         type='text'
+                        className='editform-textarea'
                         name='description'
                         required
                         placeholder='Restaurant Description*'
@@ -157,7 +181,7 @@ const EditRestaurantForm = ({ onClose, restaurant }) => {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
-                <div><button type='submit'>Submit</button></div>
+                <div className='editform-button__container'><button className='editform-submit' type='submit'>Submit</button></div>
             </form>
         </div>
     )
