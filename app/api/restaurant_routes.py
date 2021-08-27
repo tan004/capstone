@@ -64,7 +64,7 @@ def create_restaurant():
         db.session.commit()
         print(data)
         return data.to_dict()
-    return jsonify(form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @restaurant_routes.route('/<int:id>', methods=['PUT'])
@@ -95,7 +95,7 @@ def edit_restaurant(id):
         db.session.commit()
         print(restaurant.to_dict())
         return restaurant.to_dict()
-    return {'errors': [error for error in form.errors]}
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 @restaurant_routes.route('/<int:id>', methods=['DELETE'])
