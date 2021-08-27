@@ -54,8 +54,7 @@ const RestaurantForm = () => {
     return (
     <div className='restaurant-form__container'>
         <div className='rest-left__container'>
-            <h2>Join the partner you need to get back in action and reconnect with guests</h2>
-
+            {/* <h2>Join the partner you need to get back in action and reconnect with guests</h2> */}
 
             <div className='rest-right__container'>
             <h3>Connect with us today</h3>

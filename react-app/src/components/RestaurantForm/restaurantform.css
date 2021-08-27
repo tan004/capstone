@@ -1,7 +1,10 @@
 .restaurant-form__container{
     display: flex;
     flex-direction: column;
-    background-color: #FFF8ED;
+    background-image: url('https://images.food52.com/7RXXQznzNt6wpB6IUgi3iLyFHKM=/1348x898/filters:format(webp)/6862b724-9f81-4e23-872e-e9b581fbf261--2019-0618_blue-cheese-burger-for-one_3x2_bobbi-lin_4166.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .rest-left__container{
@@ -9,8 +12,8 @@
     box-sizing: border-box;
     padding: 20px;
     width: 50%;
-    height: 780px;
-
+    height: 900px;
+    /* background-color: #FFF8ED; */
 }
 
 
@@ -24,6 +27,7 @@
    left: 55%;
    background-color: white;
    top: 80px;
+   border-radius: 10px;
 }
 
 @media screen and (max-width: 800px ) {
