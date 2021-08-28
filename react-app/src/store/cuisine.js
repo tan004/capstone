@@ -1,6 +1,6 @@
 const CREATE = 'cuisines/CREATE'
 const GET_ALL = 'cuisines/GET_ALL'
-const GET_ONE = 'cuisines/GET_ONE'
+// const GET_ONE = 'cuisines/GET_ONE'
 const EDIT = 'cuisines/EDIT'
 const REMOVE = 'cuisines/REMOVE'
 
@@ -9,24 +9,24 @@ const all = (data) => ({
     data
 })
 
-const one = (form) => ({
-    type: GET_ONE,
-    form
-})
+// const one = (form) => ({
+//     type: GET_ONE,
+//     form
+// })
 
 const add = (form) => ({
     type: CREATE,
     form
 })
-const edit = (form) => ({
-    type: EDIT,
-    form
-})
+// const edit = (form) => ({
+//     type: EDIT,
+//     form
+// })
 
-const remove = (id) => ({
-    type: REMOVE,
-    id
-})
+// const remove = (id) => ({
+//     type: REMOVE,
+//     id
+// })
 
 export const cuisineForOne = (id) => async(dispatch)=>{
 

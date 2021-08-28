@@ -160,3 +160,18 @@ h1,h2,p,h3{
 .detail-location{
     padding: 0px 10px #d8d9db;
 }
+
+
+.all-cuisines{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+
+}
+
+.single-cuisine{
+    /* padding: 0px 5px; */
+    margin: 0px 5px;
+    /* text-transform: lowercase; */
+    text-transform: capitalize;
+}

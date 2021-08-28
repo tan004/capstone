@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
 import { deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
@@ -27,6 +28,7 @@ const RestaurantPage = () => {
 
     useEffect(() => {
         dispatch(cuisineForOne(id))
+        dispatch(getRestaurantBookings(id))
     },[dispatch, id])
 
 
@@ -97,7 +99,7 @@ const RestaurantPage = () => {
                         </div>
                         <div className='all-cuisines'>
                         {cuisinesArr && cuisinesArr.map(cuisine =>
-                            <div key={`cuisine-${cuisine.id}`}>
+                            <div className='single-cuisine' key={`cuisine-${cuisine.id}`}>
                                 {cuisine.type}
                             </div>
                         )}
