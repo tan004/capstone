@@ -74,7 +74,7 @@ const BookingForm = () => {
             </div>
 
             <div>
-                <lable>Time</lable>
+                <label>Time</label>
                 <input
                     type='time'
                     min='11:00'
