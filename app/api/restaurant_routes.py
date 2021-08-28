@@ -153,7 +153,7 @@ def add_booking(id):
     form = BookingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print('XXXXXXXXXXXXX', form.data['startTime'])
+    # print('XXXXXXXXXXXXX', form.data['startTime'])
     allbookings = Booking.query.filter(
         Booking.restaurant_id == id).filter(
             Booking.startDate == form.data['startDate']).all()
@@ -162,9 +162,9 @@ def add_booking(id):
 
 
     times = [booking.startTime.hour == form.data['startTime'].hour  for booking in allbookings]
-    print('SSSSSSSSS', len(times), times, all(times))
+    # print('SSSSSSSSS', len(times), times, all(times))
 
-    print('BOOKINGS-', allbookings)
+    # print('BOOKINGS-', allbookings)
 
     if len(times) >= 5 and all(times) is True:
         return {'error': 'sorry, no more spots for the selected hour'}, 401
