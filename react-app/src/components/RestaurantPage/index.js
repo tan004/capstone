@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { cuisineForOne } from "../../store/cuisine";
 import { deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
+import BookingForm from "../BookingForm";
 
 import EditRestaurantModal from "../EditRestaurantModal";
 import './detailpage.css'
@@ -78,8 +79,7 @@ const RestaurantPage = () => {
                     </div>
 
                     <div className='booking__container'>
-                        <h2>Make a reservation</h2>
-                        <div>party size</div>
+                        <BookingForm />
                     </div>
 
 

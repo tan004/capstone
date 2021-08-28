@@ -24,4 +24,5 @@ def user(id):
 @login_required
 def user_bookings(id):
     bookings = Booking.query.filter(Booking.user_id == id).all()
+
     return {booking.id: booking.to_dict() for booking in bookings}
