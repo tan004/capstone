@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './restaurantform.css'
 import { newRestaurant } from "../../store/restaurant";
-import { Redirect ,useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const RestaurantForm = () => {
     const user = useSelector(state => state.session.user)

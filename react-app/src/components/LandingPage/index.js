@@ -13,45 +13,44 @@ const LandingPage = () => {
 
     const [imageNum, setImageNum] = useState('https://cdn.pixabay.com/photo/2012/12/19/18/13/architecture-70920_960_720.jpg')
 
+    useEffect(() => {
+        dispatch(getAll())
+    }, [dispatch])
 
+    useEffect(() => {
+        if (user) {
+            dispatch(getUserBookings(user.id))
+        }
+    }, [user, dispatch])
 
-useEffect(() => {
-    dispatch(getAll())
-}, [dispatch])
+    useEffect(() => {
+        const interval = setInterval(() => {
 
-useEffect(() => {
-    if(user){
-        dispatch(getUserBookings(user.id))
-    }
-},[user, dispatch])
+            let allImages = ['https://cdn.pixabay.com/photo/2012/12/19/18/13/architecture-70920_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2016/02/16/22/18/wines-1204167__340.jpg',
+                'https://cdn.pixabay.com/photo/2018/04/18/17/22/dessert-3331009__340.jpg',
+                'https://cdn.pixabay.com/photo/2016/09/02/10/43/table-1638826__340.jpg',
+                'https://cdn.pixabay.com/photo/2018/01/22/08/54/dining-room-3098474__340.jpg'
+            ]
 
-useEffect(() => {
-    const interval = setInterval(()=> {
+            function getRandomInt(max) {
+                let randomNum = Math.floor(Math.random() * max);
+                return allImages[randomNum]
+            }
 
-        let allImages = ['https://cdn.pixabay.com/photo/2012/12/19/18/13/architecture-70920_960_720.jpg',
-        'https://cdn.pixabay.com/photo/2016/02/16/22/18/wines-1204167__340.jpg',
-        'https://cdn.pixabay.com/photo/2018/04/18/17/22/dessert-3331009__340.jpg',
-        'https://cdn.pixabay.com/photo/2016/09/02/10/43/table-1638826__340.jpg',
-        'https://cdn.pixabay.com/photo/2018/01/22/08/54/dining-room-3098474__340.jpg'
-        ]
+            setImageNum(getRandomInt(5))
 
-        function getRandomInt(max) {
-            let randomNum =  Math.floor(Math.random() * max);
-            return allImages[randomNum]
-          }
-
-        setImageNum(getRandomInt(5))
-
-    },10000);
-    return () => clearInterval(interval)
-},[])
+        }, 10000);
+        return () => clearInterval(interval)
+    }, [])
 
 
     return (
         <div>
             <div className='header-image__container'>
                 <div className='homeImage' style={{
-                backgroundImage: `url(${imageNum})`}}></div>
+                    backgroundImage: `url(${imageNum})`
+                }}></div>
 
                 <div className='header__container'>
 

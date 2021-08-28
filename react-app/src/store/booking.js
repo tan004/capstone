@@ -1,6 +1,6 @@
 const CREATE = 'bookings/CREATE'
 const GET_ALL = 'bookings/GET_ALL'
-const GET_ONE = 'bookings/GET_ONE'
+// const GET_ONE = 'bookings/GET_ONE'
 const EDIT = 'bookings/EDIT'
 const REMOVE = 'bookings/REMOVE'
 const GET_ALL_R_B = 'bookings/GET_ALL_R_B'
@@ -10,24 +10,24 @@ const all = (data) => ({
     data
 })
 
-const one = (form) => ({
-    type: GET_ONE,
-    form
-})
+// const one = (form) => ({
+//     type: GET_ONE,
+//     form
+// })
 
 const add = (form) => ({
     type: CREATE,
     form
 })
-const edit = (form) => ({
-    type: EDIT,
-    form
-})
+// const edit = (form) => ({
+//     type: EDIT,
+//     form
+// })
 
-const remove = (id) => ({
-    type: REMOVE,
-    id
-})
+// const remove = (id) => ({
+//     type: REMOVE,
+//     id
+// })
 
 const allRestaurantBooking = (data) => ({
     type: GET_ALL_R_B,

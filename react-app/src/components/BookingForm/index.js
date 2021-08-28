@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { makeBooking } from "../../store/booking";
 import './bookingform.css'
 
@@ -32,7 +32,7 @@ const BookingForm = () => {
 
         const data = await dispatch(makeBooking(form));
         if (data) {
-           alert(data)
+           setErrors(data)
         } else {
             alert('Booking successful')
             history.push(`/users/${user.id}`)

@@ -19,11 +19,11 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId]);
+  }, [dispatch, userId]);
 
   useEffect(() => {
     dispatch(getUserBookings(userId))
-  },[])
+  },[dispatch,userId])
 
 
   if (!user) {
