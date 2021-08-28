@@ -24,5 +24,5 @@ class Booking(db.Model):
             'size': self.size,
             'restaurant_id': self.restaurant_id,
             'startDate': self.startDate,
-            'startTime': self.startTime,
+            'startTime': self.startTime.isoformat(),
         }

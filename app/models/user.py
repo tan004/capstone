@@ -38,5 +38,10 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'icon': self.icon,
             "bookmarked": [r.id for r in self.bookmarked],
-            "bookings": self.bookings
+            "bookings": [
+                {"id": booking.id,
+                #  "date": booking.startDate,
+                #  "time": booking.startTime,
+                 "restauran_id": booking.restaurant_id
+                 }for booking in self.bookings]
         }

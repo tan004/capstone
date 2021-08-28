@@ -1,3 +1,4 @@
+from app.models.booking import Booking
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User
@@ -17,3 +18,11 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>/one')
+@login_required
+def user_bookings(id):
+    bookings = Booking.query.filter(Booking.user_id == id).all()
+
+    return {booking.id: booking.to_dict() for booking in bookings}

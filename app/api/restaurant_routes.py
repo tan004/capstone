@@ -6,6 +6,8 @@ from ..models.restaurant import Restaurant
 from ..models.db import db
 from ..models.cuisine import Cuisine
 from ..forms.cuisine_form import CuisineForm
+from ..forms.booking_form import BookingForm
+from ..models.booking import Booking
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
@@ -140,3 +142,25 @@ def add_cuisine(id):
 def get_cuisine_for_one(id):
     cuisines = Cuisine.query.filter(Cuisine.restaurant_id == id).all()
     return {cuisine.id: cuisine.to_dict() for cuisine in cuisines}
+
+
+@restaurant_routes.route('/<int:id>/newbooking',methods=['POST'])
+@login_required
+def add_booking(id):
+    user = current_user
+    form = BookingForm()
+
+    if form.validate_on_submit():
+        data = form.data
+        new_booking = Booking(
+            user_id=user.id,
+            size=data['size'],
+            startDate=data['startDate'],
+            startTime=data['startTime'],
+            restaurant_id=id
+        )
+
+        db.session.add(new_booking)
+        db.session.commit()
+        return new_booking.to_dict
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

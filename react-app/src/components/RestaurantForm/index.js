@@ -6,6 +6,7 @@ import { Redirect ,useHistory } from "react-router-dom";
 
 const RestaurantForm = () => {
     const user = useSelector(state => state.session.user)
+
     const [title, setTitle] = useState('')
     const [phone, setPhone] = useState('')
     const [description, setDescription] = useState('')
@@ -23,7 +24,7 @@ const RestaurantForm = () => {
     const history = useHistory()
 
     if (!user) {
-        return <Redirect to="/login" />;
+        history.push('/')
       }
 
     const handleSubmit = async (e) => {

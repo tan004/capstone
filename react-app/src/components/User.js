@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { getUserBookings } from '../store/booking';
+
 
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     if (!userId) {
@@ -15,6 +20,11 @@ function User() {
       setUser(user);
     })();
   }, [userId]);
+
+  useEffect(() => {
+    dispatch(getUserBookings(userId))
+  },[])
+
 
   if (!user) {
     return null;
