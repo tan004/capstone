@@ -1,3 +1,4 @@
+import datetime
 from app.models.cuisine import Cuisine
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
@@ -8,6 +9,7 @@ from ..models.cuisine import Cuisine
 from ..forms.cuisine_form import CuisineForm
 from ..forms.booking_form import BookingForm
 from ..models.booking import Booking
+from datetime import time, datetime, date
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
@@ -144,13 +146,30 @@ def get_cuisine_for_one(id):
     return {cuisine.id: cuisine.to_dict() for cuisine in cuisines}
 
 
-@restaurant_routes.route('/<int:id>/newbooking',methods=['POST'])
+@restaurant_routes.route('/<int:id>/newbooking', methods=['POST'])
 @login_required
 def add_booking(id):
     user = current_user
     form = BookingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
+    print('XXXXXXXXXXXXX', form.data['startTime'])
+    allbookings = Booking.query.filter(
+        Booking.restaurant_id == id).filter(
+            Booking.startDate == form.data['startDate']).all()
+# .filter(time(Booking.startTime).hour - time(form.data['startTime']).hour
+# == 0).count()
+
+
+    times = [booking.startTime.hour == form.data['startTime'].hour  for booking in allbookings]
+    print('SSSSSSSSS', len(times), times, all(times))
+
+    print('BOOKINGS-', allbookings)
+
+    if len(times) >= 5 and all(times) is True:
+        return {'error': 'sorry, no more spots for the selected hour'}, 401
+
+    elif form.validate_on_submit():
         data = form.data
         new_booking = Booking(
             user_id=user.id,
@@ -162,5 +181,11 @@ def add_booking(id):
 
         db.session.add(new_booking)
         db.session.commit()
-        return new_booking.to_dict
+        return new_booking.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@restaurant_routes.route('/<int:id>/getbookings')
+def get_bookings(id):
+    bookings = Booking.query.filter(Booking.restaurant_id==id, Booking.startDate == date.today()).all()
+    return {booking.id: booking.to_dict() for booking in bookings}

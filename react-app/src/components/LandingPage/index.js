@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { getAll } from '../../store/restaurant'
 import { NavLink } from 'react-router-dom';
 import githublogo from '../../images/github32.png'
+import { getUserBookings } from '../../store/booking';
 
 const LandingPage = () => {
     const dispatch = useDispatch()
@@ -14,6 +15,11 @@ const LandingPage = () => {
         dispatch(getAll())
     }, [dispatch])
 
+    useEffect(() => {
+        if(user){
+            dispatch(getUserBookings(user.id))
+        }
+    },[user, dispatch])
 
 
     return (
