@@ -1,24 +1,41 @@
 import { useSelector } from "react-redux"
-import { NavLink,Link } from "react-router-dom";
+import { NavLink,Link, useParams } from "react-router-dom";
 import './userNavbar.css'
+import { useEffect, useState } from "react";
 
-const UserProfileNavBar = () => {
-    const user = useSelector(state => state.session.user)
+const UserProfileNavBar = ({userId}) => {
+    const loggedInuser = useSelector(state => state.session.user)
 
+    const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+
+
+    const user = users.find(user => user.id === +userId)
 
     return (
         <div className='user-navbar__container'>
-            <div><img src={user.icon}/></div>
+            <div><img src={user?.icon}/></div>
 
             <div>
-                <strong>Username</strong> {user.username}
+                <strong>Username</strong> {user?.username}
             </div>
 
-            <Link to={`/users/${user.id}`} >Reservation</Link>
+            {user?.id === loggedInuser?.id ?
+            <>
+            <Link to={`/users/${user?.id}`} >Reservation</Link>
+             <Link to={`/users/${user?.id}/favorite`}>Saved Restaurant</Link>
+            </>: null
+            }
 
-            <Link to={`/users/${user.id}/favorite`}>Saved Restaurant</Link>
         </div>
-
     )
 }
 
