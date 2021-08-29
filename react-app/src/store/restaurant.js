@@ -64,7 +64,7 @@ export const newRestaurant = (form) => async (dispatch) => {
         }),
     })
 
-    console.log(response)
+    // console.log(response)
 
     if (response.ok) {
         const data = await response.json()
@@ -118,17 +118,41 @@ export const deleteRestaurant = (id) => async dispatch => {
     const response = await fetch(`/api/restaurants/${+id}`,{
         method: 'DELETE',
     })
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         dispatch(remove(id))
     }
     return response.json()
 }
 
+export const addBookmark = (id) => async dispatch => {
+
+    const response = await fetch(`/api/restaurants/${id}/bookmark`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id
+        })
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(edit(data))
+        return null
+    }else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+
 const initialState = {}
-
-
-
 
 export default function restaurants(state = initialState, action) {
     switch (action.type) {

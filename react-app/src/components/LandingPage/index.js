@@ -77,7 +77,7 @@ const LandingPage = () => {
 
                         <div className='simple-info card-title'>{restaurant?.title}</div>
 
-                        <div className='simple-info'>{user?.bookmarked?.includes(restaurant.id) ?
+                        <div className='simple-info'>{restaurant?.bookmark_users?.includes(user.id) ?
                             <i className="fas red-mark fa-bookmark"></i> : <i className="far fa-bookmark"></i>} {restaurant?.bookmark_users} bookmarked
                         </div>
                         <div className='simple-info card-address'><i className="fas fa-map-marker-alt"></i> {restaurant?.city}, {restaurant.state}</div>

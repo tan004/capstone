@@ -146,6 +146,23 @@ def get_cuisine_for_one(id):
     return {cuisine.id: cuisine.to_dict() for cuisine in cuisines}
 
 
+@restaurant_routes.route('/<int:id>/bookmark', methods=['PUT'])
+@login_required
+def bookmark(id):
+    user = current_user
+    restaurant = Restaurant.query.get(id)
+
+    all_user_ids = [user.id for user in restaurant.bookmark_users]
+
+    if user.id in all_user_ids:
+        restaurant.bookmark_users.remove(user)
+    else:
+        restaurant.bookmark_users.append(user)
+
+    db.session.commit()
+    return restaurant.to_dict()
+
+
 @restaurant_routes.route('/<int:id>/newbooking', methods=['POST'])
 @login_required
 def add_booking(id):

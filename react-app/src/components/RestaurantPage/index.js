@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
-import { deleteRestaurant, getOne } from "../../store/restaurant";
+import { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
 import BookingForm from "../BookingForm";
 
@@ -21,6 +21,7 @@ const RestaurantPage = () => {
     const history = useHistory()
     const [showmore, setShowmore] = useState(false)
 
+    const [getMark, setMark] = useState(false)
 
     useEffect(() => {
         dispatch(getOne(id))
@@ -31,6 +32,12 @@ const RestaurantPage = () => {
         dispatch(getRestaurantBookings(id))
     },[dispatch, id])
 
+    useEffect(() => {
+        if(getMark){
+            dispatch(addBookmark(id))
+            setMark(false)
+        }
+    },[id,dispatch, getMark])
 
     const onDelete = async () => {
         await dispatch(deleteRestaurant(id))
@@ -54,6 +61,15 @@ const RestaurantPage = () => {
         }
     }
 
+    // const handleBookmark = async (e) => {
+    //     e.preventDefault()
+    //     const data = await dispatch(addBookmark(id))
+    //     if(data){
+    //         alert(data)
+    //     }else{
+    //         alert('Bookmark added')
+    //     }
+    // }
 
 
 
@@ -79,6 +95,8 @@ const RestaurantPage = () => {
                         </div>
                             : null}
                     </div>
+
+                    <div><button onClick={() => setMark(true)}>Bookmark</button></div>
 
                     <div className='booking__container'>
                         <BookingForm />
