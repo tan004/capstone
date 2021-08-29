@@ -30,14 +30,16 @@ const RestaurantPage = () => {
     useEffect(() => {
         dispatch(cuisineForOne(id))
         dispatch(getRestaurantBookings(id))
-    },[dispatch, id])
+    }, [dispatch, id])
 
+    //only dispatching the action to update the restaurant status,
+    //TODO: user's status is not updated at the same time
     useEffect(() => {
-        if(getMark){
+        if (getMark) {
             dispatch(addBookmark(id))
             setMark(false)
         }
-    },[id,dispatch, getMark])
+    }, [id, dispatch, getMark])
 
     const onDelete = async () => {
         await dispatch(deleteRestaurant(id))
@@ -70,11 +72,28 @@ const RestaurantPage = () => {
     //         alert('Bookmark added')
     //     }
     // }
-
+    let bookmarkDiv;
+    if(restaurant?.bookmark_users?.includes(user.id)){
+        bookmarkDiv = (
+            <div className='bookmark-div' onClick={()=> setMark(true)}>
+                <i  className="fas red-mark fa-bookmark"></i>
+                <span className='bookmark-span'>Restaurant Saved!</span>
+            </div>
+        )
+    }else{
+        bookmarkDiv = (
+            <div className='bookmark-div' onClick={()=> setMark(true)}>
+                <i className="far fa-bookmark"></i>
+                <span className='bookmark-span'>Save this restaurant</span>
+            </div>
+        )
+    }
 
 
     return (
         <div className='detail-page__container'>
+
+            {bookmarkDiv}
 
             <div className='profile-pic__container' style={{
                 backgroundImage: `url(${restaurant?.profile_pic})`,
@@ -85,63 +104,63 @@ const RestaurantPage = () => {
             </div>
 
             <div className='information__container'>
-                    <div className='detail-nav'>Navbar for Overview | Photos | Reviews</div>
+                <div className='detail-nav'>Navbar for Overview | Photos | Reviews</div>
 
-                    <div className='title-admin__container'>
-                        <h1 className='detail-title'>{restaurant?.title}</h1>
-                        {admin ? <div className='admin__container'>
-                            <EditRestaurantModal restaurant={restaurant} />
-                            <i  onClick={onDelete} className="far fa-trash-alt"></i>
-                        </div>
-                            : null}
+                <div className='title-admin__container'>
+                    <h1 className='detail-title'>{restaurant?.title}</h1>
+                    {admin ? <div className='admin__container'>
+                        <EditRestaurantModal restaurant={restaurant} />
+                        <i onClick={onDelete} className="far fa-trash-alt"></i>
                     </div>
+                        : null}
+                </div>
 
-                    <div><button onClick={() => setMark(true)}>Bookmark</button></div>
 
-                    <div className='booking__container'>
-                        <BookingForm />
+
+                <div className='booking__container'>
+                    <BookingForm />
+                </div>
+
+
+                <div className='detail-description__container'>
+                    <div id='more' className='detail-description'>
+                        {restaurant?.description}
                     </div>
+                    <span id='showmore-span' className='showmore-span' onClick={toggle}>...more</span>
+                </div>
 
-
-                    <div className='detail-description__container'>
-                        <div id='more' className='detail-description'>
-                            {restaurant?.description}
-                        </div>
-                        <span id='showmore-span' className='showmore-span' onClick={toggle}>...more</span>
+                <div className='detail-component__container'>
+                    <div className='detail-h3'>
+                        <h3 >Cuisine</h3>
+                        {admin ? <AddCuisineModal restaurant={restaurant} /> : null}
                     </div>
-
-                    <div className='detail-component__container'>
-                        <div className='detail-h3'>
-                            <h3 >Cuisine</h3>
-                            {admin ? <AddCuisineModal restaurant={restaurant}/> : null}
-                        </div>
-                        <div className='all-cuisines'>
+                    <div className='all-cuisines'>
                         {cuisinesArr && cuisinesArr.map(cuisine =>
                             <div className='single-cuisine' key={`cuisine-${cuisine.id}`}>
                                 {cuisine.type}
                             </div>
                         )}
-                        </div>
                     </div>
+                </div>
 
-                    <div className='detail-component__container'>
-                        <h3 className='detail-h3'>location</h3>
-                        <p className='detail-location'>{restaurant?.location}</p>
-                    </div>
+                <div className='detail-component__container'>
+                    <h3 className='detail-h3'>location</h3>
+                    <p className='detail-location'>{restaurant?.location}</p>
+                </div>
 
-                    <div className='detail-component__container'>
-                        <h3 className='detail-h3'>Menu</h3>
-                        <p> put link to view the menu</p>
-                    </div>
-                    <div className='detail-component__container'>
-                        <h3 className='detail-h3'>Photo Feed</h3>
-
-                    </div>
-                    <div className='detail-component__container'>
-                        <h3 className='detail-h3'> Reviews</h3>
-                    </div>
+                <div className='detail-component__container'>
+                    <h3 className='detail-h3'>Menu</h3>
+                    <p> put link to view the menu</p>
+                </div>
+                <div className='detail-component__container'>
+                    <h3 className='detail-h3'>Photo Feed</h3>
 
                 </div>
+                <div className='detail-component__container'>
+                    <h3 className='detail-h3'> Reviews</h3>
+                </div>
+
+            </div>
 
         </div>
     )

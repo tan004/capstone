@@ -175,3 +175,28 @@ h1,h2,p,h3{
     /* text-transform: lowercase; */
     text-transform: capitalize;
 }
+
+.bookmark-div{
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #d8d9db;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    top: 100px;
+    right:15%;
+    box-sizing: border-box;
+}
+
+.bookmark-div:hover{
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.bookmark-span{
+    margin-left: 8px;
+    font-weight: bold;
+}
