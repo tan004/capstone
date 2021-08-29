@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropdown';
 import './navbar.css'
-import applogo from '../images/logo2.png'
+import applogo from '../images/logo3.png'
 
 
 const NavBar = () => {
