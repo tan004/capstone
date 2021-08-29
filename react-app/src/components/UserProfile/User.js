@@ -6,6 +6,7 @@ import UserBookingPage from './UserBookingPage';
 import UserBookmarkPage from './UserBookmarkPage';
 import UserProfileNavBar from './UserProfileNavBar';
 import ProtectedRoute from '../auth/ProtectedRoute';
+import { getAll } from '../../store/restaurant';
 
 function User() {
   // const [user, setUser] = useState({});
@@ -26,6 +27,7 @@ function User() {
 
   useEffect(() => {
     dispatch(getUserBookings(userId))
+    dispatch(getAll())
   }, [dispatch, userId])
 
 
@@ -34,18 +36,15 @@ function User() {
   }
 
 
-
-
-
   return (
     <div className='userprofile__container'>
       <BrowserRouter>
-        <UserProfileNavBar loggedInUser={loggedInUser} userId={userId} />
+        <UserProfileNavBar  userId={userId} />
 
       <Switch>
         <ProtectedRoute path='/users/:userId' exact={true} >
         {loggedInUser?.id === +userId ?
-          <UserBookingPage /> : <UserBookmarkPage />}
+          <UserBookingPage loggedInUser={loggedInUser}/> : <UserBookmarkPage />}
         </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId/favorite' exact={true}>

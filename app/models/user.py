@@ -40,8 +40,9 @@ class User(db.Model, UserMixin):
             "bookmarked": [r.id for r in self.bookmarked],
             "bookings": [
                 {"id": booking.id,
-                #  "date": booking.startDate,
-                #  "time": booking.startTime,
-                 "restauran_id": booking.restaurant_id
+                "size": booking.size,
+                 "date": booking.startDate,
+                 "time": booking.startTime.isoformat(),
+                 "restaurant_id": booking.restaurant_id,
                  }for booking in self.bookings]
         }

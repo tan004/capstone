@@ -22,7 +22,7 @@ const UserProfileNavBar = ({userId}) => {
 
     return (
         <div className='user-navbar__container'>
-            <div><img src={user?.icon}/></div>
+            <div><img width='50px' src={user?.icon}/></div>
 
             <div>
                 <strong>Username</strong> {user?.username}

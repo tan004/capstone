@@ -1,27 +1,39 @@
 import'./UserRightContainer.css'
 import { useState, useEffect } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserBookings } from '../../store/booking';
+import { getAll } from '../../store/restaurant';
 
 const UserBookingPage = ({loggedInUser}) => {
 
-    // const [users, setUsers] = useState([]);
+    const allRestaurants = useSelector(state => Object.values(state.restaurants))
+    const allbookings = useSelector(state => Object.values(state.bookings))
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getUserBookings(loggedInUser.id))
+        dispatch(getAll())
+      }, [dispatch])
 
+    const bookingArr = allbookings.filter(booking => booking.user_id === loggedInUser.id)
 
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       const response = await fetch('/api/users/');
-//       const responseData = await response.json();
-//       setUsers(responseData.users);
-//     }
-//     fetchData();
-//   }, []);
-
+    console.log(loggedInUser)
+    console.log(allRestaurants)
+    console.log(allbookings.filter(booking => booking.user_id === loggedInUser.id))
 
     return (
         <div className='user-right__container'>
             <div>
-                <h1> all reservation</h1>
+                <h1>all reservation</h1>
+                {bookingArr.length > 0 ? bookingArr.map(booking =>
+                    <div>
+                        <p>Reservation at</p>
+                        <div>{booking.restaurant.title}</div>
+                        <span>{booking.startTime.slice(0, 5)} {booking.startDate.slice(0,16)}</span>
+                        <div>{booking.restaurant.phone}</div>
+                        <div>{booking.restaurant.location}</div>
+
+                    </div>
+                    ): <div>You dont have any reservation</div> }
             </div>
         </div>
     )
