@@ -177,7 +177,7 @@ h1,h2,p,h3{
 }
 
 .bookmark-div{
-    z-index: 100;
+    z-index: 50;
     display: flex;
     flex-direction: row;
     position: absolute;
