@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch, useParams } from 'react-router-dom';
-import { getUserBookings } from '../../store/booking';
 import UserBookingPage from './UserBookingPage';
 import UserBookmarkPage from './UserBookmarkPage';
 import UserProfileNavBar from './UserProfileNavBar';
 import ProtectedRoute from '../auth/ProtectedRoute';
+import { getUserBookings } from '../../store/booking';
 import { getAll } from '../../store/restaurant';
 
 function User() {
@@ -25,10 +25,7 @@ function User() {
   //   })();
   // }, [dispatch, userId]);
 
-  useEffect(() => {
-    dispatch(getUserBookings(userId))
-    dispatch(getAll())
-  }, [dispatch, userId])
+
 
 
   if (!loggedInUser) {
