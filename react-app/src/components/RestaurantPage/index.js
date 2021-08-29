@@ -73,7 +73,7 @@ const RestaurantPage = () => {
     //     }
     // }
     let bookmarkDiv;
-    if(restaurant?.bookmark_users?.includes(user.id)){
+    if(restaurant?.bookmark_users?.includes(user?.id)){
         bookmarkDiv = (
             <div className='bookmark-div' onClick={()=> setMark(true)}>
                 <i  className="fas red-mark fa-bookmark"></i>

@@ -27,7 +27,7 @@ const NavBar = () => {
       <div className='navbar__container'>
         <div className='applogo__container'>
           <NavLink className='applogo-link' to='/' exact={true} activeClassName='active'>
-            <img  className='applogo-img' src={applogo} alt='applogo'/ >
+            <img  className='applogo-img' src={applogo} alt='applogo'/>
           </NavLink>
         </div>
 
