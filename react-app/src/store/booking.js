@@ -24,10 +24,10 @@ const add = (form) => ({
 //     form
 // })
 
-// const remove = (id) => ({
-//     type: REMOVE,
-//     id
-// })
+const remove = (data) => ({
+    type: REMOVE,
+    data
+})
 
 const allRestaurantBooking = (data) => ({
     type: GET_ALL_R_B,
@@ -89,6 +89,21 @@ export const makeBooking = (form) => async (dispatch) => {
 }
 
 
+export const removeBooking = (id, user_id) => async dispatch => {
+    const response = await fetch(`/api/users/${user_id}/${id}/removebooking`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id, user_id})
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(remove(data))
+    }
+}
+
 
 const initialState = {};
 
@@ -104,7 +119,7 @@ export default function bookings(state = initialState, action) {
             return {...action.data}
         case REMOVE:
             const newState = { ...state }
-            delete newState[action.id]
+            delete newState[action.data.id]
             return newState;
         default:
             return state
