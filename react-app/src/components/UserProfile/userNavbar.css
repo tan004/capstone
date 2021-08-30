@@ -10,7 +10,7 @@
 .nav-link{
     padding: 10px 20px;
     font-weight: bold;
-    color: #333339;
+    color: #333339b0;
     outline: transparent solid 2px;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,8 +21,9 @@
 
 .nav-link:hover{
     color: rgba(255, 0, 0, 0.596);
-
 }
+
+
 .nav-user__container{
     display: flex;
     flex-direction: column;
@@ -37,6 +38,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    margin: 8px 0px;
 }
 
 .links__container{

@@ -32,7 +32,7 @@ const BookingForm = () => {
 
         const data = await dispatch(makeBooking(form));
         if (data) {
-           setErrors(data)
+            setErrors(data)
         } else {
             alert('Booking successful')
             history.push(`/users/${user.id}`)
@@ -41,20 +41,24 @@ const BookingForm = () => {
     }
 
 
-    return (<div>
-        <h2>Make a reservation</h2>
-        <form onSubmit={handleSubmit}>
-        <div className='errors'>
-                    {errors?.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))}
-                </div>
-            <div>
+    return (<div className='booking__container'>
+        <div className='bookingform-header'>
+            <p className='bookingform-p'>Make a reservation</p>
+            </div>
+        <form className='bookingform__container' onSubmit={handleSubmit}>
+            <div className='errors'>
+                {errors?.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                ))}
+            </div>
+
+            <div className='bookingform-size__container'>
                 <label>Party size</label>
                 <select
                     name='size'
                     className='size-dropdown'
                     onChange={e => setSize(e.target.value)}
+                    className='bookingform-size-select'
                 >
                     {sizeArr.map(size =>
                         <option value={size} key={size}>
@@ -63,29 +67,33 @@ const BookingForm = () => {
                 </select>
             </div>
 
-            <div>
-                <label>Date</label>
-                <input
-                    type='date'
-                    required
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                />
-            </div>
 
-            <div>
+            <div className='bookingform-datetime__container'>
+                <div className='form-datetime__container'>
+                    <label>Date</label>
+                    <input
+                        type='date'
+                        className='form-date-input'
+                        required
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                    />
+                </div>
+                <div className='form-datetime__container'>
                 <label>Time</label>
                 <input
                     type='time'
                     min='11:00'
                     max='22:00'
+                    className='form-time-input'
                     value={startTime}
                     onChange={(e) => setStartTime(e.target.value)}
                     required
                 />
+                </div>
             </div>
-            {!user && <span>Plase login first!</span>}
-            <div><button disabled={!user}>Find a table</button></div>
+            {!user && <span className='form-warning'>Plase login first!</span>}
+            <div className='bookingform-submit__container'><button className='bookingform-submit-button' disabled={!user}>Find a table</button></div>
         </form>
 
     </div >)

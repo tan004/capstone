@@ -1,0 +1,84 @@
+.bookingform-header{
+    border-bottom: .0625rem solid #d8d9db;
+    /* align-self: center; */
+    width: 100%;
+    /* padding-left: 20%; */
+    justify-content: center;
+    padding-bottom: 11px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.bookingform-p{
+    font-size: 20px;
+    font-weight: 700;
+  /* justify-self: center; */
+}
+
+
+.bookingform__container{
+    padding: 10px 5px;
+}
+
+
+.bookingform-datetime__container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.bookingform-size__container{
+    display: flex;
+    flex-direction: column;
+}
+
+.bookingform-size-select{
+    cursor: pointer;
+    font-family: inherit;
+    background-color: #fff;
+    font-size: .875rem;
+    display: block;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border-bottom: 1px solid #d8d9db;
+}
+
+.form-datetime__container{
+    padding: 8px 0px;
+}
+
+.form-date-input{
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid #d8d9db;
+}
+
+.form-time-input{
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid #d8d9db;
+}
+.bookingform-submit__container{
+    display: flex;
+    justify-content: center;
+    margin: 5px ;
+    height: 30px;
+    border-radius: 5px;
+}
+.bookingform-submit-button{
+    background-color: #DA3743;
+    border: none;
+    color: white;
+    width: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.form-warning{
+    color: #DA3743;
+}
