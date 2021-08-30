@@ -26,10 +26,11 @@ const UserBookingPage = ({loggedInUser}) => {
                 <h1>all reservation</h1>
                 {bookingArr.length > 0 ? bookingArr.map(booking =>
                     <div>
-                        <div><img width='100px' src={booking.restaurant.profile_pic}/>{booking.restaurant.title}</div>
-                        <span>{booking.startTime.slice(0, 5)} {booking.startDate.slice(0,16)}</span>
+                        <img width='100px' src={booking.restaurant.profile_pic}/>
+                        <div>{booking.restaurant.title}</div>
+                        <span>{booking.startTime.slice(0, 5)} {booking.startDate}</span>
                         <div>Table for {booking.size} person(s)</div>
-                        <div>If you have any question, please dial:{booking.restaurant.phone}</div>
+                        <div>{booking.restaurant.phone}</div>
                         <div>{booking.restaurant.location}</div>
 
                     </div>
