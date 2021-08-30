@@ -19,6 +19,8 @@ const UserProfileNavBar = ({ userId }) => {
   }, []);
 
 
+
+
   const user = users.find(user => user.id === +userId)
   return (
     <div className='user-navbar__container'>

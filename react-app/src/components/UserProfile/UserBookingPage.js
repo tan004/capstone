@@ -25,39 +25,43 @@ const UserBookingPage = ({ loggedInUser }) => {
 
     return (
         <div className='user-right__container'>
-            <div>
-                <h1>Upcoming Reservations</h1>
+            <div className='upcoming__container'>
+                <h2 className='upcoming-header'>Upcoming Reservations</h2>
                 {upcomingBookings.length > 0 ? upcomingBookings.map(booking =>
-                    <div key={booking.id}>
-                        <img width='100px' src={booking.restaurant.profile_pic} />
-                        <div>{booking.restaurant.title}</div>
-                        <span>{booking.startTime} {booking.startDate}</span>
-                        <div>Table for {booking.size} person(s)</div>
-                        <div>{booking.restaurant.phone}</div>
-                        <div>{booking.restaurant.location}</div>
-                        <div>
-                            <span>Modify</span>
-                            <span onClick={() => dispatch(removeBooking(booking.id, booking.user_id))}>delete</span>
+                    <div className='upcoming-detail__container' key={booking.id}>
+                        <img className='restaurant-booking-img' src={booking.restaurant.profile_pic} />
+                        <div className='booking-info__container'>
+                            <div className='detail-booking-info booking-title'>{booking.restaurant.title}</div>
+                            <span className='detail-booking-info booking-datetime'>{booking.startTime} {booking.startDate}</span>
+                            <div className='detail-booking-info booking-size'>Table for {booking.size} person(s)</div>
+                            <div className='detail-booking-info booking-phone'>{booking.restaurant.phone}</div>
+                            <div className='detail-booking-info booking-address'>{booking.restaurant.location}</div>
+                            <div className='detail-booking-info booking-admin__container'>
+                                <span className='booking-admin__button booking-edit'>Modify</span>
+                                <span className='booking-admin__button booking-delete' onClick={() => dispatch(removeBooking(booking.id, booking.user_id))}>delete</span>
+                            </div>
                         </div>
                     </div>
-                ) : <div>You dont have any reservation</div>}
+                ) : <div  className='upcoming-detail__container'>You dont have any reservation</div>}
             </div>
 
-            <div>
-                <h2>Past reservations</h2>
+            <div className='past__container'>
+                <h2 className='upcoming-header'>Past reservations</h2>
                 {pastBookings.length > 0 ? pastBookings.map(booking =>
-                    <div key={booking.id}>
-                        <img width='100px' src={booking.restaurant.profile_pic} />
-                        <div>{booking.restaurant.title}</div>
-                        <span>{booking.startTime} {booking.startDate}</span>
-                        <div>Table for {booking.size} person(s)</div>
-                        <div>{booking.restaurant.phone}</div>
-                        <div>{booking.restaurant.location}</div>
+                    <div className='upcoming-detail__container' key={booking.id}>
+                        <img className='restaurant-booking-img' src={booking.restaurant.profile_pic} />
+                        <div className='booking-info__container'>
+                            <div className='detail-booking-info booking-title'>{booking.restaurant.title}</div>
+                            <span className='detail-booking-info booking-datetime'>{booking.startTime} {booking.startDate}</span>
+                            <div className='detail-booking-info booking-size'>Table for {booking.size} person(s)</div>
+                            <div className='detail-booking-info booking-phone'>{booking.restaurant.phone}</div>
+                            <div className='detail-booking-info booking-address'>{booking.restaurant.location}</div>
 
+                        </div>
                     </div>
-                ) : <div>You dont have any past reservation</div>}
-            </div>
+                        ) : <div className='upcoming-detail__container'>You dont have any past reservation</div>}
+                    </div>
         </div>
-    )
+            )
 }
-export default UserBookingPage;
+            export default UserBookingPage;

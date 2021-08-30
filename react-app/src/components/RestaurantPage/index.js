@@ -115,12 +115,7 @@ const RestaurantPage = () => {
                         : null}
                 </div>
 
-
-
-                <div className='booking__container'>
-                    <BookingForm />
-                </div>
-
+                 <BookingForm />
 
                 <div className='detail-description__container'>
                     <div id='more' className='detail-description'>
