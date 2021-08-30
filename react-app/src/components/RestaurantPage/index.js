@@ -93,7 +93,7 @@ const RestaurantPage = () => {
     return (
         <div className='detail-page__container'>
 
-            {bookmarkDiv}
+            {user && bookmarkDiv}
 
             <div className='profile-pic__container' style={{
                 backgroundImage: `url(${restaurant?.profile_pic})`,
