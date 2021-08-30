@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux"
-import { NavLink,Link, useParams } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import './userNavbar.css'
 import { useEffect, useState } from "react";
+import unknown from '../../images/unknown.jpg'
 
-const UserProfileNavBar = ({userId}) => {
-    const loggedInuser = useSelector(state => state.session.user)
+const UserProfileNavBar = ({ userId }) => {
+  const loggedInuser = useSelector(state => state.session.user)
 
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,25 +19,29 @@ const UserProfileNavBar = ({userId}) => {
   }, []);
 
 
-    const user = users.find(user => user.id === +userId)
+  const user = users.find(user => user.id === +userId)
+  return (
+    <div className='user-navbar__container'>
+      <div className='nav-user__container'>
 
-    return (
-        <div className='user-navbar__container'>
-            <div><img width='50px' src={user?.icon}/></div>
+          {user?.icon !== null ?
+            <img className='nav-user-icon' src={user?.icon} />
+            : <img className='nav-user-icon' src={unknown}/>
+          }
 
-            <div>
-                <strong>Username</strong> {user?.username}
-            </div>
+          <span>{user?.username}</span>
+      </div>
 
-            {user?.id === loggedInuser?.id ?
-            <>
-            <Link to={`/users/${user?.id}`} >Reservation</Link>
-             <Link to={`/users/${user?.id}/favorite`}>Saved Restaurant</Link>
-            </>: null
-            }
 
-        </div>
-    )
+      {user?.id === loggedInuser?.id ?
+        <div className='links__container'>
+          <Link className='booking-link nav-link' to={`/users/${user?.id}`} >Reservations</Link>
+          <Link className='bookmark-link nav-link'  to={`/users/${user?.id}/favorite`}>Saved Restaurants</Link>
+        </div> : null
+      }
+
+    </div>
+  )
 }
 
 export default UserProfileNavBar;

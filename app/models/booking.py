@@ -25,6 +25,7 @@ class Booking(db.Model):
             'size': self.size,
             'restaurant_id': self.restaurant_id,
             'startDate': self.startDate.strftime(format=f'%m/%d/%Y'),
-            'startTime': self.startTime.isoformat(),
+            'startTime': self.startTime.strftime(format=f'%H:%M'),
+            'time': f'{self.startDate} {self.startTime}',
             'restaurant': restaurant.to_dict()
         }
