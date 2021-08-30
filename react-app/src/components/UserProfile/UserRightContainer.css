@@ -9,6 +9,84 @@
     position: relative;
     left: 30%;
     top: -100%;
-    border: 1px solid black;
-    width: 70%;
+    max-width: 60%;
+    min-width: 400px;
+}
+
+.upcoming__container{
+ background-color: transparent;
+ border-radius: 5px;
+ margin-bottom: 20px;
+}
+
+
+.upcoming-header{
+    padding: 20px;
+    margin-bottom: 1px;
+    border-bottom:1px solid rgb(201, 201, 201);
+    background-color: white;
+    /* border-radius: 5px; */
+    /* font-size: 30px; */
+    position: -webkit-sticky;
+    position: sticky;
+    top:0px
+}
+
+.upcoming-detail__container{
+    border-bottom:1px solid rgb(201, 201, 201);
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.restaurant-booking-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+.booking-info__container{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.detail-booking-info{
+    padding-bottom: 5px;
+}
+
+.booking-title{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.booking-datetime{
+    font-weight: 600;
+}
+
+.booking-size{
+    font-size: 12px;
+}
+.booking-phone{
+    font-size: 12px;
+}
+.booking-address{
+    font-size: 12px;
+}
+
+.booking-admin__container{
+    display: flex;
+    flex-direction: row;
+}
+
+.booking-admin__button{
+    padding: 0 5px;
+    color: red;
+    font-size: 12px;
+}
+.booking-admin__button:hover{
+    color: rgba(255, 0, 0, 0.582);
+    text-decoration: underline;
+    cursor: pointer;
 }
