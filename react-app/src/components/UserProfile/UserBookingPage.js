@@ -25,10 +25,10 @@ const UserBookingPage = ({loggedInUser}) => {
             <div>
                 <h1>all reservation</h1>
                 {bookingArr.length > 0 ? bookingArr.map(booking =>
-                    <div>
+                    <div key={booking.id}>
                         <img width='100px' src={booking.restaurant.profile_pic}/>
                         <div>{booking.restaurant.title}</div>
-                        <span>{booking.startTime.slice(0, 5)} {booking.startDate}</span>
+                        <span>{booking.startTime} {booking.startDate}</span>
                         <div>Table for {booking.size} person(s)</div>
                         <div>{booking.restaurant.phone}</div>
                         <div>{booking.restaurant.location}</div>
