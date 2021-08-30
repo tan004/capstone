@@ -6,11 +6,12 @@ import SignUpForm from './components/auth/SignUpFormModal/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
+import User from './components/UserProfile/User';
 import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
 import RestaurantForm from './components/RestaurantForm';
 import RestaurantPage from './components/RestaurantPage';
+import UserBookmarkPage from './components/UserProfile/UserBookmarkPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,6 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -48,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/favorite' exact={true}>
+          <UserBookmarkPage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <LandingPage />

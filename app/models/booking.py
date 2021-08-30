@@ -1,5 +1,4 @@
-from app.models import restaurant
-from flask.scaffold import F
+from app.models.restaurant import Restaurant
 from .db import db
 
 
@@ -18,11 +17,14 @@ class Booking(db.Model):
     restaurant = db.relationship('Restaurant', back_populates='bookings')
 
     def to_dict(self):
+        restaurant = Restaurant.query.get(self.restaurant_id)
+
         return {
             'id': self.id,
             'user_id': self.user_id,
             'size': self.size,
             'restaurant_id': self.restaurant_id,
-            'startDate': self.startDate,
+            'startDate': self.startDate.strftime(format=f'%m/%d/%Y'),
             'startTime': self.startTime.isoformat(),
+            'restaurant': restaurant.to_dict()
         }

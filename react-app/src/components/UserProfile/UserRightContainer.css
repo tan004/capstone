@@ -1,0 +1,10 @@
+.userprofile__container{
+    position: relative;
+}
+
+.user-right__container{
+    position: absolute;
+    left: 30%;
+    top: 0px;
+    border: 1px solid black;
+}
