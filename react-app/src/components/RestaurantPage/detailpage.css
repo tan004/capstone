@@ -48,6 +48,7 @@ h1,h2,p,h3{
     top: 0px;
     /* right: 10%; */
     left: 105%;
+    height: 370px;
     box-sizing: border-box;
     padding: 10px 10px 2px;
     border-bottom: 1px solid grey;
@@ -59,14 +60,14 @@ h1,h2,p,h3{
     min-width: 330px;
     flex-direction: column;
     background-color: white;
-    position:absolute;
-    top: 230px;
+    /* position: absolute; */
+    /* top: 300px; */
     /* right: 10%; */
-    left: 105%;
+    /* left: 0px; */
     box-sizing: border-box;
     padding: 10px 10px 2px;
-    border-bottom: 1px solid grey;
-    box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.5);
+    /* border-bottom: 1px solid grey; */
+    /* box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.5); */
 }
 
 .takeout-header{
@@ -121,6 +122,8 @@ h1,h2,p,h3{
     .takeout__container{
         position: unset;
         box-shadow: none;
+        border-bottom: unset;
+        height: 100%;
     }
 }
 
