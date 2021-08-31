@@ -41,6 +41,7 @@ def check_date_max(form, field):
 def check_time(form, field):
     booking_time = field.data
     # print('ssssssss', datetime.now().month)
+    # TODO bug in heroku when the date is same.
     if(form.data['startDate'] < date.today()):
         raise ValidationError('Please select the valid date!')
     elif form.data['startDate'] == date.today():

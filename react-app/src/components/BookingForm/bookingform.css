@@ -87,3 +87,7 @@
 .form-warning{
     color: #DA3743;
 }
+
+.fa-phone{
+    transform: rotate(90deg);
+}
