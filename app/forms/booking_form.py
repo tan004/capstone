@@ -19,8 +19,8 @@ from app.models import booking
 #     print('xxxxxxx', time(booking_time.hour))
 #     allbookings = Booking.query.filter(Booking.).all()
 
-    # print('ssssssss', allbookings)
-    # raise ValidationError('no more spots in this hour')
+# print('ssssssss', allbookings)
+# raise ValidationError('no more spots in this hour')
 
 def check_date(form, field):
     booking_date = field.data
@@ -31,7 +31,8 @@ def check_date(form, field):
 
 def check_date_max(form, field):
     booking_date = field.data
-    booking_max = Booking.query.filter(Booking.startDate == booking_date).count()
+    booking_max = Booking.query.filter(
+        Booking.startDate == booking_date).count()
 
     if booking_max >= 10:
         raise ValidationError('sorry, no more spot for the selected date!')
@@ -39,6 +40,7 @@ def check_date_max(form, field):
 
 def check_time(form, field):
     booking_time = field.data
+    # print('ssssssss', datetime.now().month)
     if(form.data['startDate'] < date.today()):
         raise ValidationError('Please select the valid date!')
     elif form.data['startDate'] == date.today():
@@ -49,17 +51,9 @@ def check_time(form, field):
                 raise ValidationError('Please select the valid minute!')
 
 
-# def check_time_max(form, field):
-#     booking_time = field.data
-#     print('xxxxxx', dir(Booking.startTime)) # output is the integer of hour
-
-#     # Booking.startTime dont have hour attribute
-#     booking_max = Booking.query.filter(Booking.startTime.startswith(f'{booking_time.hour}%')).count()
-#     if booking_max >= 5:
-#         raise ValidationError('Sorry, no more spot in this hour!')
-
-
 class BookingForm(FlaskForm):
     size = StringField('size', validators=[DataRequired()])
-    startDate = DateField('startDate', validators=[DataRequired(), check_date, check_date_max])
-    startTime = TimeField('startTime', validators=[DataRequired(), check_time])
+    startDate = DateField('startDate', validators=[
+                          DataRequired(), check_date, check_date_max])
+    startTime = TimeField('startTime', validators=[
+                          DataRequired(), check_time])
