@@ -58,12 +58,12 @@ const LandingPage = () => {
                         <h1 className='header-h1'>You don't need a reason, you need a booking</h1>
                     </div>
 
-                    <div className='search-bar__container'>
+                    {/* <div className='search-bar__container'>
                         <input
                             placeholder='search bar'
                             className='header-search-bar'
                         />
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
