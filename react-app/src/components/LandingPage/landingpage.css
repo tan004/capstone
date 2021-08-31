@@ -116,6 +116,10 @@
 .fa-map-marker-alt{
     color:rgb(75, 121, 206);
 }
+.fa-map-marker-alt:hover{
+    position: relative;
+    top: 2px;
+}
 
 .red-mark{
     color:red;

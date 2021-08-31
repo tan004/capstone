@@ -54,8 +54,71 @@ h1,h2,p,h3{
     box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.5);
 }
 
+.takeout__container{
+    display: flex;
+    min-width: 330px;
+    flex-direction: column;
+    background-color: white;
+    position:absolute;
+    top: 230px;
+    /* right: 10%; */
+    left: 105%;
+    box-sizing: border-box;
+    padding: 10px 10px 2px;
+    border-bottom: 1px solid grey;
+    box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.takeout-header{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: .0625rem solid #d8d9db;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+.takeout-phone{
+    font-size: 15px;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: red;
+    border-radius: 5px;
+    cursor: pointer;
+    border: .0625rem solid #d8d9db;
+    width: fit-content;
+    align-items: center;
+}
+.fa-phone{
+    margin-right: 10px;
+}
+
+.fa-plus:hover{
+    /* transform: rotate(45deg); */
+    cursor: pointer;
+    color: red;
+}
+.detail-map:hover{
+    position: relative;
+    top: 2px;
+}
+
+.fa-utensils{
+    padding: 0 5px;
+    color: rgb(38, 177, 135);
+}
+.fa-utensils:hover{
+    transform: rotate(-10deg);
+}
+
 @media screen and (max-width: 850px){
     .booking__container{
+        position: unset;
+        box-shadow: none;
+    }
+    .takeout__container{
         position: unset;
         box-shadow: none;
     }

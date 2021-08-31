@@ -107,7 +107,7 @@ const RestaurantPage = () => {
                 <div className='detail-nav'>Navbar for Overview | Photos | Reviews</div>
 
                 <div className='title-admin__container'>
-                    <h1 className='detail-title'>{restaurant?.title}</h1>
+                    <h1 className='detail-title'>{restaurant?.title} </h1>
                     {admin ? <div className='admin__container'>
                         <EditRestaurantModal restaurant={restaurant} />
                         <i onClick={onDelete} className="far fa-trash-alt"></i>
@@ -115,7 +115,13 @@ const RestaurantPage = () => {
                         : null}
                 </div>
 
-                 <BookingForm />
+                <BookingForm />
+
+                <div className='takeout__container'>
+                    <div className='takeout-header'>Order takeout</div>
+
+                    <div className='takeout-phone'> <i class="fas fa-phone"></i>{restaurant?.phone}</div>
+                </div>
 
                 <div className='detail-description__container'>
                     <div id='more' className='detail-description'>
@@ -132,7 +138,7 @@ const RestaurantPage = () => {
                     <div className='all-cuisines'>
                         {cuisinesArr && cuisinesArr.map(cuisine =>
                             <div className='single-cuisine' key={`cuisine-${cuisine.id}`}>
-                                {cuisine.type}
+                               <i className="fas fa-utensils"></i>{cuisine.type}
                             </div>
                         )}
                     </div>
@@ -140,7 +146,7 @@ const RestaurantPage = () => {
 
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'>location</h3>
-                    <p className='detail-location'>{restaurant?.location}</p>
+                    <p className='detail-location'><i className="fas fa-map-marker-alt"></i> {restaurant?.location}</p>
                 </div>
 
                 <div className='detail-component__container'>
