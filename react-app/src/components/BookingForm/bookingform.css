@@ -51,18 +51,23 @@
 
 .form-datetime__container{
     padding: 8px 0px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
 }
 
 .form-date-input{
     cursor: pointer;
     border: none;
     border-bottom: 1px solid #d8d9db;
+
 }
 
 .form-time-input{
     cursor: pointer;
     border: none;
     border-bottom: 1px solid #d8d9db;
+
 }
 .bookingform-submit__container{
     display: flex;

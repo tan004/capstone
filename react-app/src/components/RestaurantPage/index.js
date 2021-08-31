@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getRestaurantBookings } from "../../store/booking";
+import { getRestaurantBookings, removeBooking } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
 import { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
@@ -115,13 +115,8 @@ const RestaurantPage = () => {
                         : null}
                 </div>
 
-                <BookingForm />
+                <BookingForm restaurant={restaurant}/>
 
-                <div className='takeout__container'>
-                    <div className='takeout-header'>Order takeout</div>
-
-                    <div className='takeout-phone'> <i class="fas fa-phone"></i>{restaurant?.phone}</div>
-                </div>
 
                 <div className='detail-description__container'>
                     <div id='more' className='detail-description'>
@@ -146,7 +141,7 @@ const RestaurantPage = () => {
 
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'>location</h3>
-                    <p className='detail-location'><i className="fas fa-map-marker-alt"></i> {restaurant?.location}</p>
+                    <p className='detail-location'><i className="fas detail-map fa-map-marker-alt"></i> {restaurant?.location}</p>
                 </div>
 
                 <div className='detail-component__container'>

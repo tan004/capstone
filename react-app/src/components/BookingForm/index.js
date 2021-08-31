@@ -5,9 +5,10 @@ import { makeBooking } from "../../store/booking";
 import './bookingform.css'
 
 
-const BookingForm = () => {
+const BookingForm = ({restaurant}) => {
     const { id } = useParams();
     const user = useSelector(state => state.session.user);
+
     const dispatch = useDispatch()
     const history = useHistory()
     const sizeArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -44,7 +45,7 @@ const BookingForm = () => {
     return (<div className='booking__container'>
         <div className='bookingform-header'>
             <p className='bookingform-p'>Make a reservation</p>
-            </div>
+        </div>
         <form className='bookingform__container' onSubmit={handleSubmit}>
             <div className='errors'>
                 {errors?.map((error, ind) => (
@@ -80,22 +81,27 @@ const BookingForm = () => {
                     />
                 </div>
                 <div className='form-datetime__container'>
-                <label>Time</label>
-                <input
-                    type='time'
-                    min='11:00'
-                    max='22:00'
-                    className='form-time-input'
-                    value={startTime}
-                    onChange={(e) => setStartTime(e.target.value)}
-                    required
-                />
+                    <label>Time</label>
+                    <input
+                        type='time'
+                        min='11:00'
+                        max='22:00'
+                        className='form-time-input'
+                        value={startTime}
+                        onChange={(e) => setStartTime(e.target.value)}
+                        required
+                    />
                 </div>
             </div>
             {!user && <span className='form-warning'>Plase login first!</span>}
             <div className='bookingform-submit__container'><button className='bookingform-submit-button' disabled={!user}>Find a table</button></div>
         </form>
 
+        <div className='takeout__container'>
+            <div className='takeout-header'>Order takeout</div>
+
+            <div className='takeout-phone'> <i class="fas fa-phone"></i>{restaurant?.phone}</div>
+        </div>
     </div >)
 }
 
