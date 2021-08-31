@@ -37,7 +37,9 @@ const UserBookingPage = ({ loggedInUser }) => {
                             <div className='detail-booking-info booking-phone'>{booking.restaurant.phone}</div>
                             <div className='detail-booking-info booking-address'>{booking.restaurant.location}</div>
                             <div className='detail-booking-info booking-admin__container'>
-                                <span className='booking-admin__button booking-edit'>Modify</span>
+                                <span className='booking-admin__button booking-edit'
+                                    onClick={() => alert('Please contact the restaurant with the provided phone number to modify your reservation. Thank you!') }
+                                >Modify</span>
                                 <span className='booking-admin__button booking-delete' onClick={() => dispatch(removeBooking(booking.id, booking.user_id))}>delete</span>
                             </div>
                         </div>
