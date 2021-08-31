@@ -39,10 +39,15 @@ def check_date_max(form, field):
 
 def check_time(form, field):
     booking_time = field.data
-    if booking_time.hour < datetime.now().hour:
-        raise ValidationError('Please select the valid time!')
-    if booking_time.minute < datetime.now().minute:
-        raise ValidationError('Please select the valid time(*minute)!')
+    if(form.data['startDate'] < date.today()):
+        raise ValidationError('Please select the valid date!')
+    elif form.data['startDate'] == date.today():
+        if booking_time.hour < datetime.now().hour:
+            raise ValidationError('Please select the valid hour!')
+        elif booking_time.hour == datetime.now().hour:
+            if booking_time.minute < datetime.now().minute:
+                raise ValidationError('Please select the valid minute!')
+
 
 # def check_time_max(form, field):
 #     booking_time = field.data
@@ -52,6 +57,7 @@ def check_time(form, field):
 #     booking_max = Booking.query.filter(Booking.startTime.startswith(f'{booking_time.hour}%')).count()
 #     if booking_max >= 5:
 #         raise ValidationError('Sorry, no more spot in this hour!')
+
 
 class BookingForm(FlaskForm):
     size = StringField('size', validators=[DataRequired()])
