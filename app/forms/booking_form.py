@@ -22,11 +22,11 @@ from app.models import booking
 # print('ssssssss', allbookings)
 # raise ValidationError('no more spots in this hour')
 
-def check_date(form, field):
-    booking_date = field.data
+# def check_date(form, field):
+#     booking_date = field.data
 
-    if booking_date < date.today():
-        raise ValidationError('Please select the valid date!')
+#     if booking_date < date.today():
+#         raise ValidationError('Please select the valid date!')
 
 
 def check_date_max(form, field):
@@ -54,6 +54,6 @@ def check_time(form, field):
 class BookingForm(FlaskForm):
     size = StringField('size', validators=[DataRequired()])
     startDate = DateField('startDate', validators=[
-                          DataRequired(), check_date, check_date_max])
+                          DataRequired(), check_date_max])
     startTime = TimeField('startTime', validators=[
                           DataRequired(), check_time])
