@@ -85,7 +85,7 @@ const BookingForm = ({restaurant}) => {
                     <input
                         type='time'
                         min='11:00'
-                        max='22:00'
+                        // max='22:00'
                         className='form-time-input'
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}

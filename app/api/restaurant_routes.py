@@ -11,6 +11,8 @@ from ..forms.booking_form import BookingForm
 from ..models.booking import Booking
 from datetime import time, datetime, date
 
+from app.models import restaurant
+
 restaurant_routes = Blueprint('restaurants', __name__)
 
 
@@ -169,23 +171,23 @@ def add_booking(id):
     user = current_user
     form = BookingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
-    # print('XXXXXXXXXXXXX', form.data['startTime'])
-    # allbookings = Booking.query.filter(
-    #     Booking.restaurant_id == id).filter(
-    #         Booking.startDate == form.data['startDate']).count()
-    # print('xxxxxxxx', allbookings)
-# .filter(time(Booking.startTime).hour - time(form.data['startTime']).hour
-# == 0).count()
-
-
-    # times = [booking.startTime.hour == form.data['startTime'].hour  for booking in allbookings]
-    # print('SSSSSSSSS', len(times), times, all(times))
-
-    # print('BOOKINGS-', allbookings)
-
-    # if allbookings >= 5:
-    #     return {'error': ['sorry, no more spots for the selected date']}, 401
+    # getting value from the form
+    booking_date = form.data['startDate']
+    booking_time = form.data['startTime']
+    # query the correct restaurant with all the same date(same date with the upcoming request) bookings.
+    same_date_bookings = Booking.query.filter(
+        Booking.startDate == booking_date,
+        Booking.restaurant_id == id
+        ).all()
+    # filter out the bookings only the same hour with the upcoming request startTime.
+    # turn it into list, get the length
+    exsisting_bookings_length = len(list(filter(
+        lambda x: x == booking_time.hour,
+        [booking.startTime.hour for booking in same_date_bookings])))
+    # if the same hour, same day same restautant having 5 or more bookings, request denied.
+    # throw error let user know that no more spots!
+    if exsisting_bookings_length >= 5:
+        return {'errors': ['sorry no more spots in the selected hour']}, 401
 
     if form.validate_on_submit():
         data = form.data
@@ -205,5 +207,6 @@ def add_booking(id):
 
 @restaurant_routes.route('/<int:id>/getbookings')
 def get_bookings(id):
-    bookings = Booking.query.filter(Booking.restaurant_id==id, Booking.startDate == date.today()).all()
+    bookings = Booking.query.filter(
+        Booking.restaurant_id == id, Booking.startDate == date.today()).all()
     return {booking.id: booking.to_dict() for booking in bookings}
