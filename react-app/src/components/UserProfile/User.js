@@ -48,24 +48,24 @@ function User() {
 
   return (
     <div className='userprofile__container'>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <UserProfileNavBar userId={userId} />
         <Switch>
-          <ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true}>
             {user?.id === loggedInUser?.id ?
               <UserBookingPage loggedInUser={loggedInUser} /> :
               <UserBookmarkPage userId={userId} />
             }
           </ProtectedRoute>
-          <ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/favorite' exact={true}>
             <UserBookmarkPage userId={userId} />
           </ProtectedRoute>
 
         </Switch>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
 
-      <div className='user-navbar__container'>
+      {/* <div className='user-navbar__container'>
         <div className='nav-user__container'>
 
           {user?.icon !== null ?
@@ -86,7 +86,7 @@ function User() {
 
       </div>
 
-      {view}
+      {view} */}
 
     </div>
   );

@@ -5,6 +5,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
 }
 
 .rest-left__container{
@@ -22,17 +23,18 @@
    /* min-width: 500px; */
    box-sizing: border-box;
    padding: 20px;
-   background-color: #FFF8ED;
+   /* background-color: #FFF8ED; */
    position: absolute;
-   left: 55%;
+   left: 45%;
    background-color: white;
    top: 80px;
    border-radius: 10px;
 }
 
-@media screen and (max-width: 800px ) {
+@media screen and (max-width: 1000px ) {
     .rest-right__container{
         position: unset;
+        justify-self: center;
         max-width: 450px;
         margin-right: 40px;
     }
