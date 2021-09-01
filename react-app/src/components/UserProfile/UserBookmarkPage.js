@@ -1,6 +1,10 @@
+import { useParams } from "react-router-dom";
 
 
-const UserBookmarkPage = ({user}) => {
+const UserBookmarkPage = () => {
+    const {userId} = useParams()
+    console.log(userId)
+
 
     return (
         <div className='user-right__container'>

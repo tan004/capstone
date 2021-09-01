@@ -51,9 +51,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId/favorite' exact={true}>
-          <UserBookmarkPage />
-        </ProtectedRoute>
+        {/* <ProtectedRoute path='/users/:userId/favorite' exact={true}>
+          <User />
+        </ProtectedRoute> */}
         <Route path='/' exact={true} >
           <LandingPage />
         </Route>
