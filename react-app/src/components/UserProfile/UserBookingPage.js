@@ -1,18 +1,18 @@
 import './UserRightContainer.css'
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserBookings, removeBooking } from '../../store/booking';
 import { getAll } from '../../store/restaurant';
 
 const UserBookingPage = ({ loggedInUser }) => {
-    const [bookingId, setBookingId] = useState(0)
+    // const [bookingId, setBookingId] = useState(0)
     // const allRestaurants = useSelector(state => Object.values(state.restaurants))
     const allbookings = useSelector(state => Object.values(state.bookings))
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUserBookings(loggedInUser.id))
         dispatch(getAll())
-    }, [dispatch])
+    }, [dispatch, loggedInUser])
 
 
     const bookingArr = allbookings.filter(booking => booking.user_id === loggedInUser.id)
@@ -29,7 +29,7 @@ const UserBookingPage = ({ loggedInUser }) => {
                 <h2 className='upcoming-header'>Upcoming Reservations</h2>
                 {upcomingBookings.length > 0 ? upcomingBookings.map(booking =>
                     <div className='upcoming-detail__container' key={booking.id}>
-                        <img className='restaurant-booking-img' src={booking.restaurant.profile_pic} />
+                        <img className='restaurant-booking-img' src={booking.restaurant.profile_pic} alt='profile_pic'/>
                         <div className='booking-info__container'>
                             <div className='detail-booking-info booking-title'>{booking.restaurant.title}</div>
                             <span className='detail-booking-info booking-datetime'>{booking.startTime} {booking.startDate}</span>
@@ -51,7 +51,7 @@ const UserBookingPage = ({ loggedInUser }) => {
                 <h2 className='upcoming-header'>Past reservations</h2>
                 {pastBookings.length > 0 ? pastBookings.map(booking =>
                     <div className='upcoming-detail__container' key={booking.id}>
-                        <img className='restaurant-booking-img' src={booking.restaurant.profile_pic} />
+                        <img className='restaurant-booking-img' src={booking.restaurant.profile_pic} alt='profile_pic' />
                         <div className='booking-info__container'>
                             <div className='detail-booking-info booking-title'>{booking.restaurant.title}</div>
                             <span className='detail-booking-info booking-datetime'>{booking.startTime} {booking.startDate}</span>

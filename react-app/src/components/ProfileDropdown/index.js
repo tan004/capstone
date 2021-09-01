@@ -32,8 +32,8 @@ const ProfileDropDown = ({ user }) => {
         <>
             <div className='profile-button'>
                 {user?.icon !== null ?
-                    <img onClick={toggleMenu} className='nav-icon' src={user?.icon} />
-                    : <img onClick={toggleMenu} className='nav-icon' src={unknown} />
+                    <img onClick={toggleMenu} className='nav-icon' src={user?.icon} alt='user_icon' />
+                    : <img onClick={toggleMenu} className='nav-icon' src={unknown} alt='unknown' />
                 }
                 {/* <i onClick={toggleMenu} className="far fa-user-circle"></i> */}
                 {/* <i onClick={toggleMenu} className="fas fa-user-circle "></i> */}

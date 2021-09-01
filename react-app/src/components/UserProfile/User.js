@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Switch, useParams, Link, Route } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+import {  Switch, useParams } from 'react-router-dom';
 import UserBookingPage from './UserBookingPage';
 import UserBookmarkPage from './UserBookmarkPage';
 import UserProfileNavBar from './UserProfileNavBar';
 import ProtectedRoute from '../auth/ProtectedRoute';
-import { getUserBookings } from '../../store/booking';
-import { getAll } from '../../store/restaurant';
-import unknown from '../../images/unknown.jpg'
+// import { getUserBookings } from '../../store/booking';
+// import { getAll } from '../../store/restaurant';
+// import unknown from '../../images/unknown.jpg'
 
 
 function User() {
@@ -54,11 +54,11 @@ function User() {
           <ProtectedRoute path='/users/:userId' exact={true}>
             {user?.id === loggedInUser?.id ?
               <UserBookingPage loggedInUser={loggedInUser} /> :
-              <UserBookmarkPage userId={userId} />
+              <UserBookmarkPage user={user} />
             }
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId/favorite' exact={true}>
-            <UserBookmarkPage userId={userId} />
+            <UserBookmarkPage user={user} />
           </ProtectedRoute>
 
         </Switch>

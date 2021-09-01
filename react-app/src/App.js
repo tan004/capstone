@@ -11,7 +11,6 @@ import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
 import RestaurantForm from './components/RestaurantForm';
 import RestaurantPage from './components/RestaurantPage';
-import UserBookmarkPage from './components/UserProfile/UserBookmarkPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);

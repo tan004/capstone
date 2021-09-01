@@ -57,9 +57,9 @@ const BookingForm = ({restaurant}) => {
                 <label>Party size</label>
                 <select
                     name='size'
-                    className='size-dropdown'
+                    className='size-dropdown bookingform-size-select'
                     onChange={e => setSize(e.target.value)}
-                    className='bookingform-size-select'
+
                 >
                     {sizeArr.map(size =>
                         <option value={size} key={size}>
@@ -85,7 +85,7 @@ const BookingForm = ({restaurant}) => {
                     <input
                         type='time'
                         min='11:00'
-                        // max='22:00'
+                        max='23:00'
                         className='form-time-input'
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}
@@ -100,7 +100,7 @@ const BookingForm = ({restaurant}) => {
         <div className='takeout__container'>
             <div className='takeout-header'>Order takeout</div>
 
-            <div className='takeout-phone'> <i class="fas fa-phone"></i>{restaurant?.phone}</div>
+            <div className='takeout-phone'> <i className="fas fa-phone"></i>{restaurant?.phone}</div>
         </div>
     </div >)
 }
