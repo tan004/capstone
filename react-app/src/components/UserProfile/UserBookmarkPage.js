@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams,Link, NavLink } from "react-router-dom";
 import './userBookmark.css'
 
 const UserBookmarkPage = ({ loggedInUser, userId }) => {
@@ -18,15 +18,16 @@ const UserBookmarkPage = ({ loggedInUser, userId }) => {
     }, []);
 
     const thisUser = users.find(user => user.id === +userId)
+    console.log(thisUser)
     return (
         <div className='user-right__container'>
             <h2 className='bookmark-header'>all saved Restaurants</h2>
 
             {thisUser?.bookmarked.map(restaurant =>
-                <Link className='bookmark-detail__container' to={`/restaurants/${restaurant.id}`}>
+                (<Link className='bookmark-detail__container' to={`/restaurants/${restaurant.id}`} key={restaurant.id} >
                     <img className='restaurant-booking-img' src={restaurant.profile_pic} />
                     <div className='detail-booking-info bookmark-title'>{restaurant.title}</div>
-                </Link>
+                </Link>)
             )}
 
         </div>

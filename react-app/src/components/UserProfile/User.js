@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Switch, useParams, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, useParams, Link, Route } from 'react-router-dom';
 import UserBookingPage from './UserBookingPage';
 import UserBookmarkPage from './UserBookmarkPage';
 import UserProfileNavBar from './UserProfileNavBar';
@@ -9,11 +9,12 @@ import { getUserBookings } from '../../store/booking';
 import { getAll } from '../../store/restaurant';
 import unknown from '../../images/unknown.jpg'
 
+
 function User() {
   // const [user, setUser] = useState({});
   const loggedInUser = useSelector(state => state.session.user)
   const { userId } = useParams();
-  const [currentView, setView] = useState('booking')
+  // const [currentView, setView] = useState('booking')
 
 
   const [users, setUsers] = useState([]);
@@ -29,16 +30,16 @@ function User() {
 
   const user = users.find(user => user.id === +userId)
 
-  let view
-  if (user?.id !== loggedInUser?.id && currentView === 'booking') {
-    view = <UserBookmarkPage loggedInUser={loggedInUser} userId={userId} />
+  // let view
+  // if (user?.id !== loggedInUser?.id && currentView === 'booking') {
+  //   view = <UserBookmarkPage loggedInUser={loggedInUser} userId={userId} />
 
-  } else if (user?.id === loggedInUser?.id && currentView === 'booking') {
-    view = <UserBookingPage loggedInUser={loggedInUser} />
+  // } else if (user?.id === loggedInUser?.id && currentView === 'booking') {
+  //   view = <UserBookingPage loggedInUser={loggedInUser} />
 
-  } else {
-    view = <UserBookmarkPage loggedInUser={loggedInUser} userId={userId} />
-  }
+  // } else {
+  //   view = <UserBookmarkPage loggedInUser={loggedInUser} userId={userId} />
+  // }
 
 
   if (!loggedInUser) {
@@ -48,7 +49,6 @@ function User() {
 
   return (
     <div className='userprofile__container'>
-      <BrowserRouter>
         <UserProfileNavBar userId={userId} />
         <Switch>
           <ProtectedRoute path='/users/:userId' exact={true}>
@@ -62,7 +62,6 @@ function User() {
           </ProtectedRoute>
 
         </Switch>
-      </BrowserRouter>
 
 
       {/* <div className='user-navbar__container'>
