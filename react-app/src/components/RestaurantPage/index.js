@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getRestaurantBookings, removeBooking } from "../../store/booking";
+import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
 import { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";

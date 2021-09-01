@@ -11,7 +11,6 @@ import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
 import RestaurantForm from './components/RestaurantForm';
 import RestaurantPage from './components/RestaurantPage';
-import UserBookmarkPage from './components/UserProfile/UserBookmarkPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,9 +50,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/users/:userId/favorite' exact={true}>
+        <ProtectedRoute path='/users/:userId/favorite' exact={true}>
           <User />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <LandingPage />
         </Route>
