@@ -1,0 +1,26 @@
+.bookmark-header {
+    padding: 20px;
+    margin-bottom: 1px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    background-color: white;
+    /* border-radius: 5px; */
+    /* font-size: 30px; */
+    position: sticky;
+    top: 0px;
+}
+
+
+.bookmark-detail__container{
+    border-bottom:1px solid rgb(201, 201, 201);
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.bookmark-title{
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}

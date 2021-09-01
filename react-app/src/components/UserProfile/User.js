@@ -41,8 +41,6 @@ function User() {
   }
 
 
-
-
   if (!loggedInUser) {
     return null;
   }
@@ -50,6 +48,23 @@ function User() {
 
   return (
     <div className='userprofile__container'>
+      {/* <BrowserRouter>
+        <UserProfileNavBar userId={userId} />
+        <Switch>
+          <ProtectedRoute>
+            {user?.id === loggedInUser?.id ?
+              <UserBookingPage loggedInUser={loggedInUser} /> :
+              <UserBookmarkPage userId={userId} />
+            }
+          </ProtectedRoute>
+          <ProtectedRoute>
+            <UserBookmarkPage userId={userId} />
+          </ProtectedRoute>
+
+        </Switch>
+      </BrowserRouter> */}
+
+
       <div className='user-navbar__container'>
         <div className='nav-user__container'>
 
@@ -65,7 +80,7 @@ function User() {
         {user?.id === loggedInUser?.id ?
           <div className='links__container'>
             <p className='booking-link nav-link' onClick={() => setView('booking')} >Reservations</p>
-            <p className='bookmark-link nav-link'  onClick={() => setView('bookmark')} >Saved Restaurants</p>
+            <p className='bookmark-link nav-link' onClick={() => setView('bookmark')} >Saved Restaurants</p>
           </div> : null
         }
 
