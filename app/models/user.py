@@ -37,10 +37,10 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'icon': self.icon,
-            "bookmarked": [r.id for r in self.bookmarked],
+            "bookmarked": [r.simple_dict() for r in self.bookmarked],
             "bookings": [
                 {"id": booking.id,
-                "size": booking.size,
+                 "size": booking.size,
                  "date": booking.startDate,
                  "time": booking.startTime.isoformat(),
                  "restaurant_id": booking.restaurant_id,

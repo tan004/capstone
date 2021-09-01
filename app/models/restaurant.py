@@ -22,7 +22,8 @@ class Restaurant(db.Model):
     owner = db.relationship("User", back_populates="restaurants")
 
     bookings = db.relationship('Booking', back_populates='restaurant')
-    cuisine_type = db.relationship('Cuisine', cascade="all,delete", back_populates='restaurant')
+    cuisine_type = db.relationship(
+        'Cuisine', cascade="all,delete", back_populates='restaurant')
 
     bookmark_users = db.relationship(
         'User', secondary=bookmarks, back_populates="bookmarked")
@@ -47,4 +48,11 @@ class Restaurant(db.Model):
             "len_bookmark": len(self.bookmark_users),
             "cuisine_type": [cuisine.type for cuisine in self.cuisine_type],
             "bookmark_users": [user.id for user in self.bookmark_users]
+        }
+
+    def simple_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "profile_pic": self.profile_pic,
         }

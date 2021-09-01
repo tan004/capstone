@@ -4,9 +4,9 @@ import './userNavbar.css'
 import { useEffect, useState } from "react";
 import unknown from '../../images/unknown.jpg'
 
-const UserProfileNavBar = ({ userId }) => {
+const UserProfileNavBar = ({userId}) => {
   const loggedInuser = useSelector(state => state.session.user)
-
+  // const {userId } = useParams()
   const [users, setUsers] = useState([]);
 
   useEffect(() => {

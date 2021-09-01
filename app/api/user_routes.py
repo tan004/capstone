@@ -27,7 +27,6 @@ def user(id):
 def user_bookings(id):
     bookings = Booking.query.filter(Booking.user_id == id).order_by(
         Booking.startDate, Booking.startTime).all()
-    print('xxxxxx', bookings)
     return {booking.id: booking.to_dict() for booking in bookings}
 
 

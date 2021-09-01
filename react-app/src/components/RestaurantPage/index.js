@@ -104,7 +104,7 @@ const RestaurantPage = () => {
             </div>
 
             <div className='information__container'>
-                <div className='detail-nav'>Navbar for Overview | Photos | Reviews</div>
+                <div className='detail-nav'></div>
 
                 <div className='title-admin__container'>
                     <h1 className='detail-title'>{restaurant?.title} </h1>

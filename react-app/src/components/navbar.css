@@ -35,11 +35,6 @@
     color: #F3F8FA;
 }
 
-.fa-user-circle{
-    font-size: 30px;
-    /* color: #646464; */
-    margin-right: 33px;
-}
 .profile-button:hover{
     cursor: pointer;
 }
@@ -59,6 +54,13 @@
     /* border: 1px solid rgba(179, 208, 235, 0.788); */
     box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.5);
 }
+
+.nav-icon{
+    width: 45px;
+    margin-right: 25px;
+    border-radius: 50%;
+}
+
 .dropdown-list{
     box-sizing: border-box;
     padding: 5px;

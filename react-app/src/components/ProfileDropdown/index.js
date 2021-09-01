@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
-
+import unknown from '../../images/unknown.jpg'
 
 const ProfileDropDown = ({ user }) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -30,9 +30,13 @@ const ProfileDropDown = ({ user }) => {
 
     return (
         <>
-        <div className='profile-button'>
-            <i onClick={toggleMenu} className="far fa-user-circle"></i>
-            {/* <i onClick={toggleMenu} className="fas fa-user-circle "></i> */}
+            <div className='profile-button'>
+                {user?.icon !== null ?
+                    <img onClick={toggleMenu} className='nav-icon' src={user?.icon} />
+                    : <img onClick={toggleMenu} className='nav-icon' src={unknown} />
+                }
+                {/* <i onClick={toggleMenu} className="far fa-user-circle"></i> */}
+                {/* <i onClick={toggleMenu} className="fas fa-user-circle "></i> */}
             </div>
             {showMenu && (
                 <div className="profile-dropdown">
@@ -46,7 +50,7 @@ const ProfileDropDown = ({ user }) => {
                     </div>
 
                     <div className="dropdown-list">
-                      <LogoutButton />
+                        <LogoutButton />
                     </div>
                 </div>
             )}

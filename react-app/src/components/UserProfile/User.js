@@ -1,31 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Switch, useParams } from 'react-router-dom';
+import { BrowserRouter, Switch, useParams, Link } from 'react-router-dom';
 import UserBookingPage from './UserBookingPage';
 import UserBookmarkPage from './UserBookmarkPage';
 import UserProfileNavBar from './UserProfileNavBar';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import { getUserBookings } from '../../store/booking';
 import { getAll } from '../../store/restaurant';
+import unknown from '../../images/unknown.jpg'
 
 function User() {
   // const [user, setUser] = useState({});
   const loggedInUser = useSelector(state => state.session.user)
   const { userId } = useParams();
-  const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   if (!userId) {
-  //     return;
-  //   }
-  //   (async () => {
-  //     const response = await fetch(`/api/users/${userId}`);
-  //     const user = await response.json();
-  //     setUser(user);
-  //   })();
-  // }, [dispatch, userId]);
+  const [currentView, setView] = useState('booking')
 
 
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+
+  const user = users.find(user => user.id === +userId)
+
+  let view
+  if (user?.id !== loggedInUser?.id && currentView === 'booking') {
+    view = <UserBookmarkPage loggedInUser={loggedInUser} userId={userId} />
+
+  } else if (user?.id === loggedInUser?.id && currentView === 'booking') {
+    view = <UserBookingPage loggedInUser={loggedInUser} />
+
+  } else {
+    view = <UserBookmarkPage loggedInUser={loggedInUser} userId={userId} />
+  }
 
 
   if (!loggedInUser) {
@@ -35,20 +48,46 @@ function User() {
 
   return (
     <div className='userprofile__container'>
-      <BrowserRouter>
-        <UserProfileNavBar  userId={userId} />
+      {/* <BrowserRouter>
+        <UserProfileNavBar userId={userId} />
+        <Switch>
+          <ProtectedRoute>
+            {user?.id === loggedInUser?.id ?
+              <UserBookingPage loggedInUser={loggedInUser} /> :
+              <UserBookmarkPage userId={userId} />
+            }
+          </ProtectedRoute>
+          <ProtectedRoute>
+            <UserBookmarkPage userId={userId} />
+          </ProtectedRoute>
 
-      <Switch>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-        {loggedInUser?.id === +userId ?
-          <UserBookingPage loggedInUser={loggedInUser}/> : <UserBookmarkPage />}
-        </ProtectedRoute>
+        </Switch>
+      </BrowserRouter> */}
 
-        <ProtectedRoute path='/users/:userId/favorite' exact={true}>
-          <UserBookmarkPage />
-        </ProtectedRoute>
-      </Switch>
-      </BrowserRouter>
+
+      <div className='user-navbar__container'>
+        <div className='nav-user__container'>
+
+          {user?.icon !== null ?
+            <img className='nav-user-icon' src={user?.icon} />
+            : <img className='nav-user-icon' src={unknown} />
+          }
+
+          <span>{user?.username}</span>
+        </div>
+
+
+        {user?.id === loggedInUser?.id ?
+          <div className='links__container'>
+            <p className='booking-link nav-link' onClick={() => setView('booking')} >Reservations</p>
+            <p className='bookmark-link nav-link' onClick={() => setView('bookmark')} >Saved Restaurants</p>
+          </div> : null
+        }
+
+      </div>
+
+      {view}
+
     </div>
   );
 }
