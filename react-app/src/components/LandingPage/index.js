@@ -86,7 +86,7 @@ const LandingPage = () => {
                 )}
             </div>
             <div className='footer'>
-                <a href='https://github.com/tan004'><img className='githublogo' src={githublogo} alt='githublogo' /></a>
+                <a href='https://github.com/tan004/capstone'><img className='githublogo' src={githublogo} alt='githublogo' /></a>
                 <a href='https://www.linkedin.com/in/zhuoxin-tan-491587172/'><i className="fab fa-linkedin"></i></a>
             </div>
         </div>
