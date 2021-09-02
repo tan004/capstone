@@ -30,6 +30,11 @@ OpenBelly is a fullstack flask-react project clone of OpenTable. Users can make 
 ### code for reservation limitation
 ![dode](https://i.imgur.com/CtmrWvL.png)
 
+### Available Features
+- Restaurants (CRUD)
+- Reservations (CRD)
+- Bookmarks (CR)
+
 ## Conclusion and Next Steps
 I enjoyed the time that spent on OpenBelly. It was stressful at the beginning. I had to plan very detail on the database schema, the features, and also the user stories.Even though, I still had changed those couple times during the implementation. It's an amazing experience to put all my skills together for coding.
 In the future, I will build more features on OpenBelly, such as Reviews, Pictures, Ratings, follow/unfollow users. 
