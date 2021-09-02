@@ -34,6 +34,7 @@ OpenBelly is a fullstack flask-react project clone of OpenTable. Users can make 
 - Restaurants (CRUD)
 - Reservations (CRD)
 - Bookmarks (CR)
+- Cuisines (CR)
 
 ## Conclusion and Next Steps
 I enjoyed the time that spent on OpenBelly. It was stressful at the beginning. I had to plan very detail on the database schema, the features, and also the user stories.Even though, I still had changed those couple times during the implementation. It's an amazing experience to put all my skills together for coding.
