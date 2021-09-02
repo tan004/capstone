@@ -1,8 +1,4 @@
-# OpenBelly
 
-This is a flask-react project clone of OpenTable. 
-## Live
-[OpenBelly](https://openbelly.herokuapp.com)
 
 ## Getting started
 
