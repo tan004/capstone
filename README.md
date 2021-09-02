@@ -1,8 +1,10 @@
 # OpenBelly
 
 OpenBelly is a fullstack flask-react project clone of OpenTable. Users can make reservations on the selected reataurant with the party size and time.
+
 ## Live site
 [Visit OpenBelly](https://openbelly.herokuapp.com)
+
 ### Home Page
 ![home page](https://i.imgur.com/Es6jv5A.png)
 ### Restaurant detail page
@@ -25,5 +27,10 @@ OpenBelly is a fullstack flask-react project clone of OpenTable. Users can make 
 - Wtforms: a flexible forms validation and rendering library for Python web development
 - Postgresql: Relational Database
 - Alembic: a lightweight database migration tool
+### code for reservation limitation
+![dode](https://i.imgur.com/CtmrWvL.png)
 
 ## Conclusion and Next Steps
+I enjoyed the time that spent on OpenBelly. It was stressful at the beginning. I had to plan very detail on the database schema, the features, and also the user stories.Even though, I still had changed those couple times during the implementation. It's an amazing experience to put all my skills together for coding.
+In the future, I will build more features on OpenBelly, such as Reviews, Pictures, Ratings, follow/unfollow users. 
+Thanks for all the helps from the instructor team! 
