@@ -4,7 +4,10 @@ OpenBelly is a fullstack flask-react project clone of OpenTable. Users can make 
 ## Live
 [Visit OpenBelly](https://openbelly.herokuapp.com)
 
-![homepage](https://i.imgur.com/Es6jv5A.png)
+![home page](https://i.imgur.com/Es6jv5A.png)
+![detail page](https://i.imgur.com/ZpCSDj6.png
+![user bookings](https://i.imgur.com/M5fcQIn.png)
+![user bookmarked](https://i.imgur.com/KBSAdfZ.png)
 
 ## Technologies Used
 ### Frontend
