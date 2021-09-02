@@ -23,6 +23,9 @@ const RestaurantPage = () => {
 
     const [getMark, setMark] = useState(false)
 
+    const filteredCuisine = cuisinesArr.filter(cuisine => cuisine.restaurant_id === +id)
+
+
     useEffect(() => {
         dispatch(getOne(id))
     }, [dispatch, id])
@@ -131,7 +134,7 @@ const RestaurantPage = () => {
                         {admin ? <AddCuisineModal restaurant={restaurant} /> : null}
                     </div>
                     <div className='all-cuisines'>
-                        {cuisinesArr && cuisinesArr.map(cuisine =>
+                        {filteredCuisine && filteredCuisine.map(cuisine =>
                             <div className='single-cuisine' key={`cuisine-${cuisine.id}`}>
                                <i className="fas fa-utensils"></i>{cuisine.type}
                             </div>
