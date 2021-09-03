@@ -64,7 +64,6 @@ export const newRestaurant = (form) => async (dispatch) => {
         }),
     })
 
-    // console.log(response)
 
     if (response.ok) {
         const data = await response.json()
@@ -118,7 +117,6 @@ export const deleteRestaurant = (id) => async dispatch => {
     const response = await fetch(`/api/restaurants/${+id}`,{
         method: 'DELETE',
     })
-    // console.log(response)
     if (response.ok) {
         dispatch(remove(id))
     }

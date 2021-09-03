@@ -16,10 +16,10 @@ from app.models import booking
 
 # def check_spot(form, field):
 #     booking_time = field.data
-#     print('xxxxxxx', time(booking_time.hour))
+#
 #     allbookings = Booking.query.filter(Booking.).all()
 
-# print('ssssssss', allbookings)
+
 # raise ValidationError('no more spots in this hour')
 
 # def check_date(form, field):
@@ -40,7 +40,7 @@ def check_date_max(form, field):
 
 def check_time(form, field):
     booking_time = field.data
-    # print('ssssssss', datetime.now().month)
+
     # TODO bug in heroku when the date is same.
     if(form.data['startDate'] < date.today()):
         raise ValidationError('Please select the valid date!')

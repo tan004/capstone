@@ -87,7 +87,6 @@ h1,h2,p,h3{
     margin-bottom: 10px;
     color: red;
     border-radius: 5px;
-    cursor: pointer;
     border: .0625rem solid #d8d9db;
     width: fit-content;
     align-items: center;

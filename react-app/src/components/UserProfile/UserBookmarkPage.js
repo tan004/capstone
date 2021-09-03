@@ -17,7 +17,7 @@ const UserBookmarkPage = ({ user }) => {
 
 
     // const thisUser = users.find(user => user.id === +userId)
-    // console.log(thisUser)
+
 
     return (
         <div className='user-right__container'>

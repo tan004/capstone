@@ -66,15 +66,7 @@ const RestaurantPage = () => {
         }
     }
 
-    // const handleBookmark = async (e) => {
-    //     e.preventDefault()
-    //     const data = await dispatch(addBookmark(id))
-    //     if(data){
-    //         alert(data)
-    //     }else{
-    //         alert('Bookmark added')
-    //     }
-    // }
+
     let bookmarkDiv;
     if(restaurant?.bookmark_users?.includes(user?.id)){
         bookmarkDiv = (
@@ -147,7 +139,7 @@ const RestaurantPage = () => {
                     <p className='detail-location'><i className="fas detail-map fa-map-marker-alt"></i> {restaurant?.location}</p>
                 </div>
 
-                <div className='detail-component__container'>
+                {/* <div className='detail-component__container'>
                     <h3 className='detail-h3'>Menu</h3>
                     <p> put link to view the menu</p>
                 </div>
@@ -157,7 +149,7 @@ const RestaurantPage = () => {
                 </div>
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'> Reviews</h3>
-                </div>
+                </div> */}
 
             </div>
 

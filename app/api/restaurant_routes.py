@@ -47,7 +47,7 @@ def create_restaurant():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # print(form.data)
+
         data = Restaurant(
             owner_id=user.id,
             title=form.data['title'],
@@ -70,7 +70,7 @@ def create_restaurant():
 
         db.session.add(data)
         db.session.commit()
-        # print(data)
+
         return data.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -101,7 +101,7 @@ def edit_restaurant(id):
         restaurant.lng = data['lng']
 
         db.session.commit()
-        # print(restaurant.to_dict())
+
         return restaurant.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
