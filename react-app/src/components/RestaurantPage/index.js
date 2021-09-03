@@ -66,15 +66,7 @@ const RestaurantPage = () => {
         }
     }
 
-    // const handleBookmark = async (e) => {
-    //     e.preventDefault()
-    //     const data = await dispatch(addBookmark(id))
-    //     if(data){
-    //         alert(data)
-    //     }else{
-    //         alert('Bookmark added')
-    //     }
-    // }
+
     let bookmarkDiv;
     if(restaurant?.bookmark_users?.includes(user?.id)){
         bookmarkDiv = (

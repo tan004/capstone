@@ -58,7 +58,6 @@ export const getUserBookings = (id) => async(dispatch)=>{
 export const makeBooking = (form) => async (dispatch) => {
     const { size, startDate, startTime, user_id, restaurant_id } = form;
 
-    // console.log(form)
 
     const response = await fetch(`/api/restaurants/${restaurant_id}/newbooking`, {
         method: 'POST',
@@ -69,8 +68,6 @@ export const makeBooking = (form) => async (dispatch) => {
             size, startTime, startDate, user_id, restaurant_id
         })
     })
-
-    // console.log(response)
 
 
     if(response.ok){
