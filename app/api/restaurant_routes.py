@@ -10,6 +10,10 @@ from ..forms.cuisine_form import CuisineForm
 from ..forms.booking_form import BookingForm
 from ..models.booking import Booking
 from datetime import time, datetime, date
+from ..models.image import Image
+
+from app.aws import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 from app.models import restaurant
 
@@ -178,7 +182,7 @@ def add_booking(id):
     same_date_bookings = Booking.query.filter(
         Booking.startDate == booking_date,
         Booking.restaurant_id == id
-        ).all()
+    ).all()
     # filter out the bookings only the same hour with the upcoming request startTime.
     # turn it into list, get the length
     exsisting_bookings_length = len(list(filter(
@@ -210,3 +214,36 @@ def get_bookings(id):
     bookings = Booking.query.filter(
         Booking.restaurant_id == id, Booking.startDate == date.today()).all()
     return {booking.id: booking.to_dict() for booking in bookings}
+
+
+@restaurant_routes.route('/<int:id>/uploadimage', methods=['POST'])
+@login_required
+def upload_image(id):
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+    # flask_login allows us to get the current user from the request
+    new_image = Image(
+        user_id=current_user.id,
+        imgUrl=url,
+        restaurant_id=id
+    )
+    db.session.add(new_image)
+    db.session.commit()
+    return new_image.to_dict()
