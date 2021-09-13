@@ -1,12 +1,13 @@
-from db import db
+from .db import db
 
 
 class Image(db.Model):
     __tablename__ = 'images'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurant.id"))
     imgUrl = db.Column(db.String, nullable=False)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey(
+        'restaurants.id'), nullable=False)
 
     user = db.relationship("User", back_populates="images")
     restaurant = db.relationship("Restaurant", back_populates="images")
