@@ -48,6 +48,7 @@ const UploadImageForm = ({restaurant}) => {
             <form onSubmit={handleSubmit}>
             <input
               type="file"
+            //   multiple
               accept="image/*"
               onChange={updateImage}
             />

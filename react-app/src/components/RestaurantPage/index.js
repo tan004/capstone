@@ -136,7 +136,7 @@ const RestaurantPage = () => {
                 </div>
 
                 <div className='detail-component__container'>
-                    <h3 className='detail-h3'>location</h3>
+                    <h3 className='detail-h3'>Location</h3>
                     <p className='detail-location'><i className="fas detail-map fa-map-marker-alt"></i> {restaurant?.location}</p>
                 </div>
 
