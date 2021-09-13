@@ -28,6 +28,8 @@ class Restaurant(db.Model):
     bookmark_users = db.relationship(
         'User', secondary=bookmarks, back_populates="bookmarked")
 
+    images = db.relationship('Image', back_populates='restaurant')
+
     def to_dict(self):
         user = User.query.filter(User.id == self.owner_id).first()
 
