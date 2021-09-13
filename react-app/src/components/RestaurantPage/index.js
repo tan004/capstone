@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
-import { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
+import restaurants, { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
 import BookingForm from "../BookingForm";
 
 import EditRestaurantModal from "../EditRestaurantModal";
+import UploadImageForm from "../UploadImageForm";
 import './detailpage.css'
 
 
@@ -139,13 +140,15 @@ const RestaurantPage = () => {
                     <p className='detail-location'><i className="fas detail-map fa-map-marker-alt"></i> {restaurant?.location}</p>
                 </div>
 
+                <div className='detail-component__container'>
+                    <h3 className='detail-h3'>Photo Feed</h3>
+                    <UploadImageForm restaurant={restaurant}/>
+
+
+                </div>
                 {/* <div className='detail-component__container'>
                     <h3 className='detail-h3'>Menu</h3>
                     <p> put link to view the menu</p>
-                </div>
-                <div className='detail-component__container'>
-                    <h3 className='detail-h3'>Photo Feed</h3>
-
                 </div>
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'> Reviews</h3>

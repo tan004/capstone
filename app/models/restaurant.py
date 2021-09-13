@@ -49,7 +49,8 @@ class Restaurant(db.Model):
             "location": f"{self.address} {self.city}, {self.state} {self.zip_code}",
             "len_bookmark": len(self.bookmark_users),
             "cuisine_type": [cuisine.type for cuisine in self.cuisine_type],
-            "bookmark_users": [user.id for user in self.bookmark_users]
+            "bookmark_users": [user.id for user in self.bookmark_users],
+            "images": [image.to_dict() for image in self.images]
         }
 
     def simple_dict(self):
