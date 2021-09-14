@@ -216,6 +216,12 @@ def get_bookings(id):
     return {booking.id: booking.to_dict() for booking in bookings}
 
 
+@restaurant_routes.route('/<int:id>/images')
+def get_images(id):
+    images = Image.query.filter(Image.restaurant_id == id).all()
+    return {image.id: image.to_dict() for image in images}
+
+
 @restaurant_routes.route('/<int:id>/uploadimage', methods=['POST'])
 @login_required
 def upload_image(id):

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
+import { imagesForOne } from "../../store/image";
 import restaurants, { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
 import BookingForm from "../BookingForm";
@@ -18,6 +19,7 @@ const RestaurantPage = () => {
     const user = useSelector(state => state.session.user)
     const restaurant = useSelector(state => state.restaurants[id])
     const cuisinesArr = useSelector(state => Object.values(state.cuisines))
+    const imagesArr = useSelector(state => Object.values(state.images))
     const dispatch = useDispatch()
     const history = useHistory()
     const [showmore, setShowmore] = useState(false)
@@ -25,7 +27,7 @@ const RestaurantPage = () => {
     const [getMark, setMark] = useState(false)
 
     const filteredCuisine = cuisinesArr.filter(cuisine => cuisine.restaurant_id === +id)
-
+    console.log(imagesArr)
 
     useEffect(() => {
         dispatch(getOne(id))
@@ -34,6 +36,7 @@ const RestaurantPage = () => {
     useEffect(() => {
         dispatch(cuisineForOne(id))
         dispatch(getRestaurantBookings(id))
+        dispatch(imagesForOne(id))
     }, [dispatch, id])
 
     //only dispatching the action to update the restaurant status,
@@ -143,7 +146,7 @@ const RestaurantPage = () => {
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'>Photo Feed</h3>
                     <UploadImageForm restaurant={restaurant}/>
-
+                    {imagesArr && imagesArr.map(image => <img width='100px' src={image.imgUrl} />)}
 
                 </div>
                 {/* <div className='detail-component__container'>
