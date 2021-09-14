@@ -264,3 +264,17 @@ h1,h2,p,h3{
     margin-left: 8px;
     font-weight: bold;
 }
+
+.imagesList__container{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    margin: 10px;
+}
+
+.single-images{
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 5px;
+}

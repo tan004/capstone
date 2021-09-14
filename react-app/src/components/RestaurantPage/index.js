@@ -19,7 +19,7 @@ const RestaurantPage = () => {
     const user = useSelector(state => state.session.user)
     const restaurant = useSelector(state => state.restaurants[id])
     const cuisinesArr = useSelector(state => Object.values(state.cuisines))
-    const imagesArr = useSelector(state => Object.values(state.images))
+    const imagesArr = useSelector(state => Object.values(state.images).reverse())
     const dispatch = useDispatch()
     const history = useHistory()
     const [showmore, setShowmore] = useState(false)
@@ -146,8 +146,9 @@ const RestaurantPage = () => {
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'>Photo Feed</h3>
                     <UploadImageForm restaurant={restaurant}/>
-                    {imagesArr && imagesArr.map(image => <img width='100px' src={image.imgUrl} />)}
-
+                    <div className='imagesList__container'>
+                    {imagesArr && imagesArr.map(image => <img className='single-images' src={image.imgUrl} />)}
+                           </div>
                 </div>
                 {/* <div className='detail-component__container'>
                     <h3 className='detail-h3'>Menu</h3>
