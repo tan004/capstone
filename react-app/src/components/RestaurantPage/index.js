@@ -27,7 +27,9 @@ const RestaurantPage = () => {
     const [getMark, setMark] = useState(false)
 
     const filteredCuisine = cuisinesArr.filter(cuisine => cuisine.restaurant_id === +id)
-    console.log(imagesArr)
+    const filteredImages= imagesArr.filter(image => image.restaurant_id === +id)
+
+
 
     useEffect(() => {
         dispatch(getOne(id))
@@ -147,7 +149,7 @@ const RestaurantPage = () => {
                     <h3 className='detail-h3'>Photo Feed</h3>
                     <UploadImageForm restaurant={restaurant}/>
                     <div className='imagesList__container'>
-                    {imagesArr && imagesArr.map(image => <img className='single-images' src={image.imgUrl} />)}
+                    {filteredImages && filteredImages.map(image => <img className='single-images' src={image.imgUrl} />)}
                            </div>
                 </div>
                 {/* <div className='detail-component__container'>
