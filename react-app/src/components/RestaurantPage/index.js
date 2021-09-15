@@ -23,7 +23,7 @@ const RestaurantPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [showmore, setShowmore] = useState(false)
-
+    const [uploadDiv, setUploadDiv] = useState(false)
     const [getMark, setMark] = useState(false)
 
     const filteredCuisine = cuisinesArr.filter(cuisine => cuisine.restaurant_id === +id)
@@ -69,6 +69,14 @@ const RestaurantPage = () => {
             setShowmore(false)
             document.getElementById('more').classList.remove('more')
             document.getElementById('showmore-span').innerText = '...more'
+        }
+    }
+
+    const handleUpload = () => {
+        if(uploadDiv === false){
+            setUploadDiv(true)
+        }else{
+            setUploadDiv(false)
         }
     }
 
@@ -146,8 +154,11 @@ const RestaurantPage = () => {
                 </div>
 
                 <div className='detail-component__container'>
-                    <h3 className='detail-h3'>Photo Feed</h3>
-                    <UploadImageForm restaurant={restaurant}/>
+                    <div className='detail-h3'>
+                        <h3 >Photo Feed</h3>
+                        {admin ? <i onClick={handleUpload} className="fas fa-plus"></i> : null}
+                    </div>
+                    {uploadDiv ? <UploadImageForm restaurant={restaurant}/>:null }
                     <div className='imagesList__container'>
                     {filteredImages && filteredImages.map(image => <img className='single-images' src={image.imgUrl} />)}
                            </div>

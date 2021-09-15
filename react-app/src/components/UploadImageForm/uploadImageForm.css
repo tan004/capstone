@@ -1,0 +1,29 @@
+.upload-image__form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.upload-image__input{
+    border: 1px solid rgb(219, 219, 219);
+    background-color: rgb(250, 235, 216);
+    border-radius: 5px;
+    padding: 20px 60px;
+    cursor: pointer;
+}
+
+.upload-image__button{
+    width: 15%;
+    border: unset;
+    background-color: rgb(21, 103, 255);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 20px 5px;
+    margin: 10px;
+}
+
+.upload-image__button:hover{
+    background-color: rgba(21, 103, 255, 0.699);
+
+}

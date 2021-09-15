@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { uploadImage } from "../../store/image";
-
+import './uploadImageForm.css'
 
 const UploadImageForm = ({restaurant}) => {
 
@@ -44,18 +44,19 @@ const UploadImageForm = ({restaurant}) => {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+
+            <form className='upload-image__form' onSubmit={handleSubmit}>
             <input
+                className='upload-image__input'
               type="file"
             //   multiple
               accept="image/*"
               onChange={updateImage}
             />
-            <button type="submit">Submit</button>
+            <button className='upload-image__button' type="submit">Upload</button>
             {(imageLoading)&& <p>Loading...</p>}
         </form>
-        </>
+
     )
 }
 

@@ -276,7 +276,7 @@ h1,h2,p,h3{
 .imagesList__container{
     display: flex;
     flex-direction: row;
-    overflow-x: scroll;
+    overflow-x: auto;
     margin: 10px;
 }
 
