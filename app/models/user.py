@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
     bookmarked = db.relationship(
         'Restaurant', secondary=bookmarks, back_populates='bookmark_users')
 
+    images = db.relationship('Image', back_populates='user')
+
     @property
     def password(self):
         return self.hashed_password

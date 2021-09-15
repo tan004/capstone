@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
-import { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
+import { imagesForOne } from "../../store/image";
+import restaurants, { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
 import BookingForm from "../BookingForm";
 
 import EditRestaurantModal from "../EditRestaurantModal";
+import UploadImageForm from "../UploadImageForm";
 import './detailpage.css'
 
 
@@ -17,13 +19,16 @@ const RestaurantPage = () => {
     const user = useSelector(state => state.session.user)
     const restaurant = useSelector(state => state.restaurants[id])
     const cuisinesArr = useSelector(state => Object.values(state.cuisines))
+    const imagesArr = useSelector(state => Object.values(state.images).reverse())
     const dispatch = useDispatch()
     const history = useHistory()
     const [showmore, setShowmore] = useState(false)
-
+    const [uploadDiv, setUploadDiv] = useState(false)
     const [getMark, setMark] = useState(false)
 
     const filteredCuisine = cuisinesArr.filter(cuisine => cuisine.restaurant_id === +id)
+    const filteredImages= imagesArr.filter(image => image.restaurant_id === +id)
+
 
 
     useEffect(() => {
@@ -33,6 +38,7 @@ const RestaurantPage = () => {
     useEffect(() => {
         dispatch(cuisineForOne(id))
         dispatch(getRestaurantBookings(id))
+        dispatch(imagesForOne(id))
     }, [dispatch, id])
 
     //only dispatching the action to update the restaurant status,
@@ -63,6 +69,14 @@ const RestaurantPage = () => {
             setShowmore(false)
             document.getElementById('more').classList.remove('more')
             document.getElementById('showmore-span').innerText = '...more'
+        }
+    }
+
+    const handleUpload = () => {
+        if(uploadDiv === false){
+            setUploadDiv(true)
+        }else{
+            setUploadDiv(false)
         }
     }
 
@@ -135,17 +149,23 @@ const RestaurantPage = () => {
                 </div>
 
                 <div className='detail-component__container'>
-                    <h3 className='detail-h3'>location</h3>
+                    <h3 className='detail-h3'>Location</h3>
                     <p className='detail-location'><i className="fas detail-map fa-map-marker-alt"></i> {restaurant?.location}</p>
                 </div>
 
+                <div className='detail-component__container'>
+                    <div className='detail-h3'>
+                        <h3 >Photo Feed</h3>
+                        {admin ? <i onClick={handleUpload} className="fas fa-plus"></i> : null}
+                    </div>
+                    {uploadDiv ? <UploadImageForm restaurant={restaurant}/>:null }
+                    <div className='imagesList__container'>
+                    {filteredImages && filteredImages.map(image => <img className='single-images' src={image.imgUrl} />)}
+                           </div>
+                </div>
                 {/* <div className='detail-component__container'>
                     <h3 className='detail-h3'>Menu</h3>
                     <p> put link to view the menu</p>
-                </div>
-                <div className='detail-component__container'>
-                    <h3 className='detail-h3'>Photo Feed</h3>
-
                 </div>
                 <div className='detail-component__container'>
                     <h3 className='detail-h3'> Reviews</h3>
