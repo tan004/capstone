@@ -282,7 +282,9 @@ h1,h2,p,h3{
 
 .single-images{
     width: 200px;
+    height: 200px;
     border-radius: 10px;
     border: 1px solid black;
     margin: 5px;
+    box-sizing: border-box;
 }
