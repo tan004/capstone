@@ -145,6 +145,7 @@ const RestaurantPage = () => {
                                <i className="fas fa-utensils"></i>{cuisine.type}
                             </div>
                         )}
+                        {filteredCuisine.length === 0 ? <div>No Cuisine Type Added</div>: null}
                     </div>
                 </div>
 
@@ -161,6 +162,7 @@ const RestaurantPage = () => {
                     {uploadDiv ? <UploadImageForm restaurant={restaurant}/>:null }
                     <div className='imagesList__container'>
                     {filteredImages && filteredImages.map(image => <img className='single-images' src={image.imgUrl} />)}
+                    {filteredImages.length === 0 ? <div>No Image Uploaded</div>: null}
                     </div>
                 </div>
                 {/* <div className='detail-component__container'>
