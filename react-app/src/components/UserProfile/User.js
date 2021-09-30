@@ -5,6 +5,7 @@ import UserBookingPage from './UserBookingPage';
 import UserBookmarkPage from './UserBookmarkPage';
 import UserProfileNavBar from './UserProfileNavBar';
 import ProtectedRoute from '../auth/ProtectedRoute';
+import UserImagePage from './UserImagePage';
 // import { getUserBookings } from '../../store/booking';
 // import { getAll } from '../../store/restaurant';
 // import unknown from '../../images/unknown.jpg'
@@ -57,8 +58,17 @@ function User() {
               <UserBookmarkPage user={user} />
             }
           </ProtectedRoute>
+
           <ProtectedRoute path='/users/:userId/favorite' exact={true}>
             <UserBookmarkPage user={user} />
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/users/:userId/images' exact={true}>
+            {user?.id === loggedInUser?.id ?
+              <UserImagePage user={user} /> :
+              <UserBookmarkPage user={user} />
+            }
+
           </ProtectedRoute>
 
         </Switch>

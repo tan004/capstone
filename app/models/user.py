@@ -46,5 +46,6 @@ class User(db.Model, UserMixin):
                  "date": booking.startDate,
                  "time": booking.startTime.isoformat(),
                  "restaurant_id": booking.restaurant_id,
-                 }for booking in self.bookings]
+                 }for booking in self.bookings],
+            "images": [image.to_dict() for image in self.images]
         }
