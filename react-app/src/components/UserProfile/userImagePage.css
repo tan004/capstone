@@ -1,0 +1,16 @@
+.userImage__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user-image{
+    margin: 10px 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.user-image-link:hover{
+    border: 1px solid blue;
+    border-radius: 5px;
+}
