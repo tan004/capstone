@@ -1,0 +1,43 @@
+.uploaded-images{
+    width: 230px;
+    height: 230px;
+    border-radius: 20px;
+    margin: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgb(161, 161, 161);
+}
+.uploaded-images:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.imageModal__content{
+    border-radius: 30px;
+}
+.imageModal__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imageInModal{
+    width: 400px;
+    margin: 30px;
+    border-radius: 5px;
+}
+
+.image-delete-button{
+    box-sizing: border-box;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: unset;
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+}
+
+.image-delete-button:hover{
+    background-color: rgba(255, 0, 0, 0.692);
+    cursor: pointer;
+}

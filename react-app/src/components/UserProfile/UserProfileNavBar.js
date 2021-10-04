@@ -39,6 +39,7 @@ const UserProfileNavBar = ({userId}) => {
         <div className='links__container'>
           <Link className='booking-link nav-link' to={`/users/${user?.id}`} >Reservations</Link>
           <Link className='bookmark-link nav-link'  to={`/users/${user?.id}/favorite`}>Saved Restaurants</Link>
+          <Link className='bookmark-link nav-link'  to={`/users/${user?.id}/images`}>Uploaded Images</Link>
         </div> : null
       }
 

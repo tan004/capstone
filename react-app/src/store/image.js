@@ -21,6 +21,15 @@ export const imagesForOne = (id) => async(dispatch)=>{
     }
 }
 
+// export const getUserImages = (userId) => async (dispatch) => {
+//     const response = await fetch(`/api/users/${userId}/images`)
+//     if(response.ok){
+//         const images = await response.json()
+//         console.log(images)
+//         dispatch(all(images))
+//     }
+// }
+
 
 export const uploadImage = (form, restaurant_id) => async(dispatch) => {
     const response = await fetch(`/api/restaurants/${restaurant_id}/uploadimage`,{

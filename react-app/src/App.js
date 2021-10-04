@@ -53,6 +53,9 @@ function App() {
         <ProtectedRoute path='/users/:userId/favorite' exact={true}>
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/images' exact={true}>
+          <User />
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <LandingPage />
         </Route>
