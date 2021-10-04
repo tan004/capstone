@@ -60,7 +60,7 @@ export function ImageModal({onClose, children}){
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
-      <div id="modal-content">
+      <div id="modal-content" className='imageModal__content'>
         {children}
       </div>
     </div>,

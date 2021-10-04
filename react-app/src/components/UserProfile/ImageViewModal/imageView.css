@@ -6,3 +6,25 @@
     box-sizing: border-box;
     border: 1px solid rgb(161, 161, 161);
 }
+
+.imageModal__content{
+    border-radius: 30px;
+}
+.imageModal__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imageInModal{
+    width: 400px;
+    margin: 30px;
+    border-radius: 5px;
+}
+
+.image-delete-button{
+    box-sizing: border-box;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+}
