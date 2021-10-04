@@ -24,7 +24,16 @@
 
 .image-delete-button{
     box-sizing: border-box;
-    width: 200px;
+    width: 150px;
     height: 30px;
     margin-bottom: 10px;
+    border: unset;
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+}
+
+.image-delete-button:hover{
+    background-color: rgba(255, 0, 0, 0.692);
+    cursor: pointer;
 }
