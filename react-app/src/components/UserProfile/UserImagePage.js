@@ -1,6 +1,5 @@
 
 import ImageViewModal from './ImageViewModal';
-import ImageView from './ImageViewModal/ImageView';
 import './userImagePage.css'
 
 const UserImagePage = ({user}) => {
@@ -12,7 +11,7 @@ const UserImagePage = ({user}) => {
            <div className='userImage__container' >
                 {images.length > 0 ? images.map(image =>
                         <ImageViewModal image={image}/>
-                    ) : null}
+                    ) : <div>You don't have any uploaded images.</div>}
             </div>
         </div>
     )
