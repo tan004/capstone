@@ -6,6 +6,10 @@
     box-sizing: border-box;
     border: 1px solid rgb(161, 161, 161);
 }
+.uploaded-images:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
 
 .imageModal__content{
     border-radius: 30px;
