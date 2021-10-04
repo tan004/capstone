@@ -1,16 +1,17 @@
 .userprofile__container{
-    position: relative;
     height: 100%;
     background-color: #F3F3F3;
     box-sizing: border-box;
+
 }
 
 .user-right__container{
     position: relative;
     left: 30%;
     top: -100%;
-    max-width: 60%;
-    min-width: 400px;
+    width: 69.9%;
+    /* max-width: 60%; */
+    min-width: 20%;
 }
 
 .upcoming__container{

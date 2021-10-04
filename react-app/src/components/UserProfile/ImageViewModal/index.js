@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { ImageModal } from '../../../context/Modal';
 import ImageView from './ImageView';
-
+import './imageView.css'
 
 const ImageViewModal = ({image}) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
     <>
-        <img src={image.imgUrl} width='200px' className='uploaded-image' onClick={() => setShowModal(true)}/>
+        <img src={image.imgUrl} className='uploaded-images' onClick={() => setShowModal(true)}/>
 
         {showModal && (
             <ImageModal onClose={() => setShowModal(false)}>

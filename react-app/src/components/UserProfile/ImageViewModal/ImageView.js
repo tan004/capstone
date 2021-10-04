@@ -1,5 +1,4 @@
-
-
+import './imageView.css'
 
 const ImageView = ({image}) => {
     return (
