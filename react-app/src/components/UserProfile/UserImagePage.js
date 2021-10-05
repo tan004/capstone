@@ -10,7 +10,7 @@ const UserImagePage = ({user}) => {
            <h2 className='bookmark-header'>all Images</h2>
            <div className='userImage__container' >
                 {images.length > 0 ? images.map(image =>
-                        <ImageViewModal image={image}/>
+                        <ImageViewModal image={image} key={image.id}/>
                     ) : <div>You don't have any uploaded images.</div>}
             </div>
         </div>

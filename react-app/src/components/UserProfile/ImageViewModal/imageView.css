@@ -26,6 +26,7 @@
     margin: 30px;
     max-height: 500px;
     border-radius: 5px;
+    border: 1px solid grey;
 }
 
 .image-delete-button{
@@ -37,6 +38,7 @@
     background-color: red;
     color: white;
     border-radius: 30px;
+
 }
 
 .image-delete-button:hover{

@@ -1,5 +1,6 @@
 const CREATE = 'images/CREATE'
 const GET_ALL = 'images/GET_ALL'
+const REMOVE = 'bookings/REMOVE'
 
 const all = (data) => ({
     type: GET_ALL,
@@ -9,6 +10,10 @@ const all = (data) => ({
 const add = (form) => ({
     type: CREATE,
     form
+})
+const remove = (data) => ({
+    type: REMOVE,
+    data
 })
 
 export const imagesForOne = (id) => async(dispatch)=>{
@@ -54,6 +59,22 @@ export const uploadImage = (form, restaurant_id) => async(dispatch) => {
 }
 
 
+export const removeImage = (id, user_id) => async dispatch => {
+    const response = await fetch(`/api/users/${user_id}/${id}/removeImage`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id, user_id})
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(remove(data))
+    }
+}
+
+
 const initialState = {};
 
 export default function images(state = initialState, action) {
@@ -69,6 +90,11 @@ export default function images(state = initialState, action) {
         //     const newState = { ...state }
         //     delete newState[action.id]
         //     return newState;
+
+        case REMOVE:
+            const newState = { ...state }
+            delete newState[action.data.id]
+            return newState;
         default:
             return state
     }
