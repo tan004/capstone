@@ -14,6 +14,7 @@
 .imageModal__content{
     border-radius: 30px;
 }
+
 .imageModal__container{
     display: flex;
     flex-direction: column;
@@ -21,9 +22,11 @@
     align-items: center;
 }
 .imageInModal{
-    width: 400px;
+    max-width: 400px;
     margin: 30px;
+    max-height: 500px;
     border-radius: 5px;
+    border: 1px solid grey;
 }
 
 .image-delete-button{
@@ -35,6 +38,7 @@
     background-color: red;
     color: white;
     border-radius: 30px;
+
 }
 
 .image-delete-button:hover{

@@ -8,7 +8,7 @@ const ImageViewModal = ({image}) => {
 
     return (
     <>
-        <img src={image.imgUrl} className='uploaded-images' onClick={() => setShowModal(true)}/>
+        <img src={image.imgUrl} className='uploaded-images' onClick={() => setShowModal(true)} alt={image.id}/>
 
         {showModal && (
             <ImageModal onClose={() => setShowModal(false)}>

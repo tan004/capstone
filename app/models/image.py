@@ -1,4 +1,6 @@
+from app.models import restaurant
 from .db import db
+from app.models.restaurant import Restaurant
 
 
 class Image(db.Model):
@@ -18,4 +20,5 @@ class Image(db.Model):
             'user_id': self.user_id,
             'restaurant_id': self.restaurant_id,
             'imgUrl': self.imgUrl,
+            # 'resturant': self.restaurant.title
         }
