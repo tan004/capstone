@@ -1,9 +1,17 @@
 
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserImages } from '../../store/image';
 import ImageViewModal from './ImageViewModal';
 import './userImagePage.css'
 
 const UserImagePage = ({user}) => {
-    const images = user.images
+    const images = useSelector(state => Object.values(state.images).reverse())
+    const dispatch = useDispatch()
+
+    useEffect(()=> {
+        dispatch(getUserImages(user.id))
+    }, [dispatch])
 
     return (
         <div  className='user-right__container'>

@@ -19,5 +19,5 @@ class Image(db.Model):
             'user_id': self.user_id,
             'restaurant_id': self.restaurant_id,
             'imgUrl': self.imgUrl,
-            'restaurant': self.restaurant.title
+            # 'restaurant': self.restaurant
         }

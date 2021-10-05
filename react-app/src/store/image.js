@@ -26,14 +26,15 @@ export const imagesForOne = (id) => async(dispatch)=>{
     }
 }
 
-// export const getUserImages = (userId) => async (dispatch) => {
-//     const response = await fetch(`/api/users/${userId}/images`)
-//     if(response.ok){
-//         const images = await response.json()
-//         console.log(images)
-//         dispatch(all(images))
-//     }
-// }
+
+
+export const getUserImages = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}/images`)
+    if(response.ok){
+        const images = await response.json()
+        dispatch(all(images))
+    }
+}
 
 
 export const uploadImage = (form, restaurant_id) => async(dispatch) => {
@@ -70,6 +71,7 @@ export const removeImage = (id, user_id) => async dispatch => {
 
     if(response.ok){
         const data = await response.json()
+        console.log(data)
         dispatch(remove(data))
     }
 }
@@ -83,14 +85,6 @@ export default function images(state = initialState, action) {
             return { ...state, ...action.data }
         case CREATE:
             return { ...state, [action.form.id]: action.form }
-        // case EDIT:
-        //     return { ...state, [action.form.id]: action.form }
-
-        // case REMOVE:
-        //     const newState = { ...state }
-        //     delete newState[action.id]
-        //     return newState;
-
         case REMOVE:
             const newState = { ...state }
             delete newState[action.data.id]

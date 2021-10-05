@@ -43,6 +43,13 @@ def remove_user_booking(id, user_id):
 
     return booking.to_dict()
 
+
+@user_routes.route('/<int:id>/images')
+def get_user_images(id):
+    images = Image.query.filter(Image.user_id == id).all()
+    return {image.id: image.to_dict() for image in images}
+
+
 @user_routes.route('/<int:user_id>/<int:image_id>/removeImage', methods=['DELETE'])
 def remove_user_image(user_id, image_id):
     user = User.query.get(user_id)
@@ -53,4 +60,4 @@ def remove_user_image(user_id, image_id):
     db.session.delete(image)
     db.session.commit()
 
-    return user.to_dict()
+    return image.to_dict()
