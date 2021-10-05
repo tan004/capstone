@@ -30,7 +30,6 @@ const RestaurantPage = () => {
     const filteredImages= imagesArr.filter(image => image.restaurant_id === +id)
 
 
-
     useEffect(() => {
         dispatch(getOne(id))
     }, [dispatch, id])
@@ -161,7 +160,7 @@ const RestaurantPage = () => {
                     </div>
                     {uploadDiv ? <UploadImageForm restaurant={restaurant}/>:null }
                     <div className='imagesList__container'>
-                    {filteredImages && filteredImages.map(image => <img className='single-images' src={image.imgUrl} />)}
+                    {filteredImages && filteredImages.map(image => <img className='single-images' src={image.imgUrl} key={image.id} alt={image.id} />)}
                     {filteredImages.length === 0 ? <div>No Image Uploaded</div>: null}
                     </div>
                 </div>
