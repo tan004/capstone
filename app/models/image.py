@@ -13,9 +13,11 @@ class Image(db.Model):
     restaurant = db.relationship("Restaurant", back_populates="images")
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'user_id': self.user_id,
             'restaurant_id': self.restaurant_id,
             'imgUrl': self.imgUrl,
+            'restaurant': self.restaurant.title
         }
