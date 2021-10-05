@@ -71,7 +71,6 @@ export const removeImage = (id, user_id) => async dispatch => {
 
     if(response.ok){
         const data = await response.json()
-        console.log(data)
         dispatch(remove(data))
     }
 }
