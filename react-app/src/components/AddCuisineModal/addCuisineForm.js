@@ -37,7 +37,7 @@ const AddCuisineForm = ({ onClose, restaurant }) => {
                     ))}
                 </div>
                 <div className='cuisine-input__container'>
-                    <label>Cuisine type: </label>
+                    <label className='cuisine-label'>Cuisine Type: </label>
                     <input
                         className='cuisine-input'
                         value={type}

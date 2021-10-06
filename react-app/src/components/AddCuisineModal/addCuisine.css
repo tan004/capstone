@@ -16,7 +16,7 @@
 }
 .cuisine-header{
     border-bottom: 1px solid rgba(155, 155, 155, 0.815);
-    color: rgba(255, 0, 0, 0.774);
+    color: rgba(48, 42, 42, 0.774);
 }
 .cuisine-input__container{
     display: flex;
@@ -31,6 +31,9 @@
 
 }
 
+.cuisine-label{
+    font-weight: bold;
+}
 
 .addcuisine-button{
     border: unset;
@@ -43,6 +46,7 @@
     background-color: rgba(233, 231, 231, 0.781);
     border: 1px solid rgba(0, 128, 0, 0.705);
     transition: ease-in-out 0.3s;
+    margin-top: 5px;
 
 }
 .addcuisine-button:hover{
