@@ -29,16 +29,17 @@ const AddCuisineForm = ({ onClose, restaurant }) => {
 
     return (
         <div className='cuisineForm__container'>
-            <p>Add the Cuisine type below</p>
+            <h3 className='cuisine-header'>Add the Cuisine type below</h3>
             <form className='addCuisineForm' onSubmit={handleSubmit}>
             <div className='errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
-                <div>
-                    <label>cuisine type</label>
+                <div className='cuisine-input__container'>
+                    <label>Cuisine type: </label>
                     <input
+                        className='cuisine-input'
                         value={type}
                         onChange={(e) => setType(e.target.value)}
                         placeholder='add a new type'
@@ -47,7 +48,7 @@ const AddCuisineForm = ({ onClose, restaurant }) => {
                         required
                     />
                 </div>
-                <button type='submit'>add</button>
+                <button className='addcuisine-button' type='submit'>Add</button>
             </form>
         </div>
     )
