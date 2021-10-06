@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { addCuisineType } from "../../store/cuisine";
+import './addCuisine.css'
 
 const AddCuisineForm = ({ onClose, restaurant }) => {
 
@@ -27,9 +28,9 @@ const AddCuisineForm = ({ onClose, restaurant }) => {
 
 
     return (
-        <div>
-
-            <form onSubmit={handleSubmit}>
+        <div className='cuisineForm__container'>
+            <p>Add the Cuisine type below</p>
+            <form className='addCuisineForm' onSubmit={handleSubmit}>
             <div className='errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
