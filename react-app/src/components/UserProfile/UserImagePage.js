@@ -27,14 +27,14 @@ const UserImagePage = ({ user }) => {
     let groupedImages = groupImages(images, 'restaurant_id')
     let groupedImagesArr = Object.values(groupedImages)
 
-    console.log(groupedImages)
+    console.log(groupedImagesArr)
     return (
         <div className='user-right__container'>
             <h2 className='bookmark-header'>all Images</h2>
             <div className='userImage__container' >
                 {groupedImagesArr.length > 0 ? groupedImagesArr.map((restaurant, idx) =>
                     <div className='restaurant-images__container' key={idx}>
-
+                        <p>{restaurant[0].restaurant}</p>
                         <div className='overflow-image__container'>
                             {restaurant.map(image =>
                                 <ImageViewModal image={image} key={image.id} />
