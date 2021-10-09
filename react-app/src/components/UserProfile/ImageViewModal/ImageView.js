@@ -18,10 +18,10 @@ const ImageView = ({image}) => {
     if(deleteClicked){
         deleteWarningDiv = (
             <div className='imageModal__container'>
-                <p>Please confirm that you want to delete this picture.</p>
+                <p className='delete-warning'>Please confirm that you want to delete this picture.</p>
                 <div>
                     <button onClick={handleDelete} className='image-delete-button'>Confirm</button>
-                    <button onClick={() => setDeleteClicked(false)}>Back</button>
+                    <button className='go-back-button' onClick={() => setDeleteClicked(false)}>Back</button>
                 </div>
             </div>
         )
