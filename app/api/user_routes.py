@@ -47,7 +47,7 @@ def remove_user_booking(id, user_id):
 @user_routes.route('/<int:id>/images')
 def get_user_images(id):
     images = Image.query.filter(Image.user_id == id).all()
-    return {image.id: image.to_dict() for image in images}
+    return {image.id: image.user_image() for image in images}
 
 
 @user_routes.route('/<int:user_id>/<int:image_id>/removeImage', methods=['DELETE'])
