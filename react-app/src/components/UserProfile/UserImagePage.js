@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getUserImages } from '../../store/image';
 import ImageViewModal from './ImageViewModal';
 import './userImagePage.css'
@@ -31,7 +32,7 @@ const UserImagePage = ({ user }) => {
             <div className='userImage__container' >
                 {groupedImagesArr.length > 0 ? groupedImagesArr.map((restaurant, idx) =>
                     <div className='restaurant-images__container' key={idx}>
-                        <p className='resetaurant-name'>{restaurant[0].restaurant}</p>
+                        <Link to={`/restaurants/${restaurant[0].restaurant_id}`} className='resetaurant-name'>{restaurant[0].restaurant}</Link>
                         <div className='overflow-image__container'>
                             {restaurant.map(image =>
                                 <ImageViewModal image={image} key={image.id} />

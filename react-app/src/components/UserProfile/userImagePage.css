@@ -31,4 +31,9 @@
     width: fit-content;
     font-weight: bold;
     font-size: 24px;
+    color: black;
+    cursor: pointer;
+}
+.resetaurant-name:hover{
+    color: rgba(255, 0, 0, 0.719);
 }
