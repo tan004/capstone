@@ -2,7 +2,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserImages } from '../../store/image';
-import restaurants, { getAll } from '../../store/restaurant';
 import ImageViewModal from './ImageViewModal';
 import './userImagePage.css'
 
@@ -21,13 +20,11 @@ const UserImagePage = ({ user }) => {
 
     useEffect(() => {
         dispatch(getUserImages(user.id))
-        // dispatch(getAll())
     }, [dispatch])
 
     let groupedImages = groupImages(images, 'restaurant_id')
     let groupedImagesArr = Object.values(groupedImages)
 
-    console.log(groupedImagesArr)
     return (
         <div className='user-right__container'>
             <h2 className='bookmark-header'>all Images</h2>
