@@ -22,3 +22,12 @@ class Image(db.Model):
             'imgUrl': self.imgUrl,
             # 'resturant': self.restaurant.title
         }
+
+    def user_image(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'restaurant_id': self.restaurant_id,
+            'imgUrl': self.imgUrl,
+            'restaurant': self.restaurant.title
+        }

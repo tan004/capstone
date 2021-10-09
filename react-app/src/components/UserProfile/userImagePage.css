@@ -14,3 +14,26 @@
     border: 1px solid blue;
     border-radius: 5px;
 }
+
+.restaurant-images__container{
+    width: 100%;
+}
+.overflow-image__container{
+    overflow-x: auto ;
+    display: flex;
+    flex-direction: row;
+}
+.resetaurant-name{
+    border-bottom: 1px solid black;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+}
+.resetaurant-name:hover{
+    color: rgba(255, 0, 0, 0.719);
+}
