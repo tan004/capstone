@@ -18,27 +18,30 @@ const UserImagePage = ({ user }) => {
         }, {});
     }
 
-    let groupedImages = groupImages(images, 'restaurant_id')
-    console.log(Object.values(groupedImages))
 
     useEffect(() => {
         dispatch(getUserImages(user.id))
         // dispatch(getAll())
     }, [dispatch])
 
+    let groupedImages = groupImages(images, 'restaurant_id')
+    let groupedImagesArr = Object.values(groupedImages)
+
+    console.log(groupedImages)
     return (
         <div className='user-right__container'>
             <h2 className='bookmark-header'>all Images</h2>
             <div className='userImage__container' >
-                {Object.values(groupedImages).length > 0 ? Object.values(groupedImages).map((restaurant, idx) =>
-
+                {groupedImagesArr.length > 0 ? groupedImagesArr.map((restaurant, idx) =>
                     <div className='restaurant-images__container' key={idx}>
-                        <p className='restaurant-name'>{restaurant[idx].restaurant}</p>
-                        {restaurant.map(image =>
-                            <ImageViewModal image={image} key={image.id}/>
-                    )}
-                    </div>
 
+                        <div className='overflow-image__container'>
+                            {restaurant.map(image =>
+                                <ImageViewModal image={image} key={image.id} />
+                            )}
+                        </div>
+
+                    </div>
                 ) : <div>You don't have any uploaded images.</div>}
             </div>
         </div>

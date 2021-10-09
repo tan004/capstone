@@ -14,3 +14,12 @@
     border: 1px solid blue;
     border-radius: 5px;
 }
+
+.restaurant-images__container{
+    width: 100%;
+}
+.overflow-image__container{
+    overflow-x: auto ;
+    display: flex;
+    flex-direction: row;
+}
