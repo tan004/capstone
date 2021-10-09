@@ -31,7 +31,7 @@ const UserImagePage = ({ user }) => {
             <div className='userImage__container' >
                 {groupedImagesArr.length > 0 ? groupedImagesArr.map((restaurant, idx) =>
                     <div className='restaurant-images__container' key={idx}>
-                        <p>{restaurant[0].restaurant}</p>
+                        <p className='resetaurant-name'>{restaurant[0].restaurant}</p>
                         <div className='overflow-image__container'>
                             {restaurant.map(image =>
                                 <ImageViewModal image={image} key={image.id} />
