@@ -35,7 +35,7 @@ const UserImagePage = ({ user }) => {
                         <Link to={`/restaurants/${restaurant[0].restaurant_id}`} className='resetaurant-name'>{restaurant[0].restaurant}</Link>
                         <div className='overflow-image__container'>
                             {restaurant.map(image =>
-                                <ImageViewModal image={image} key={image.id} />
+                                <ImageViewModal image={image} restaurant={restaurant} key={image.id} />
                             )}
                         </div>
 

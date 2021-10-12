@@ -3,15 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeImage } from '../../../store/image';
 import './imageView.css'
 
-const ImageView = ({image}) => {
+const ImageView = ({image, restaurant}) => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const [deleteClicked,  setDeleteClicked] = useState(false)
+    const [currentImage, setCurrentImage] = useState(image)
 
-        const handleDelete = async(e) => {
-            e.preventDefault()
-            await dispatch(removeImage(image.id, image.user_id))
-        }
+    const handleImage = (e) => {
+        e.preventDefault()
+        let idx = restaurant.indexOf(currentImage)
+        let prevImage = restaurant[idx-1]
+        setCurrentImage(prevImage)
+    }
+    console.log(currentImage)
+    const handleDelete = async(e) => {
+        e.preventDefault()
+        await dispatch(removeImage(image.id, image.user_id))
+    }
 
 
     let deleteWarningDiv;
@@ -29,7 +37,9 @@ const ImageView = ({image}) => {
 
     return (
         <div className='imageModal__container'>
-            <img className='imageInModal' src={image.imgUrl} alt={image.id} />
+            <button onClick={handleImage}>previous</button>
+            <img className='imageInModal' src={currentImage.imgUrl} alt={currentImage.id} />
+            <button>next</button>
             {deleteClicked === false ? <button onClick={()=> setDeleteClicked(true)} className='image-delete-button'>Delete</button>: deleteWarningDiv}
         </div>
     )
