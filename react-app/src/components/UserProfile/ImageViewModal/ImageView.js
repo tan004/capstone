@@ -9,13 +9,31 @@ const ImageView = ({image, restaurant}) => {
     const [deleteClicked,  setDeleteClicked] = useState(false)
     const [currentImage, setCurrentImage] = useState(image)
 
-    const handleImage = (e) => {
+    const loadPrevImage = (e) => {
         e.preventDefault()
         let idx = restaurant.indexOf(currentImage)
-        let prevImage = restaurant[idx-1]
+        let prevImage;
+        if(restaurant[idx-1] === undefined){
+            prevImage = restaurant[restaurant.length-1]
+        }else{
+            prevImage = restaurant[idx-1]
+        }
         setCurrentImage(prevImage)
     }
-    console.log(currentImage)
+
+    const loadNextImage = (e) => {
+        e.preventDefault()
+        let idx = restaurant.indexOf(currentImage)
+        let nextImage;
+        if(restaurant[idx+1] === undefined){
+            nextImage = restaurant[0]
+        }else{
+
+            nextImage = restaurant[idx+1]
+        }
+        setCurrentImage(nextImage)
+    }
+
     const handleDelete = async(e) => {
         e.preventDefault()
         await dispatch(removeImage(image.id, image.user_id))
@@ -37,9 +55,9 @@ const ImageView = ({image, restaurant}) => {
 
     return (
         <div className='imageModal__container'>
-            <button onClick={handleImage}>previous</button>
+            <button onClick={loadPrevImage}>previous</button>
             <img className='imageInModal' src={currentImage.imgUrl} alt={currentImage.id} />
-            <button>next</button>
+            <button onClick={loadNextImage}>next</button>
             {deleteClicked === false ? <button onClick={()=> setDeleteClicked(true)} className='image-delete-button'>Delete</button>: deleteWarningDiv}
         </div>
     )
