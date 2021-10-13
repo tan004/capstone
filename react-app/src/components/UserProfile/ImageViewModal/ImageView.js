@@ -55,9 +55,11 @@ const ImageView = ({image, restaurant}) => {
 
     return (
         <div className='imageModal__container'>
-            <button onClick={loadPrevImage}>previous</button>
+            <div className='images-gallery__container'>
+            <i onClick={loadPrevImage} className="fas fa-chevron-left"></i>
             <img className='imageInModal' src={currentImage.imgUrl} alt={currentImage.id} />
-            <button onClick={loadNextImage}>next</button>
+            <i onClick={loadNextImage} className="fas fa-chevron-right"></i>
+            </div>
             {deleteClicked === false ? <button onClick={()=> setDeleteClicked(true)} className='image-delete-button'>Delete</button>: deleteWarningDiv}
         </div>
     )
