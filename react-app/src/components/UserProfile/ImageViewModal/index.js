@@ -3,8 +3,9 @@ import { ImageModal } from '../../../context/Modal';
 import ImageView from './ImageView';
 import './imageView.css'
 
-const ImageViewModal = ({image}) => {
+const ImageViewModal = ({image, restaurant}) => {
     const [showModal, setShowModal] = useState(false);
+
 
     return (
     <>
@@ -12,7 +13,8 @@ const ImageViewModal = ({image}) => {
 
         {showModal && (
             <ImageModal onClose={() => setShowModal(false)}>
-                <ImageView image={image}/>
+                <ImageView image={image} restaurant={restaurant}/>
+
             </ImageModal>
         )}
     </>

@@ -3,15 +3,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeImage } from '../../../store/image';
 import './imageView.css'
 
-const ImageView = ({image}) => {
+const ImageView = ({image, restaurant}) => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const [deleteClicked,  setDeleteClicked] = useState(false)
+    const [currentImage, setCurrentImage] = useState(image)
 
-        const handleDelete = async(e) => {
-            e.preventDefault()
-            await dispatch(removeImage(image.id, image.user_id))
+    const loadPrevImage = (e) => {
+        e.preventDefault()
+        let idx = restaurant.indexOf(currentImage)
+        let prevImage;
+        if(restaurant[idx-1] === undefined){
+            prevImage = restaurant[restaurant.length-1]
+        }else{
+            prevImage = restaurant[idx-1]
         }
+        setCurrentImage(prevImage)
+    }
+
+    const loadNextImage = (e) => {
+        e.preventDefault()
+        let idx = restaurant.indexOf(currentImage)
+        let nextImage;
+        if(restaurant[idx+1] === undefined){
+            nextImage = restaurant[0]
+        }else{
+
+            nextImage = restaurant[idx+1]
+        }
+        setCurrentImage(nextImage)
+    }
+
+    const handleDelete = async(e) => {
+        e.preventDefault()
+        await dispatch(removeImage(image.id, image.user_id))
+    }
 
 
     let deleteWarningDiv;
@@ -29,7 +55,11 @@ const ImageView = ({image}) => {
 
     return (
         <div className='imageModal__container'>
-            <img className='imageInModal' src={image.imgUrl} alt={image.id} />
+            <div className='images-gallery__container'>
+            <i onClick={loadPrevImage} className="fas fa-chevron-left"></i>
+            <img className='imageInModal' src={currentImage.imgUrl} alt={currentImage.id} />
+            <i onClick={loadNextImage} className="fas fa-chevron-right"></i>
+            </div>
             {deleteClicked === false ? <button onClick={()=> setDeleteClicked(true)} className='image-delete-button'>Delete</button>: deleteWarningDiv}
         </div>
     )
