@@ -12,24 +12,31 @@ const Search = () => {
     const dataAfterSearch = useSelector(state => state.search.restaurants)
 
     let result = [];
+
     useEffect(()=> {
         if(query && query.length >= 2){
             dispatch(searchRestaurant(query))
             setShowResult(dataAfterSearch)
         }
-    }, [query])
+    }, [query, dispatch])
+
     console.log(dataAfterSearch)
-    if(dataAfterSearch){
-        result = dataAfterSearch.map((r) =>
-         <NavLink to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
-         )
-    }
 
     useEffect(()=> {
         if(query.length < 2){
             setShowResult([])
         }
-    },[query])
+
+        if(dataAfterSearch === []){
+            setShowResult([])
+        }
+    }, [query, dataAfterSearch])
+
+    if(dataAfterSearch){
+        result = dataAfterSearch.map((r) =>
+            <NavLink to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
+        )
+    }
 
     return (
         <div>
@@ -41,7 +48,7 @@ const Search = () => {
                 className='header-search-bar'
             >
             </input>
-            {showResult.length >= 1 ? <div className='result__container'>
+            {showResult && showResult.length >= 1 ?  <div className='result__container'>
                 {result}
             </div>: null}
         </div>
