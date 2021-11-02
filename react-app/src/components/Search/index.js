@@ -14,7 +14,6 @@ const Search = () => {
     let result = [];
 
     useEffect(()=> {
-
         dispatch(searchRestaurant(query))
         setShowResult(dataAfterSearch)
     }, [query, dispatch])
@@ -29,6 +28,7 @@ const Search = () => {
         if(dataAfterSearch === []){
             setShowResult([])
         }
+
     }, [query, dataAfterSearch])
 
     if(dataAfterSearch){
