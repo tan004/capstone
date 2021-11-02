@@ -52,7 +52,7 @@ const Search = () => {
         <div>
             <input
                 name='searchInput'
-                placeholder='Type at least 2 characters to search for restaurants...'
+                placeholder='Search reastaurants...'
                 value={query}
                 onChange={(e)=> setQuery(e.target.value)}
                 className='header-search-bar'
