@@ -8,17 +8,17 @@ import './search.css'
 const Search = () => {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
-    const [showResult, setShowResult] = useState(false)
+    const [showResult, setShowResult] = useState([])
     const dataAfterSearch = useSelector(state => state.search.restaurants)
 
     let result = [];
     useEffect(()=> {
         if(query && query.length >= 2){
             dispatch(searchRestaurant(query))
-            setShowResult(true)
+            setShowResult(dataAfterSearch)
         }
     }, [query])
-
+    console.log(dataAfterSearch)
     if(dataAfterSearch){
         result = dataAfterSearch.map((r) =>
          <NavLink to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
@@ -27,7 +27,7 @@ const Search = () => {
 
     useEffect(()=> {
         if(query.length < 2){
-            setShowResult(false)
+            setShowResult([])
         }
     },[query])
 
@@ -41,9 +41,9 @@ const Search = () => {
                 className='header-search-bar'
             >
             </input>
-            {showResult && <div className='result__container'>
+            {showResult.length >= 1 ? <div className='result__container'>
                 {result}
-            </div>}
+            </div>: null}
         </div>
     )
 }
