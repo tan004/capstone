@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-
+import { searchRestaurant } from "../../store/search";
 
 
 
@@ -10,16 +10,10 @@ const Search = () => {
     const [result, setResult] = useState('')
 
     useEffect(()=> {
-        if(query && query.length >= 3){
-
+        if(query && query.length >= 2){
+            dispatch(searchRestaurant(query))
         }
     }, [query])
-
-
-
-
-
-
 
 
     return (
