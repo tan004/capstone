@@ -14,6 +14,7 @@ const ProfileDropDown = ({ user }) => {
             setShowMenu(true)
         }
     }
+
     useEffect(() => {
         if (!showMenu) return;
 

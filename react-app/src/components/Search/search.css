@@ -1,0 +1,21 @@
+.resultDiv{
+    background-color:rgb(241, 241, 241);
+    color: black;
+    padding: 15px;
+    width: 100%;
+}
+
+.resultDiv:hover{
+    background-color: rgb(236, 236, 236);
+    color: red;
+}
+
+.result__container{
+    /* margin-top: 15px; */
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    width: 50%;
+    max-width: 400px;
+    margin-left: 12px;
+}
