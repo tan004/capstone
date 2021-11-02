@@ -38,6 +38,16 @@ const Search = () => {
         )
     }
 
+    useEffect(()=> {
+        const closeResult = () => {
+            setShowResult([])
+        }
+
+        document.addEventListener('click', closeResult);
+
+        return () => document.removeEventListener("click", closeResult);
+    },[])
+
     return (
         <div>
             <input
