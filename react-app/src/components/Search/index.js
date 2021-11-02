@@ -17,6 +17,7 @@ const Search = () => {
         if(query !== ''){
             dispatch(searchRestaurant(query))
         }
+        // if we have data, put into showresult.
         if(dataAfterSearch?.length > 0){
             setShowResult(dataAfterSearch)
         }
@@ -34,6 +35,7 @@ const Search = () => {
             <NavLink to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
         )
     }
+
 // close the result div, if clicked on other places.
     useEffect(()=> {
         const closeResult = () => {
