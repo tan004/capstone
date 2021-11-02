@@ -60,12 +60,6 @@ const LandingPage = () => {
                     </div>
 
                     <div className='search-bar__container'>
-                        {/* <form>
-                            <input
-                                placeholder='search bar'
-                                className='header-search-bar'
-                            />
-                        </form> */}
                         <Search />
                     </div>
 

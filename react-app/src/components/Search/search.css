@@ -1,0 +1,8 @@
+.resultDiv{
+    background-color:rgb(236, 236, 236);
+    color: black;
+    z-index: 100;
+    width: 300px;
+    padding: 15px;
+    margin-left: 12px;
+}
