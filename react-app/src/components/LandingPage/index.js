@@ -5,6 +5,7 @@ import { getAll } from '../../store/restaurant'
 import { NavLink } from 'react-router-dom';
 import githublogo from '../../images/github32.png'
 import { getUserBookings } from '../../store/booking';
+import Search from '../Search';
 
 const LandingPage = () => {
     const dispatch = useDispatch()
@@ -58,12 +59,15 @@ const LandingPage = () => {
                         <h1 className='header-h1'>You don't need a reason, you need a booking</h1>
                     </div>
 
-                    {/* <div className='search-bar__container'>
-                        <input
-                            placeholder='search bar'
-                            className='header-search-bar'
-                        />
-                    </div> */}
+                    <div className='search-bar__container'>
+                        {/* <form>
+                            <input
+                                placeholder='search bar'
+                                className='header-search-bar'
+                            />
+                        </form> */}
+                        <Search />
+                    </div>
 
                 </div>
             </div>
