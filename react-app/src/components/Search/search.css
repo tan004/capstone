@@ -1,14 +1,16 @@
 .resultDiv{
     background-color:rgb(236, 236, 236);
     color: black;
-    z-index: 100;
     padding: 15px;
-    margin-left: 12px;
+    width: 100%;
 }
 
 .result__container{
     /* margin-top: 15px; */
     display: flex;
     flex-direction: column;
-    width: 442px;
+    min-width: 300px;
+    width: 50%;
+    max-width: 400px;
+    margin-left: 12px;
 }
