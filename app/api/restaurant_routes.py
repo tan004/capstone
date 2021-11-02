@@ -139,6 +139,7 @@ def add_cuisine(id):
             restaurant_id=id,
             type=data['type']
         )
+        
         db.session.add(new_type)
         db.session.commit()
         return new_type.to_dict()
