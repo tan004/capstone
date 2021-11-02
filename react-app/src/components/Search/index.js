@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 
 
 
 const Search = () => {
-
+    const dispatch = useDispatch()
     const [query, setQuery] = useState('')
     const [result, setResult] = useState('')
 
     useEffect(()=> {
         if(query && query.length >= 3){
-            setResult('this is result')
+
         }
     }, [query])
 
-    useEffect(()=> {
 
-    },[result])
+
+
+
+
+
 
     return (
         <div>

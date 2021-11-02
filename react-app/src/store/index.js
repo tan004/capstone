@@ -5,6 +5,7 @@ import restaurants from './restaurant';
 import cuisines from './cuisine';
 import bookings from './booking';
 import images from './image';
+import search from './search';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   cuisines,
   bookings,
   images,
+  search,
 });
 
 
