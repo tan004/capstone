@@ -12,23 +12,21 @@ const Search = () => {
     const dataAfterSearch = useSelector(state => state.search.restaurants)
 
     let result = [];
-
+// if the input bar is not empty, dispatch the search function.
     useEffect(()=> {
-        dispatch(searchRestaurant(query))
-        setShowResult(dataAfterSearch)
+        if(query !== ''){
+            dispatch(searchRestaurant(query))
+        }
+        if(dataAfterSearch?.length > 0){
+            setShowResult(dataAfterSearch)
+        }
     }, [query, dispatch])
 
-    console.log(dataAfterSearch)
-
+// check if search bar is empty.
     useEffect(()=> {
         if(!query){
             setShowResult([])
         }
-
-        if(dataAfterSearch === []){
-            setShowResult([])
-        }
-
     }, [query, dataAfterSearch])
 
     if(dataAfterSearch){
@@ -36,10 +34,10 @@ const Search = () => {
             <NavLink to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
         )
     }
-
+// close the result div, if clicked on other places.
     useEffect(()=> {
-
         const closeResult = () => {
+            setQuery('')
             setShowResult([])
         }
 
