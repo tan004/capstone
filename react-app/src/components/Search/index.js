@@ -14,16 +14,15 @@ const Search = () => {
     let result = [];
 
     useEffect(()=> {
-        if(query && query.length >= 2){
-            dispatch(searchRestaurant(query))
-            setShowResult(dataAfterSearch)
-        }
+
+        dispatch(searchRestaurant(query))
+        setShowResult(dataAfterSearch)
     }, [query, dispatch])
 
     console.log(dataAfterSearch)
 
     useEffect(()=> {
-        if(query.length < 2){
+        if(!query){
             setShowResult([])
         }
 
@@ -39,6 +38,7 @@ const Search = () => {
     }
 
     useEffect(()=> {
+
         const closeResult = () => {
             setShowResult([])
         }
