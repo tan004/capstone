@@ -8,7 +8,7 @@ import './userImagePage.css'
 
 const UserImagePage = ({ user }) => {
     const images = useSelector(state => Object.values(state.images).reverse())
-
+    const filteredImages = images.filter((image) => image.user_id === user.id)
     const dispatch = useDispatch()
 
     const groupImages = (array, key) => {
@@ -23,7 +23,7 @@ const UserImagePage = ({ user }) => {
         dispatch(getUserImages(user.id))
     }, [dispatch])
 
-    let groupedImages = groupImages(images, 'restaurant_id')
+    let groupedImages = groupImages(filteredImages, 'restaurant_id')
     let groupedImagesArr = Object.values(groupedImages)
 
     return (
