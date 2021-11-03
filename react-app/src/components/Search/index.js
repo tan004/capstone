@@ -17,22 +17,26 @@ const Search = () => {
         if(query !== ''){
             dispatch(searchRestaurant(query))
         }
-        // if we have data, put into showresult.
-        if(dataAfterSearch?.length > 0){
-            setShowResult(dataAfterSearch)
-        }
+
     }, [query, dispatch])
+
+    useEffect(()=> {
+            // if we have data, put into showresult.
+            if(dataAfterSearch?.length > 0){
+                setShowResult(dataAfterSearch)
+            }
+    },[dataAfterSearch])
 
 // check if search bar is empty.
     useEffect(()=> {
         if(!query){
             setShowResult([])
         }
-    }, [query, dataAfterSearch])
+    }, [query])
 
     if(dataAfterSearch){
         result = dataAfterSearch.map((r) =>
-            <NavLink to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
+            <NavLink key={r.id} to={`/restaurants/${r.id}`} className='resultDiv'>{r.title}</NavLink>
         )
     }
 
