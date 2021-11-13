@@ -10,7 +10,6 @@ def search_restaurant(query):
 
     results = Restaurant.query.filter(Restaurant.title.ilike(f"%{query}%")).all()
 
-
     restaurants = [r.to_dict() for r in results]
 
     return {'restaurants': restaurants}

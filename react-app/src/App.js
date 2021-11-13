@@ -12,8 +12,8 @@ import LandingPage from './components/LandingPage';
 import RestaurantForm from './components/RestaurantForm';
 import RestaurantPage from './components/RestaurantPage';
 
-// Whenever click on the link, browser will redirect you to the top of the page. scollbar will be on the top
-
+// Whenever click on the link, browser will redirect you to the top of the page.
+//  scollbar will be on the top
 // import createHistory from 'history/createBrowserHistory'
 // const history = createHistory()
 // history.listen((location, action) => {
