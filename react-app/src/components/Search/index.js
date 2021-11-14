@@ -53,7 +53,7 @@ const Search = () => {
 // close the result div, if clicked on other places.
     useEffect(()=> {
         const closeResult = () => {
-            // setQuery('')
+            setQuery('')
             setShowResult([])
         }
 
@@ -70,6 +70,7 @@ const Search = () => {
                 value={query}
                 onChange={(e)=> setQuery(e.target.value)}
                 className='header-search-bar'
+                // onFocus={}
             >
             </input>
             {showResult && showResult.length >= 1 ?  <div className='result__container'>
