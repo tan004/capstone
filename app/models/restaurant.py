@@ -29,7 +29,9 @@ class Restaurant(db.Model):
         'User', secondary=bookmarks, back_populates="bookmarked")
 
     images = db.relationship('Image', cascade="all, delete-orphan", back_populates='restaurant')
-    
+
+    reviews = db.relationship('Review', cascade="all, delete-orphan", back_populates='restaurant')
+
     def to_dict(self):
         user = User.query.filter(User.id == self.owner_id).first()
 
