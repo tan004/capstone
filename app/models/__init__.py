@@ -4,3 +4,4 @@ from .restaurant import Restaurant
 from .booking import Booking
 from .cuisine import Cuisine
 from .image import Image
+from .review import Review

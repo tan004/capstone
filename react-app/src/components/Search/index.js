@@ -4,12 +4,23 @@ import { NavLink } from "react-router-dom";
 import { searchRestaurant } from "../../store/search";
 import './search.css'
 
+// window.scrollTo(0,0);
+
 
 const Search = () => {
     const dispatch = useDispatch()
     const [query, setQuery] = useState('')
     const [showResult, setShowResult] = useState([])
     const dataAfterSearch = useSelector(state => state.search.restaurants)
+    // use debounce function to control the the api call in a certain amount of time.
+// $ npm i --save lodash.debounce
+// import debounce from 'lodash.debounce';
+// debounce()
+    // var myEfficientFn = debounce(function() {
+    //     // All the taxing stuff you do
+    // }, 250);
+
+    // window.addEventListener('resize', myEfficientFn);
 
     let result = [];
 // if the input bar is not empty, dispatch the search function.
@@ -17,7 +28,6 @@ const Search = () => {
         if(query !== ''){
             dispatch(searchRestaurant(query))
         }
-
     }, [query, dispatch])
 
     useEffect(()=> {
@@ -60,6 +70,7 @@ const Search = () => {
                 value={query}
                 onChange={(e)=> setQuery(e.target.value)}
                 className='header-search-bar'
+                // onFocus={}
             >
             </input>
             {showResult && showResult.length >= 1 ?  <div className='result__container'>
