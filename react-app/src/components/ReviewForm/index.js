@@ -7,7 +7,8 @@ const ReviewForm = () => {
 
     const [content, setContent] = useState('')
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
     }
 
@@ -16,14 +17,19 @@ const ReviewForm = () => {
     return (
         <div>
             <h2>Review Form</h2>
+
             <form onSubmit={handleSubmit}>
+
                 <label htmlFor='content'>Review</label>
+
                 <textarea
                     name='content'
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
+
                 <button>Submit</button>
+
             </form>
         </div>
     )
