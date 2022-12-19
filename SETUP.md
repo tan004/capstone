@@ -76,7 +76,8 @@ hurt to run it again.
 6. Login to the heroku container registry
 
    ```bash
-   heroku container:login
+   heroku container:login 
+   note: if login failed with:1, check and make sure docker is running. simply open docker desktop on your pc.
    ```
 
 7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
@@ -87,6 +88,7 @@ hurt to run it again.
 
    ```bash
    heroku container:push web -a {NAME_OF_HEROKU_APP}
+   if done this before. no need to push container to heroku again. go to step 10
    ```
 
 9. Release your docker container to heroku
@@ -98,8 +100,8 @@ hurt to run it again.
 10. set up your database
 
       ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade (if existing app, no need to upgrade.)
+      heroku run -a {NAME_OF_HEROKU_APP} flask seed all (if using new heroku database, this need to execute again)
       ```
 
 11. Under Settings find "Config Vars" and add any additional/secret .env
