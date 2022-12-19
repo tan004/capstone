@@ -13,6 +13,20 @@ const LandingPage = () => {
     const restaurants = useSelector(state => Object.values(state.restaurants).reverse())
 
     const [imageNum, setImageNum] = useState('https://cdn.pixabay.com/photo/2012/12/19/18/13/architecture-70920_960_720.jpg')
+    let A_Z_sorting= [...restaurants]
+
+    A_Z_sorting.sort((a, b) => {
+        let fa = a.title.toLowerCase()
+        let fb = b.title.toLowerCase()
+
+        if (fa < fb) {
+        return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
 
     useEffect(() => {
         dispatch(getAll())
@@ -68,8 +82,25 @@ const LandingPage = () => {
 
 
             <h2 className='sorting-title'>newest</h2>
+
             <div className='all-business'>
                 {restaurants.map(restaurant =>
+                    <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business' key={restaurant.id}>
+                        <img className='card-img' src={restaurant?.profile_pic} alt={`card-${restaurant?.id}`} />
+
+                        <div className='simple-info card-title'>{restaurant?.title}</div>
+
+                        <div className='simple-info'>{restaurant?.bookmark_users?.includes(user?.id) ?
+                            <i className="fas red-mark fa-bookmark"></i> : <i className="far fa-bookmark"></i>} {restaurant?.bookmark_users.length} bookmarked
+                        </div>
+                        <div className='simple-info card-address'><i className="fas fa-map-marker-alt"></i> {restaurant?.city}, {restaurant.state}</div>
+
+                    </NavLink>
+                )}
+            </div>
+            <h2 className='sorting-title'>A-Z order</h2>
+            <div className='all-business'>
+                {A_Z_sorting.map(restaurant =>
                     <NavLink to={`/restaurants/${restaurant?.id}`} className='single-business' key={restaurant.id}>
                         <img className='card-img' src={restaurant?.profile_pic} alt={`card-${restaurant?.id}`} />
 
