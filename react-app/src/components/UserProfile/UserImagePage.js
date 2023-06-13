@@ -21,7 +21,7 @@ const UserImagePage = ({ user }) => {
 
     useEffect(() => {
         dispatch(getUserImages(user.id))
-    }, [dispatch])
+    }, [dispatch, user.id])
 
     let groupedImages = groupImages(filteredImages, 'restaurant_id')
     let groupedImagesArr = Object.values(groupedImages)

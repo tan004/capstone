@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { getRestaurantBookings } from "../../store/booking";
 import { cuisineForOne } from "../../store/cuisine";
 import { imagesForOne } from "../../store/image";
-import restaurants, { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
+import { addBookmark, deleteRestaurant, getOne } from "../../store/restaurant";
 import AddCuisineModal from "../AddCuisineModal";
 import BookingForm from "../BookingForm";
 

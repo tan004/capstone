@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { removeImage } from '../../../store/image';
 import './imageView.css'
 
 const ImageView = ({image, restaurant}) => {
-    const user = useSelector(state => state.session.user)
+    //const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const [deleteClicked,  setDeleteClicked] = useState(false)
     const [currentImage, setCurrentImage] = useState(image)
