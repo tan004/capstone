@@ -3,7 +3,9 @@
 OpenBelly is a fullstack flask-react project clone of OpenTable. Users can make reservations on the selected reataurant with the party size and time.
 
 ## Live site
+HOST BY HEROKU
 [Visit OpenBelly](https://openbelly.herokuapp.com)
+HOST BY RENDER
 [Visit OpenBelly](https://openbelly-backend.onrender.com)
 ### Home Page
 ![home page](https://i.imgur.com/Es6jv5A.png)
